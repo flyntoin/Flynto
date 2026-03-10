@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="pageTitle">Article — Flynto</title>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" id="canonicalTag" href="https://flynto.online/article.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#08080d;--surface:#0f0f16;--surface2:#16161f;--border:#252530;--border-h:#3a3a50;--accent:#7c6fff;--accent2:#00e5b0;--text:#eaeaf2;--dim:#a0a0b8;--muted:#6a6a80;--card:#11111a;--tag:#1c1c28;}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border-h);border-radius:3px}
+    nav{position:sticky;top:0;z-index:100;background:rgba(8,8,13,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+    .nav-in{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:58px}
+    .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;color:var(--text);text-decoration:none;letter-spacing:-.5px}
+    .logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:24px}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--text)}
+    .back-btn{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:.85rem;padding:8px 16px;border:1px solid var(--border);border-radius:50px;transition:all .2s;margin:32px 0 0}
+    .back-btn:hover{color:var(--text);border-color:var(--border-h)}
+
+    /* ARTICLE LAYOUT */
+    .art-wrap{max-width:760px;margin:0 auto;padding:0 24px 80px}
+
+    /* HERO */
+    .art-hero{text-align:center;padding:48px 0 40px;border-bottom:1px solid var(--border);margin-bottom:40px}
+    .art-cat-badge{display:inline-block;padding:4px 14px;border-radius:50px;border:1px solid var(--border);background:var(--tag);font-size:.75rem;color:var(--accent);font-weight:600;margin-bottom:20px}
+    .art-hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:20px}
+    .art-meta-bar{display:flex;align-items:center;justify-content:center;gap:20px;font-size:.8rem;color:var(--muted);flex-wrap:wrap}
+    .art-emoji-hero{font-size:4rem;margin-bottom:20px;display:block}
+
+    /* CONTENT */
+    .art-content{font-size:.97rem;line-height:1.8;color:var(--dim)}
+    .art-content .intro{font-size:1.05rem;color:var(--text);line-height:1.75;margin-bottom:32px;padding:20px 24px;background:var(--card);border:1px solid var(--border);border-radius:12px;border-left:3px solid var(--accent)}
+    .art-content h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text);margin:36px 0 14px;letter-spacing:-.3px}
+    .art-content p{margin-bottom:18px}
+    .art-content .tip{background:var(--tag);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:.83rem;color:var(--dim);margin:0 0 20px;display:flex;gap:10px}
+    .art-content .tip::before{content:'💡';flex-shrink:0}
+    .badge-row{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px}
+    .badge-label{font-size:.72rem;color:var(--muted)}
+    .badge-val{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.4px;text-transform:uppercase}
+    .bv-free{background:rgba(0,229,176,.1);color:#00e5b0;border:1px solid rgba(0,229,176,.2)}
+    .bv-freemium{background:rgba(124,111,255,.1);color:#a89bff;border:1px solid rgba(124,111,255,.2)}
+    .bv-paid{background:rgba(255,170,50,.1);color:#ffb84d;border:1px solid rgba(255,170,50,.2)}
+
+    /* LIKE BUTTON */
+    .like-section{display:flex;align-items:center;gap:16px;padding:28px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:40px 0}
+    .like-btn{display:flex;align-items:center;gap:10px;padding:12px 24px;border-radius:50px;border:1px solid var(--border);background:var(--card);color:var(--dim);font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;transition:all .25s;user-select:none}
+    .like-btn:hover{border-color:var(--accent);color:var(--text)}
+    .like-btn.liked{background:rgba(124,111,255,.15);border-color:var(--accent);color:var(--accent)}
+    .like-btn .heart{font-size:1.2rem;transition:transform .25s}
+    .like-btn:hover .heart,.like-btn.liked .heart{transform:scale(1.2)}
+    .like-count{font-family:'Syne',sans-serif;font-size:.85rem;color:var(--muted)}
+    .share-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:50px;border:1px solid var(--border);background:var(--card);color:var(--dim);font-size:.85rem;cursor:pointer;transition:all .2s;margin-left:auto}
+    .share-btn:hover{border-color:var(--accent2);color:var(--text)}
+
+    /* COMMENTS */
+    .comments-section{margin-top:8px}
+    .comments-section h2{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:24px;display:flex;align-items:center;gap:10px}
+    .cmt-count{font-size:.72rem;color:var(--muted);background:var(--tag);padding:3px 10px;border-radius:50px;border:1px solid var(--border)}
+
+    /* COMMENT FORM */
+    .cmt-form{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:32px}
+    .cmt-form h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:16px;color:var(--text)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+    .cmt-form input,.cmt-form textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.875rem;outline:none;transition:border-color .2s}
+    .cmt-form input:focus,.cmt-form textarea:focus{border-color:var(--accent)}
+    .cmt-form input::placeholder,.cmt-form textarea::placeholder{color:var(--muted)}
+    .cmt-form textarea{resize:vertical;min-height:90px;margin-bottom:12px}
+    .cmt-submit{padding:10px 22px;background:var(--accent);color:#fff;border:none;border-radius:50px;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:opacity .2s}
+    .cmt-submit:hover{opacity:.85}
+    .cmt-submit:disabled{opacity:.5;cursor:not-allowed}
+
+    /* COMMENT LIST */
+    .cmt-list{display:flex;flex-direction:column;gap:16px}
+    .cmt-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+    .cmt-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    .cmt-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;color:#fff;flex-shrink:0}
+    .cmt-name{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;color:var(--text)}
+    .cmt-time{font-size:.72rem;color:var(--muted);margin-left:auto}
+    .cmt-text{font-size:.87rem;color:var(--dim);line-height:1.6}
+    .cmt-actions{display:flex;align-items:center;gap:16px;margin-top:12px}
+    .cmt-like-btn{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);cursor:pointer;transition:color .2s;background:none;border:none;padding:0}
+    .cmt-like-btn:hover,.cmt-like-btn.liked{color:var(--accent)}
+    .reply-btn{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);cursor:pointer;transition:color .2s;background:none;border:none;padding:0}
+    .reply-btn:hover{color:var(--accent2)}
+
+    /* REPLIES */
+    .replies{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:12px}
+    .reply-item{display:flex;gap:12px;padding:12px;background:var(--surface2);border-radius:8px}
+    .reply-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#3a3a6a,#1a4a3a);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;color:var(--dim);flex-shrink:0}
+    .reply-body{}
+    .reply-name{font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:4px}
+    .reply-text{font-size:.82rem;color:var(--dim);line-height:1.5}
+    .reply-time{font-size:.68rem;color:var(--muted);margin-top:4px}
+
+    /* REPLY FORM */
+    .reply-form{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+    .reply-form.open{display:block}
+    .reply-form input,.reply-form textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;transition:border-color .2s;margin-bottom:8px}
+    .reply-form input:focus,.reply-form textarea:focus{border-color:var(--accent2)}
+    .reply-form input::placeholder,.reply-form textarea::placeholder{color:var(--muted)}
+    .reply-form textarea{resize:none;height:70px}
+    .reply-submit{padding:7px 18px;background:var(--surface2);border:1px solid var(--accent2);color:var(--accent2);border-radius:50px;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s}
+    .reply-submit:hover{background:rgba(0,229,176,.1)}
+
+    /* LOADING */
+    .loading{text-align:center;padding:40px;color:var(--muted);font-size:.9rem}
+    .spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin-right:8px;vertical-align:middle}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* 404 */
+    .not-found{text-align:center;padding:80px 24px;color:var(--muted)}
+    .not-found p:first-child{font-size:3rem;margin-bottom:16px}
+    .not-found a{color:var(--accent);text-decoration:none}
+
+    /* RELATED */
+    .related-section{margin-top:56px;padding-top:40px;border-top:1px solid var(--border)}
+    .related-section h2{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:20px}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+    .rel-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-decoration:none;transition:border-color .2s,transform .2s;display:block}
+    .rel-card:hover{border-color:var(--border-h);transform:translateY(-2px)}
+    .rel-emoji{font-size:2rem;margin-bottom:10px;display:block}
+    .rel-title{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3}
+    .rel-meta{font-size:.72rem;color:var(--muted)}
+
+    /* FOOTER */
+    footer{background:var(--surface);border-top:1px solid var(--border);padding:32px 24px 24px;margin-top:32px}
+    .foot-in{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .foot-links{display:flex;gap:20px;flex-wrap:wrap}
+    .foot-links a{color:var(--muted);text-decoration:none;font-size:.82rem;transition:color .2s}
+    .foot-links a:hover{color:var(--text)}
+    footer p{font-size:.77rem;color:var(--muted)}
+
+    @media(max-width:640px){.nav-links{display:none}.form-row{grid-template-columns:1fr}.art-meta-bar{gap:12px}.foot-in{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="https://flynto.online/" class="logo">Fly<span>nto</span></a>
+    <div class="nav-links">
+      <a href="https://flynto.online/">Home</a>
+      <a href="https://flynto.online/blog.html">Blog</a>
+      <a href="https://flynto.online/about.html">About</a>
+      <a href="https://flynto.online/contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="art-wrap">
+  <a href="blog.html" class="back-btn">← Back to Blog</a>
+  <div id="artContent"><div class="loading"><span class="spinner"></span>Loading article...</div></div>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <div class="foot-links">
+      <a href="https://flynto.online/">Home</a>
+      <a href="https://flynto.online/blog.html">Blog</a>
+      <a href="https://flynto.online/about.html">About</a>
+      <a href="https://flynto.online/privacy.html">Privacy</a>
+      <a href="https://flynto.online/disclaimer.html">Disclaimer</a>
+    </div>
+    <p>© 2026 Flynto. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// ══════════════════════════════════════════════════════════════
+// 🔧 FIREBASE CONFIG — Replace with YOUR Firebase project config
+// Steps: console.firebase.google.com → New project → Web app → Copy config
+// ══════════════════════════════════════════════════════════════
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+// ══════════════════════════════════════════════════════════════
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// ── GET ARTICLE ID FROM URL ───────────────────────────────────
+const params = new URLSearchParams(window.location.search);
+const articleId = params.get('id');
+
+// ── LOCAL STORAGE KEY for "liked" state ──────────────────────
+const LIKED_KEY = 'flynto_liked_' + articleId;
+
+// ── HELPER: format timestamp ──────────────────────────────────
+function timeAgo(ts) {
+  if (!ts) return 'Just now';
+  const seconds = Math.floor((Date.now() - ts.toMillis()) / 1000);
+  if (seconds < 60) return 'Just now';
+  if (seconds < 3600) return Math.floor(seconds/60) + 'm ago';
+  if (seconds < 86400) return Math.floor(seconds/3600) + 'h ago';
+  return Math.floor(seconds/86400) + 'd ago';
+}
+
+// ── HELPER: get initials ──────────────────────────────────────
+function initials(name) {
+  return name.trim().split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+}
+
+// ── RENDER ARTICLE CONTENT ────────────────────────────────────
+function renderContent(blocks) {
+  return blocks.map(function(b) {
+    if (b.type === 'intro') return '<div class="intro">'+b.text+'</div>';
+    if (b.type === 'h2') return '<h2>'+b.text+'</h2>';
+    if (b.type === 'p') return '<p>'+b.text+'</p>';
+    if (b.type === 'tip') return '<div class="tip">'+b.text+'</div>';
+    if (b.type === 'badge') {
+      var cls = 'bv-'+b.color;
+      return '<div class="badge-row"><span class="badge-label">'+b.label+':</span><span class="badge-val '+cls+'">'+b.value+'</span></div>';
+    }
+    return '';
+  }).join('');
+}
+
+// ── RENDER RELATED ARTICLES ───────────────────────────────────
+function renderRelated(currentId, currentCat) {
+  var related = window.ARTICLES.filter(function(a){ return a.id !== currentId; }).slice(0,3);
+  if (!related.length) return '';
+  return '<div class="related-section">'
+    +'<h2>📖 More Articles</h2>'
+    +'<div class="related-grid">'
+    +related.map(function(a){
+      return '<a href="article.html?id='+a.id+'" class="rel-card">'
+        +'<span class="rel-emoji">'+a.emoji+'</span>'
+        +'<div class="rel-title">'+a.title+'</div>'
+        +'<div class="rel-meta">'+a.date+' · '+a.readTime+'</div>'
+        +'</a>';
+    }).join('')
+    +'</div></div>';
+}
+
+// ── MAIN RENDER ───────────────────────────────────────────────
+async function init() {
+  if (!articleId) { show404(); return; }
+
+  const article = window.ARTICLES ? window.ARTICLES.find(function(a){ return a.id === articleId; }) : null;
+  if (!article) { show404(); return; }
+
+  // Update page meta
+  document.getElementById('pageTitle').textContent = article.title + ' — Flynto';
+  document.getElementById('canonicalTag').href = 'https://flynto.online/article.html?id=' + articleId;
+
+  // Render article shell
+  document.getElementById('artContent').innerHTML =
+    '<section class="art-hero">'
+    +'<span class="art-emoji-hero">'+article.emoji+'</span>'
+    +'<div class="art-cat-badge">'+article.category+'</div>'
+    +'<h1>'+article.title+'</h1>'
+    +'<div class="art-meta-bar"><span>📅 '+article.date+'</span><span>⏱️ '+article.readTime+'</span></div>'
+    +'</section>'
+    +'<div class="art-content">'+renderContent(article.content)+'</div>'
+
+    // LIKE SECTION
+    +'<div class="like-section">'
+    +'<button class="like-btn" id="likeBtn" onclick="toggleLike()">'
+    +'<span class="heart">🤍</span> <span id="likeBtnText">Like this article</span>'
+    +'</button>'
+    +'<span class="like-count"><span id="likeNum">—</span> likes</span>'
+    +'<button class="share-btn" onclick="shareArticle()">🔗 Share</button>'
+    +'</div>'
+
+    // COMMENTS
+    +'<div class="comments-section">'
+    +'<h2>💬 Comments <span class="cmt-count" id="cmtCount">0</span></h2>'
+
+    +'<div class="cmt-form">'
+    +'<h3>Leave a Comment</h3>'
+    +'<div class="form-row">'
+    +'<input type="text" id="cmtName" placeholder="Your name *" maxlength="50"/>'
+    +'<input type="email" id="cmtEmail" placeholder="Email (not shown)"/>'
+    +'</div>'
+    +'<textarea id="cmtText" placeholder="Write your comment..."></textarea>'
+    +'<button class="cmt-submit" id="cmtSubmit" onclick="submitComment()">Post Comment</button>'
+    +'</div>'
+
+    +'<div class="cmt-list" id="cmtList"><div class="loading"><span class="spinner"></span>Loading comments...</div></div>'
+    +'</div>'
+
+    +renderRelated(articleId, article.category);
+
+  // Load Firebase data
+  await loadLikes();
+  listenComments();
+}
+
+// ── LIKES ─────────────────────────────────────────────────────
+const articleRef = doc(db, 'articles', articleId);
+
+async function loadLikes() {
+  try {
+    const snap = await getDoc(articleRef);
+    const likes = snap.exists() ? (snap.data().likes || 0) : 0;
+    document.getElementById('likeNum').textContent = likes;
+    const liked = localStorage.getItem(LIKED_KEY) === '1';
+    if (liked) setLikedState(true);
+  } catch(e) {
+    document.getElementById('likeNum').textContent = '0';
+  }
+}
+
+window.toggleLike = async function() {
+  const btn = document.getElementById('likeBtn');
+  const liked = localStorage.getItem(LIKED_KEY) === '1';
+  btn.disabled = true;
+  try {
+    if (!liked) {
+      await setDoc(articleRef, { likes: increment(1) }, { merge: true });
+      localStorage.setItem(LIKED_KEY, '1');
+      setLikedState(true);
+      const cur = parseInt(document.getElementById('likeNum').textContent)||0;
+      document.getElementById('likeNum').textContent = cur+1;
+    } else {
+      await setDoc(articleRef, { likes: increment(-1) }, { merge: true });
+      localStorage.removeItem(LIKED_KEY);
+      setLikedState(false);
+      const cur = parseInt(document.getElementById('likeNum').textContent)||0;
+      document.getElementById('likeNum').textContent = Math.max(0, cur-1);
+    }
+  } catch(e) { console.error('Like error:', e); }
+  btn.disabled = false;
+}
+
+function setLikedState(liked) {
+  const btn = document.getElementById('likeBtn');
+  const heart = btn.querySelector('.heart');
+  const txt = document.getElementById('likeBtnText');
+  if (liked) {
+    btn.classList.add('liked');
+    heart.textContent = '❤️';
+    txt.textContent = 'Liked!';
+  } else {
+    btn.classList.remove('liked');
+    heart.textContent = '🤍';
+    txt.textContent = 'Like this article';
+  }
+}
+
+// ── SHARE ─────────────────────────────────────────────────────
+window.shareArticle = async function() {
+  const url = window.location.href;
+  if (navigator.share) {
+    try { await navigator.share({ title: document.title, url }); return; } catch(e){}
+  }
+  try { await navigator.clipboard.writeText(url); alert('Link copied to clipboard!'); } catch(e) {}
+}
+
+// ── COMMENTS ─────────────────────────────────────────────────
+const commentsRef = collection(db, 'articles', articleId, 'comments');
+
+function listenComments() {
+  const q = query(commentsRef, orderBy('createdAt', 'desc'));
+  onSnapshot(q, function(snapshot) {
+    const comments = [];
+    snapshot.forEach(function(d){ comments.push({id: d.id, ...d.data()}); });
+    renderComments(comments);
+    document.getElementById('cmtCount').textContent = comments.length;
+  }, function(err){ console.error('Comments error:', err); });
+}
+
+function renderComments(comments) {
+  const list = document.getElementById('cmtList');
+  if (!comments.length) {
+    list.innerHTML = '<p style="color:var(--muted);font-size:.85rem;text-align:center;padding:24px">No comments yet. Be the first to comment!</p>';
+    return;
+  }
+  list.innerHTML = comments.map(function(c){
+    const replies = c.replies || [];
+    const cmtLiked = localStorage.getItem('flynto_cmtlk_'+c.id)==='1';
+    return '<div class="cmt-item" id="cmt-'+c.id+'">'
+      +'<div class="cmt-header">'
+      +'<div class="cmt-avatar">'+initials(c.name)+'</div>'
+      +'<div><div class="cmt-name">'+escHtml(c.name)+'</div></div>'
+      +'<span class="cmt-time">'+timeAgo(c.createdAt)+'</span>'
+      +'</div>'
+      +'<div class="cmt-text">'+escHtml(c.text)+'</div>'
+      +'<div class="cmt-actions">'
+      +'<button class="cmt-like-btn'+(cmtLiked?' liked':'')+'" onclick="likeComment(\''+c.id+'\',this)">'
+      +'<span>'+(cmtLiked?'❤️':'🤍')+'</span> <span class="cmt-lk-num">'+(c.likes||0)+'</span>'
+      +'</button>'
+      +'<button class="reply-btn" onclick="toggleReplyForm(\''+c.id+'\')">↩️ Reply</button>'
+      +'</div>'
+      +(replies.length ? '<div class="replies">'+replies.map(function(r){
+        return '<div class="reply-item">'
+          +'<div class="reply-avatar">'+initials(r.name)+'</div>'
+          +'<div class="reply-body">'
+          +'<div class="reply-name">'+escHtml(r.name)+'</div>'
+          +'<div class="reply-text">'+escHtml(r.text)+'</div>'
+          +'<div class="reply-time">'+timeAgo(r.createdAt)+'</div>'
+          +'</div></div>';
+      }).join('')+'</div>' : '')
+      +'<div class="reply-form" id="rf-'+c.id+'">'
+      +'<input type="text" id="rn-'+c.id+'" placeholder="Your name *" maxlength="50"/>'
+      +'<textarea id="rt-'+c.id+'" placeholder="Write a reply..."></textarea>'
+      +'<button class="reply-submit" onclick="submitReply(\''+c.id+'\')">Post Reply</button>'
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+window.toggleReplyForm = function(cmtId) {
+  var rf = document.getElementById('rf-'+cmtId);
+  rf.classList.toggle('open');
+  if (rf.classList.contains('open')) { document.getElementById('rn-'+cmtId).focus(); }
+}
+
+window.submitComment = async function() {
+  const name = document.getElementById('cmtName').value.trim();
+  const text = document.getElementById('cmtText').value.trim();
+  if (!name) { document.getElementById('cmtName').focus(); return; }
+  if (!text) { document.getElementById('cmtText').focus(); return; }
+  const btn = document.getElementById('cmtSubmit');
+  btn.disabled = true; btn.textContent = 'Posting...';
+  try {
+    await addDoc(commentsRef, { name, text, likes: 0, replies: [], createdAt: serverTimestamp() });
+    document.getElementById('cmtName').value = '';
+    document.getElementById('cmtText').value = '';
+  } catch(e) { console.error('Comment error:', e); alert('Error posting comment. Please try again.'); }
+  btn.disabled = false; btn.textContent = 'Post Comment';
+}
+
+window.submitReply = async function(cmtId) {
+  const name = document.getElementById('rn-'+cmtId).value.trim();
+  const text = document.getElementById('rt-'+cmtId).value.trim();
+  if (!name || !text) return;
+  const btn = document.querySelector('#rf-'+cmtId+' .reply-submit');
+  btn.disabled = true; btn.textContent = 'Posting...';
+  try {
+    const cmtDocRef = doc(db, 'articles', articleId, 'comments', cmtId);
+    const snap = await getDoc(cmtDocRef);
+    const existing = snap.exists() ? (snap.data().replies || []) : [];
+    existing.push({ name, text, createdAt: { toMillis: function(){ return Date.now(); } } });
+    // Store reply with current timestamp
+    const replyObj = { name, text, ts: Date.now() };
+    const replies = snap.exists() ? (snap.data().replies || []) : [];
+    replies.push(replyObj);
+    await updateDoc(cmtDocRef, { replies });
+    document.getElementById('rn-'+cmtId).value = '';
+    document.getElementById('rt-'+cmtId).value = '';
+    document.getElementById('rf-'+cmtId).classList.remove('open');
+  } catch(e) { console.error('Reply error:', e); }
+  btn.disabled = false; btn.textContent = 'Post Reply';
+}
+
+window.likeComment = async function(cmtId, btn) {
+  const key = 'flynto_cmtlk_'+cmtId;
+  const liked = localStorage.getItem(key)==='1';
+  const numEl = btn.querySelector('.cmt-lk-num');
+  const heartEl = btn.querySelector('span');
+  try {
+    const cmtDocRef = doc(db, 'articles', articleId, 'comments', cmtId);
+    if (!liked) {
+      await updateDoc(cmtDocRef, { likes: increment(1) });
+      localStorage.setItem(key,'1');
+      btn.classList.add('liked');
+      heartEl.textContent='❤️';
+      numEl.textContent=parseInt(numEl.textContent||0)+1;
+    } else {
+      await updateDoc(cmtDocRef, { likes: increment(-1) });
+      localStorage.removeItem(key);
+      btn.classList.remove('liked');
+      heartEl.textContent='🤍';
+      numEl.textContent=Math.max(0,parseInt(numEl.textContent||0)-1);
+    }
+  } catch(e){ console.error(e); }
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function show404() {
+  document.getElementById('artContent').innerHTML =
+    '<div class="not-found"><p>😕</p><p>Article not found.</p><p style="margin-top:12px"><a href="blog.html">← Back to Blog</a></p></div>';
+}
+
+// Wait for ARTICLES to be available then init
+function tryInit() {
+  if (window.ARTICLES) { init(); } else { setTimeout(tryInit, 50); }
+}
+tryInit();
+</script>
+
+<!-- Articles data (loaded after Firebase module) -->
+<script src="articles-data.js"></script>
+
+</body>
+</html>

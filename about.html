@@ -1,113 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us — Flynto</title>
-<meta name="description" content="About Flynto — The Best Free AI Tools Directory for everyone.">
-<link rel="canonical" href="https://flyntoin.github.io/about.html">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#07070f;--card:#111120;--border:rgba(255,255,255,0.07);--text:#e8e8f5;--muted:#6666aa;--muted2:#9999cc;--blue:#4f8ef7;--purple:#a78bfa;--green:#34d399}
-body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-weight:600;min-height:100vh;line-height:1.7}
-body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(79,142,247,0.03) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0}
-body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(79,142,247,0.07),transparent);pointer-events:none;z-index:0}
-header{position:relative;z-index:10;text-align:center;padding:40px 20px 20px}
-.logo{font-size:2rem;font-weight:900;letter-spacing:-1px;text-decoration:none;color:var(--text)}
-.logo span{color:var(--blue)}
-.back-btn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 18px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:999px;color:var(--muted2);font-size:0.85rem;font-weight:700;text-decoration:none;transition:all 0.2s}
-.back-btn:hover{color:var(--text)}
-.container{position:relative;z-index:10;max-width:760px;margin:0 auto;padding:30px 20px 80px}
-.hero{text-align:center;padding:20px 0 40px}
-.hero-emoji{font-size:4rem;display:block;margin-bottom:16px}
-.hero h1{font-size:2.2rem;font-weight:900;letter-spacing:-1px;margin-bottom:10px}
-.hero h1 span{color:var(--blue)}
-.hero p{color:var(--muted2);font-size:1rem;max-width:500px;margin:0 auto}
-.card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:18px;padding:26px;margin-bottom:16px}
-.card h2{font-size:1.05rem;font-weight:800;color:var(--blue);margin-bottom:12px}
-.card p{color:var(--muted2);font-size:0.9rem;line-height:1.8;margin-bottom:10px}
-.card p:last-child{margin-bottom:0}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:16px}
-.stat-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center}
-.stat-num{font-size:1.8rem;font-weight:900;color:var(--blue)}
-.stat-label{font-size:0.75rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px}
-.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.value-item{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:16px}
-.value-icon{font-size:1.5rem;margin-bottom:8px;display:block}
-.value-title{font-size:0.9rem;font-weight:800;margin-bottom:4px}
-.value-desc{font-size:0.82rem;color:var(--muted2);font-weight:600}
-footer{position:relative;z-index:10;text-align:center;padding:28px;border-top:1px solid var(--border);color:var(--muted);font-size:0.82rem;font-weight:700;line-height:2}
-footer a{color:var(--muted2);text-decoration:none}
-footer a:hover{color:var(--blue)}
-@media(max-width:500px){.values-grid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Flynto — AI Tools Directory</title>
+  <meta name="description" content="Learn about Flynto, an independent AI tools discovery platform helping people explore the best artificial intelligence tools organized by category." />
+  <link rel="canonical" href="https://flynto.online/about.html" />
+  <meta property="og:title" content="About Flynto — AI Tools Directory" />
+  <meta property="og:url" content="https://flynto.online/about.html" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f; --surface: #111118; --surface2: #18181f;
+      --border: #2a2a35; --accent: #6c63ff; --accent2: #00d4aa;
+      --text: #e8e8f0; --muted: #888899; --card-bg: #13131a;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,15,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .page-hero { padding: 80px 24px 60px; text-align: center; }
+    .page-hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+    .page-hero h1 span { background: linear-gradient(135deg, #6c63ff, #00d4aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { color: var(--muted); font-size: 1.05rem; max-width: 500px; margin: 0 auto; }
+
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+    .content-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 24px;
+    }
+    .content-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .content-card h2 .icon {
+      width: 36px; height: 36px;
+      background: var(--surface2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .content-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.75; }
+    .content-card p + p { margin-top: 14px; }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 40px 0;
+    }
+    .stat-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .stat-box .num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #6c63ff, #00d4aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stat-box .label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+    footer .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+    footer a { color: var(--muted); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
+    footer p { font-size: 0.78rem; color: #444455; }
+
+    @media(max-width:640px) {
+      .nav-links { display: none; }
+      .stat-row { grid-template-columns: 1fr; }
+      .content-card { padding: 24px; }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <a href="/Flynto/index.html" class="logo"><span>Fly</span>nto</a><br>
-  <a href="/Flynto/index.html" class="back-btn">← Back to Home</a>
-</header>
-<div class="container">
-  <div class="hero">
-    <span class="hero-emoji">🚀</span>
-    <h1>About <span>Flynto</span></h1>
-    <p>Your free, curated directory of the best AI tools — helping everyone fly into the future of AI.</p>
-  </div>
 
-  <div class="stats-grid">
-    <div class="stat-card"><div class="stat-num">180+</div><div class="stat-label">AI Tools</div></div>
-    <div class="stat-card"><div class="stat-num">25+</div><div class="stat-label">Categories</div></div>
-    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Free to Use</div></div>
-    <div class="stat-card"><div class="stat-num">2026</div><div class="stat-label">Updated</div></div>
-  </div>
-
-  <div class="card">
-    <h2>🎯 Our Mission</h2>
-    <p>Flynto was created with one simple mission: make AI accessible to everyone. The AI tools landscape is growing rapidly — with hundreds of new tools launching every month. Finding the right tool for your needs can be overwhelming.</p>
-    <p>We curate, organize, and rank the best AI tools across 25+ categories so you can find exactly what you need in seconds, completely free of charge.</p>
-  </div>
-
-  <div class="card">
-    <h2>🌟 What We Do</h2>
-    <p>Flynto is a comprehensive AI tools directory that helps content creators, students, developers, designers, and AI enthusiasts discover the best tools for their specific needs. We cover everything from AI chatbots and image generators to video creators, music generators, coding assistants, and much more.</p>
-    <p>Every tool is researched, described, and ranked by popularity so you always see the most trusted and widely-used options first.</p>
-  </div>
-
-  <div class="card">
-    <h2>💎 Our Values</h2>
-    <div class="values-grid">
-      <div class="value-item"><span class="value-icon">🆓</span><div class="value-title">Always Free</div><div class="value-desc">Flynto will always be free to use for everyone.</div></div>
-      <div class="value-item"><span class="value-icon">🎯</span><div class="value-title">Unbiased</div><div class="value-desc">Rankings based on real popularity and user data.</div></div>
-      <div class="value-item"><span class="value-icon">🔄</span><div class="value-title">Always Updated</div><div class="value-desc">We regularly update tools and add new ones.</div></div>
-      <div class="value-item"><span class="value-icon">🔒</span><div class="value-title">Privacy First</div><div class="value-desc">We respect your privacy. No unnecessary data collection.</div></div>
+<nav>
+  <div class="nav-inner">
+    <a href="https://flynto.online/" class="logo">Fly<span>nto</span></a>
+    <div class="nav-links">
+      <a href="https://flynto.online/">Home</a>
+      <a href="https://flynto.online/about.html">About</a>
+      <a href="https://flynto.online/contact.html">Contact</a>
     </div>
   </div>
+</nav>
 
-  <div class="card">
-    <h2>👥 Who We Help</h2>
-    <p><strong>Content Creators</strong> — Find the best AI tools for video editing, thumbnail creation, caption generation, social media content, and more.</p>
-    <p><strong>Students & Researchers</strong> — Discover AI tools for studying, research, writing, translation, and education.</p>
-    <p><strong>Developers & Coders</strong> — Explore the top AI coding assistants, website builders, and developer productivity tools.</p>
-    <p><strong>Business Professionals</strong> — Find AI tools for productivity, SEO, email, presentations, and business automation.</p>
+<section class="page-hero">
+  <h1>About <span>Flynto</span></h1>
+  <p>An independent AI tools discovery platform built to simplify the AI ecosystem.</p>
+</section>
+
+<div class="container">
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="num">200+</div><div class="label">AI Tools Listed</div></div>
+    <div class="stat-box"><div class="num">11</div><div class="label">Categories</div></div>
+    <div class="stat-box"><div class="num">Free</div><div class="label">Always Free to Use</div></div>
   </div>
 
-  <div class="card">
-    <h2>📬 Contact Us</h2>
-    <p>Have a suggestion for a new AI tool to add? Found incorrect information? Want to collaborate? We'd love to hear from you.</p>
-    <p>Visit: <a href="/Flynto/contact.html" style="color:var(--blue);text-decoration:none;">Contact Page</a> &nbsp;|&nbsp; GitHub: <strong>github.com/flyntoin</strong></p>
+  <div class="content-card">
+    <h2><span class="icon">🚀</span> What is Flynto?</h2>
+    <p>Flynto is an AI tools discovery platform designed to help people explore the best artificial intelligence tools available today.</p>
+    <p>Our mission is to simplify the rapidly growing AI ecosystem by organizing useful AI tools into clear, well-defined categories — so anyone can find exactly what they need without the noise.</p>
   </div>
+
+  <div class="content-card">
+    <h2><span class="icon">🎯</span> Our Mission</h2>
+    <p>The world of AI is evolving faster than ever. New tools launch every day, and it's increasingly difficult to know which ones are worth your time.</p>
+    <p>Flynto cuts through the clutter. We research, organize, and present only the most relevant and reliable AI tools — categorized for easy discovery across writing, coding, image generation, video creation, design, marketing, and productivity.</p>
+  </div>
+
+  <div class="content-card">
+    <h2><span class="icon">📂</span> What We Cover</h2>
+    <p>Users can easily discover tools for writing, coding, image generation, video creation, design, marketing, SEO, voice, music, and productivity.</p>
+    <p>Flynto continuously updates its directory to include the latest AI innovations and most useful digital tools — so you're always finding tools that are current and relevant.</p>
+  </div>
+
+  <div class="content-card">
+    <h2><span class="icon">🔒</span> Our Standards</h2>
+    <p>All tools listed on Flynto are owned and developed by their respective companies. Flynto is an independent directory — we do not develop, endorse, or take responsibility for any of the tools listed.</p>
+    <p>We do not accept paid placements or sponsored listings. Every tool is listed purely based on relevance and usefulness to our users.</p>
+  </div>
+
 </div>
+
 <footer>
-  <div>Made with ❤️ by <strong>Flynto</strong> 🚀</div>
-  <div style="margin-top:6px">
-    <a href="/Flynto/privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="/Flynto/disclaimer.html">Disclaimer</a> &nbsp;·&nbsp;
-    <a href="/Flynto/about.html">About Us</a> &nbsp;·&nbsp;
-    <a href="/Flynto/contact.html">Contact</a>
+  <div class="footer-links">
+    <a href="https://flynto.online/">Home</a>
+    <a href="https://flynto.online/about.html">About</a>
+    <a href="https://flynto.online/privacy.html">Privacy Policy</a>
+    <a href="https://flynto.online/disclaimer.html">Disclaimer</a>
+    <a href="https://flynto.online/contact.html">Contact</a>
   </div>
-  <div style="margin-top:6px;font-size:0.75rem">© 2026 Flynto · All rights reserved</div>
+  <p>© 2026 Flynto. All rights reserved. Tools listed are owned by their respective companies.</p>
 </footer>
+
 </body>
 </html>
