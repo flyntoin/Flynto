@@ -1,16 +1,3 @@
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1Z7SB47NL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-C1Z7SB47NL');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  ... baaki ka code ...
-</head>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +27,14 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 <link rel="canonical" href="https://flyntoin.github.io">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Flynto","url":"https://flyntoin.github.io","description":"Best AI Tools Directory — 260+ AI tools — Fly Into The Best AI Tools","author":{"@type":"Person","name":"Flynto"}}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C1Z7SB47NL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C1Z7SB47NL');
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -79,6 +74,71 @@ header{position:relative;z-index:10;text-align:center;padding:20px 20px 0}
 .navbar{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;position:relative;z-index:10;border-bottom:1px solid var(--border)}
 .navbar-logo{font-size:1.5rem;font-weight:900;letter-spacing:-1px}
 .navbar-logo .ai{color:var(--blue)}
+
+/* AI POSTER */
+.ai-poster{position:relative;width:220px;height:220px;margin:0 auto 28px;display:flex;align-items:center;justify-content:center}
+.ai-orbit-ring{position:absolute;border-radius:50%;border:1px solid rgba(79,142,247,0.25);animation:orbit-spin linear infinite}
+.ai-orbit-ring-1{width:220px;height:220px;border-color:rgba(79,142,247,0.2);animation-duration:18s}
+.ai-orbit-ring-2{width:160px;height:160px;border-color:rgba(167,139,250,0.25);animation-duration:12s;animation-direction:reverse}
+.ai-center-icon{font-size:3.5rem;z-index:2;position:relative;filter:drop-shadow(0 0 20px rgba(79,142,247,0.6));animation:center-pulse 3s ease-in-out infinite}
+@keyframes center-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+@keyframes orbit-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.ai-floating-chip{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:999px;font-size:11px;font-weight:800;padding:5px 12px;color:var(--text);white-space:nowrap;backdrop-filter:blur(10px);z-index:3}
+.chip-1{top:0;left:50%;transform:translateX(-50%);color:var(--blue);border-color:rgba(79,142,247,0.3);animation:float1 4s ease-in-out infinite}
+.chip-2{top:20%;right:-10px;color:var(--purple);border-color:rgba(167,139,250,0.3);animation:float2 4.5s ease-in-out infinite}
+.chip-3{bottom:20%;right:-10px;color:var(--pink);border-color:rgba(244,114,182,0.3);animation:float3 3.8s ease-in-out infinite}
+.chip-4{bottom:0;left:50%;transform:translateX(-50%);color:var(--gold);border-color:rgba(245,200,66,0.3);animation:float4 4.2s ease-in-out infinite}
+.chip-5{bottom:20%;left:-10px;color:var(--cyan);border-color:rgba(34,211,238,0.3);animation:float5 3.6s ease-in-out infinite}
+.chip-6{top:20%;left:-10px;color:var(--green);border-color:rgba(52,211,153,0.3);animation:float6 4.8s ease-in-out infinite}
+.chip-7{top:50%;right:-30px;transform:translateY(-50%);color:var(--orange);border-color:rgba(251,146,60,0.3);animation:float2 5s ease-in-out infinite}
+.chip-8{top:50%;left:-30px;transform:translateY(-50%);color:#f87171;border-color:rgba(248,113,113,0.3);animation:float5 4.4s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes float3{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes float4{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+@keyframes float5{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@keyframes float6{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* AI TYPE ANIMATION */
+.ai-type-wrap{
+  margin:0 auto 14px;
+  font-size:clamp(1.1rem,4vw,1.4rem);
+  font-weight:900;
+  letter-spacing:-0.5px;
+  text-align:center;
+  height:2em;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.ai-type-prefix{
+  color:rgba(238,238,245,0.6);
+  font-weight:700;
+}
+.ai-type-text{
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--purple));
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer-text 3s linear infinite;
+  font-weight:900;
+}
+@keyframes shimmer-text{
+  0%{background-position:0% center}
+  100%{background-position:200% center}
+}
+.ai-type-cursor{
+  color:var(--blue);
+  font-weight:300;
+  animation:blink-cur 0.7s step-end infinite;
+  -webkit-text-fill-color:var(--blue);
+}
+@keyframes blink-cur{
+  0%,100%{opacity:1}
+  50%{opacity:0}
+}
+
+/* HERO BADGE SMALL */
+.hero-badge-small{font-size:10px;padding:4px 12px;margin-bottom:16px}
 
 /* HERO SECTION */
 .hero{position:relative;z-index:10;text-align:center;padding:48px 20px 36px;overflow:hidden}
@@ -312,14 +372,19 @@ footer{position:relative;z-index:10;text-align:center;padding:30px;border-top:1p
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">
+
+
+
+      <div class="hero-badge hero-badge-small">
         <span class="hero-badge-dot"></span>
         Verified &amp; Updated 2026
       </div>
       <h1 class="hero-title">
         FLY INTO <span class="highlight-blue" id="heroCount">260+</span> <span class="highlight-cyan">Best</span><br>AI Tools
       </h1>
-      <p class="hero-desc">Discover the best AI tools in one place. Explore powerful artificial intelligence tools for writing, design, coding, video, productivity and more.</p>
+      <div class="ai-type-wrap">
+        <span class="ai-type-prefix">AI can </span><span class="ai-type-text" id="aiTypeText">write for you ✍️</span><span class="ai-type-cursor">|</span>
+      </div>
       <p class="hero-disclaimer">Tools listed are owned by their respective companies. Flynto is an independent directory.</p>
       <div class="hero-stats">
         <div class="hstat"><div class="hstat-num" id="totalCount">260+</div><div class="hstat-label">AI Tools</div></div>
@@ -1197,6 +1262,39 @@ function closeModalBg(e){
   if(mo && e.target === mo) closeModal();
 }
 document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeModal(); });
+
+// AI Typewriter
+(function(){
+  const words = [
+    "write for you ✍️",
+    "make images 🎨",
+    "edit your videos 🎬",
+    "compose music 🎵",
+    "clone any voice 🎙️",
+    "write your code 💻",
+    "design anything 🖌️",
+    "translate instantly 🌍",
+    "search the web 🔎",
+    "learn & grow 🧠",
+  ];
+  const el = document.getElementById('aiTypeText');
+  if(!el) return;
+  let wi = 0, ci = 0, deleting = false;
+  function type(){
+    const word = words[wi];
+    if(!deleting){
+      el.textContent = word.slice(0, ci+1);
+      ci++;
+      if(ci === word.length){ deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      el.textContent = word.slice(0, ci-1);
+      ci--;
+      if(ci === 0){ deleting = false; wi = (wi+1) % words.length; }
+    }
+    setTimeout(type, deleting ? 40 : 80);
+  }
+  type();
+})();
 
 // Intro
 window.addEventListener('load',()=>{
