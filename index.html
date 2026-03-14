@@ -66,6 +66,14 @@ html{scroll-behavior:smooth}
 
 /* INTRO */
 #intro{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;gap:20px}
+.intro-sub-text{
+  font-size:12px;font-weight:700;
+  color:rgba(167,139,250,0.7);
+  letter-spacing:1.5px;text-transform:uppercase;
+  margin-top:6px;opacity:0;
+  animation:fadeInSub 0.5s ease 1.2s forwards;
+}
+@keyframes fadeInSub{to{opacity:1}}
 .intro-logo{font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:-2px;opacity:0;animation:fadeUp 0.6s ease forwards 0.3s}
 .intro-logo .ai{color:var(--blue)}.intro-logo .hub{color:var(--text)}
 .typewriter-line{font-family:'JetBrains Mono',monospace;font-size:clamp(0.7rem,2vw,0.95rem);color:var(--muted);opacity:0;animation:fadeUp 0.5s ease forwards 0.9s;letter-spacing:2px;font-weight:700;text-align:center;padding:0 20px}
@@ -81,6 +89,7 @@ html{scroll-behavior:smooth}
 #main.show{opacity:1}
 
 /* NAVBAR */
+50%{opacity:.5;transform:scale(.7)}}
 .navbar{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;position:relative;z-index:10;border-bottom:1px solid var(--border)}
 .navbar-logo{font-size:1.5rem;font-weight:900;letter-spacing:-1px}
 .navbar-logo .ai{color:var(--blue)}
@@ -136,6 +145,10 @@ html{scroll-behavior:smooth}
 .hero-title .highlight-blue{color:var(--blue)}
 .hero-title .highlight-cyan{color:var(--cyan)}
 .hero-desc{color:rgba(238,238,245,0.65);font-size:clamp(0.9rem,2.5vw,1.05rem);line-height:1.7;font-weight:600;max-width:560px;margin:0 auto 12px}
+.hero-tagline-wrap{margin:10px 0 4px;text-align:center}
+.hero-tagline{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.5px;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.tagline-hl{color:var(--cyan);font-weight:900}
+.hero-tagline::before,.hero-tagline::after{content:'';display:block;width:30px;height:1px;background:var(--border)}
 .hero-disclaimer{color:var(--muted);font-size:0.75rem;font-weight:600;margin-bottom:32px}
 
 /* HERO STATS */
@@ -152,9 +165,30 @@ html{scroll-behavior:smooth}
 .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:18px;pointer-events:none}
 
 /* TABS */
-.tabs{position:relative;z-index:10;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:0 20px 36px;max-width:1000px;margin:0 auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs{
+  position:relative;z-index:10;
+  display:flex;flex-wrap:wrap;
+  justify-content:center;
+  gap:7px;
+  padding:0 16px 28px;
+  max-width:960px;
+  margin:0 auto;
+}
 .tabs::-webkit-scrollbar{display:none}
-.tab{padding:9px 18px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;min-height:40px;-webkit-tap-highlight-color:transparent}
+.tab{
+  padding:7px 14px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--muted);
+  font-family:'Outfit',sans-serif;
+  font-size:11px;font-weight:700;
+  cursor:pointer;transition:all 0.2s;
+  display:inline-flex;align-items:center;
+  gap:5px;min-height:34px;
+  white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
 .tab:hover{color:var(--text);border-color:rgba(255,255,255,0.2)}
 .tab.active{color:#fff;border-color:transparent;background:var(--active-color,var(--blue));box-shadow:0 4px 20px rgba(79,142,247,0.25)}
 
@@ -524,7 +558,48 @@ footer{position:relative;z-index:10;text-align:center;padding:30px;border-top:1p
 .arc-link{font-size:11px;font-weight:800;color:var(--blue)}
 @media(max-width:600px){.art-h1{font-size:1.4rem}.art-overlay-nav .art-overlay-logo{display:none}}
 /* ARTICLES PREVIEW SECTION */
-.articles-preview-section{position:relative;z-index:10;padding:56px 20px 60px;border-top:1px solid var(--border)}
+
+.blog-type-prefix{color:var(--muted)}
+.blog-type-text{color:var(--cyan);font-weight:900}
+.blog-type-cursor{color:var(--cyan);animation:blink .7s infinite;font-weight:900}
+.blog-big-word{
+  font-size:clamp(1.8rem,6vw,2.8rem);
+  font-weight:900;
+  color:#ffffff;
+  letter-spacing:-0.5px;
+  line-height:1.1;
+  margin-bottom:14px;
+}
+.blog-arrow-btn{
+  display:inline-block;
+  text-decoration:none;
+  transition:transform .2s;
+}
+.blog-arrow-btn:hover{transform:translateX(4px);}
+.blog-home-sub2{
+  font-size:13px;
+  color:var(--muted);
+  font-weight:700;
+  letter-spacing:.5px;
+}
+.blog-home-header{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.blog-home-left{}
+.blog-home-badge{font-size:11px;font-weight:800;color:var(--purple);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.blog-home-title{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;letter-spacing:-1px;line-height:1.15;color:var(--text)}
+.blog-home-hl{background:linear-gradient(90deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.blog-home-sub{font-size:13px;color:var(--muted);font-weight:600;margin-top:8px;max-width:420px}
+.blog-home-viewall{font-size:13px;font-weight:800;color:var(--blue);text-decoration:none;white-space:nowrap;padding-bottom:4px;border-bottom:2px solid rgba(79,142,247,.3);transition:border-color .2s}
+.blog-home-viewall:hover{border-color:var(--blue)}
+.blog-featured-card{display:flex;text-decoration:none;background:var(--card);border:1.5px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;margin-bottom:14px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.blog-featured-card:hover{transform:translateY(-3px);border-color:rgba(251,191,36,.3);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.bfc-banner{width:6px;flex-shrink:0}
+.bfc-body{padding:20px 22px;flex:1}
+.bfc-cat{font-size:11px;font-weight:800;margin-bottom:8px;letter-spacing:.3px}
+.bfc-title{font-size:clamp(1rem,2.5vw,1.25rem);font-weight:900;color:var(--text);line-height:1.35;margin-bottom:8px}
+.bfc-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.bfc-read{font-size:12px;font-weight:800;color:var(--blue)}
+@media(max-width:600px){.blog-featured-card{flex-direction:column}.bfc-banner{width:100%;height:5px}}
+.articles-preview-section{position:relative;z-index:10;padding:36px 20px 40px;border-top:1px solid var(--border)}
 .articles-preview-inner{max-width:960px;margin:0 auto}
 .ap-top-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;gap:12px}
 .ap-label{font-size:11px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
@@ -547,7 +622,8 @@ footer{position:relative;z-index:10;text-align:center;padding:30px;border-top:1p
 
 <div id="intro">
   <div class="intro-logo"><span style="color:#4f8ef7">FLY</span><span style="color:#ffffff">NTO</span></div>
-  <div class="typewriter-line">FLY INTO 500+ BEST AI TOOLS...</div>
+  <div class="typewriter-line" id="introText">FLY INTO 500+ BEST AI TOOLS...</div>
+  <div class="intro-sub-text" id="introSub">AI Tools · Blog · Earn with AI</div>
   <div class="intro-bar-wrap"><div class="intro-bar"></div></div>
 </div>
 
@@ -556,10 +632,6 @@ footer{position:relative;z-index:10;text-align:center;padding:30px;border-top:1p
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="navbar-logo"><span style="font-family:Outfit,sans-serif;font-weight:900;font-size:24px;letter-spacing:-0.5px"><span style="color:#4f8ef7">FLY</span><span style="color:#fff">NTO</span></span></div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;color:var(--blue);text-decoration:none;background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.3);padding:6px 13px;border-radius:999px">🔍 Tools</a>
-      <a href="blog.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;color:var(--muted);text-decoration:none;background:var(--card);border:1px solid var(--border);padding:6px 13px;border-radius:999px">✍️ Blog</a>
-    </div>
   </nav>
 
   <!-- HERO SECTION -->
@@ -575,13 +647,16 @@ footer{position:relative;z-index:10;text-align:center;padding:30px;border-top:1p
       <h1 class="hero-title">
         FLY INTO <span class="highlight-blue" id="heroCount">500+</span> <span class="highlight-cyan">Best</span><br>AI Tools
       </h1>
+      <div class="hero-tagline-wrap">
+        <p class="hero-tagline">Discover AI Tools · Learn to Earn · <span class="tagline-hl">Grow with AI</span></p>
+      </div>
       <div class="ai-type-wrap">
         <span class="ai-type-prefix">AI can </span><span class="ai-type-text" id="aiTypeText">write for you ✍️</span><span class="ai-type-cursor">|</span>
       </div>
       <p class="hero-disclaimer">Tools listed are owned by their respective companies. Flynto is an independent directory.</p>
       <div class="hero-stats">
         <div class="hstat"><div class="hstat-num" id="totalCount">500+</div><div class="hstat-label">AI Tools</div></div>
-        <div class="hstat"><div class="hstat-num">25+</div><div class="hstat-label">Categories</div></div>
+        <div class="hstat"><div class="hstat-num">27+</div><div class="hstat-label">Categories</div></div>
         <div class="hstat"><div class="hstat-num">Free</div><div class="hstat-label">Always</div></div>
       </div>
       <div class="search-box">
@@ -702,26 +777,62 @@ footer{position:relative;z-index:10;text-align:center;padding:30px;border-top:1p
   <!-- ARTICLES SECTION -->
   <section class="articles-preview-section">
     <div class="articles-preview-inner">
-      <div class="ap-top-row">
-        <div>
-          <div class="ap-label">✍️ ARTICLES & BLOG</div>
-          <h2 class="ap-title">Latest Guides &amp; Articles</h2>
+
+      <!-- Section Header -->
+      <div class="blog-home-header">
+        <div class="blog-home-left">
+          <div class="blog-big-word">BLOG &amp; ARTICLES</div>
+          <a href="blog.html" class="blog-arrow-btn">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+              <path d="M12 18H24M24 18L19 13M24 18L19 23" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
-        <a href="blog.html" class="ap-view-all">View All →</a>
       </div>
 
+      <!-- Featured Article (big) -->
+      <a href="blog.html#earn-with-ai" class="blog-featured-card">
+        <div class="bfc-banner" style="background:linear-gradient(135deg,#fbbf24,#f59e0b,#fb923c)"></div>
+        <div class="bfc-body">
+          <div class="bfc-cat" style="color:#fbbf24">💰 Earn with AI · 9 min read</div>
+          <h3 class="bfc-title">How to Earn Money with AI Tools 2026 — 15 Real Ways</h3>
+          <p class="bfc-desc">Real people are earning $500–$5,000/month using AI tools. Freelancing, YouTube, chatbot setup — start with $0 investment.</p>
+          <span class="bfc-read">Read Article →</span>
+        </div>
+      </a>
+
+      <!-- 4 cards grid -->
       <div class="ap-grid">
 
-        <a href="photomath-review.html" class="ap-card">
-          <div class="ap-card-banner" style="background:linear-gradient(90deg,#a78bfa,#f472b6)"></div>
+        <a href="blog.html#ai-startup-guide" class="ap-card">
+          <div class="ap-card-banner" style="background:linear-gradient(90deg,#34d399,#4f8ef7)"></div>
           <div class="ap-card-body">
-            <div class="ap-card-cat" style="color:#a78bfa">🔍 Review</div>
-            <div class="ap-card-title">Photomath AI — Complete Guide for Students</div>
-            <div class="ap-card-meta">📅 March 2026 · ⏱ 6 min</div>
+            <div class="ap-card-cat" style="color:#34d399">🚀 Startup</div>
+            <div class="ap-card-title">How to Start a Startup Using AI — Step-by-Step Guide</div>
+            <div class="ap-card-meta">📅 March 2026 · ⏱ 11 min</div>
           </div>
         </a>
 
-        <a href="best-ai-tools.html" class="ap-card">
+        <a href="blog.html#ai-youtube-guide" class="ap-card">
+          <div class="ap-card-banner" style="background:linear-gradient(90deg,#ff6b35,#f59e0b)"></div>
+          <div class="ap-card-body">
+            <div class="ap-card-cat" style="color:#ff6b35">🎬 YouTube</div>
+            <div class="ap-card-title">Start a YouTube Channel Using AI — Complete SEO Guide</div>
+            <div class="ap-card-meta">📅 March 2026 · ⏱ 12 min</div>
+          </div>
+        </a>
+
+        <a href="blog.html#ai-freelancing-guide" class="ap-card">
+          <div class="ap-card-banner" style="background:linear-gradient(90deg,#22d3ee,#a78bfa)"></div>
+          <div class="ap-card-body">
+            <div class="ap-card-cat" style="color:#22d3ee">💼 Freelancing</div>
+            <div class="ap-card-title">Start Freelancing with AI — Zero to First Client Guide</div>
+            <div class="ap-card-meta">📅 March 2026 · ⏱ 12 min</div>
+          </div>
+        </a>
+
+        <a href="blog.html#best-ai-tools" class="ap-card">
           <div class="ap-card-banner" style="background:linear-gradient(90deg,#4f8ef7,#a78bfa)"></div>
           <div class="ap-card-body">
             <div class="ap-card-cat" style="color:#4f8ef7">🏆 Best AI</div>
@@ -730,27 +841,9 @@ footer{position:relative;z-index:10;text-align:center;padding:30px;border-top:1p
           </div>
         </a>
 
-        <a href="free-ai-tools.html" class="ap-card">
-          <div class="ap-card-banner" style="background:linear-gradient(90deg,#34d399,#22d3ee)"></div>
-          <div class="ap-card-body">
-            <div class="ap-card-cat" style="color:#34d399">🆓 Free AI</div>
-            <div class="ap-card-title">30 Best Free AI Tools 2026 — No Credit Card</div>
-            <div class="ap-card-meta">📅 March 2026 · ⏱ 8 min</div>
-          </div>
-        </a>
-
-        <a href="earn-with-ai.html" class="ap-card">
-          <div class="ap-card-banner" style="background:linear-gradient(90deg,#fbbf24,#f59e0b)"></div>
-          <div class="ap-card-body">
-            <div class="ap-card-cat" style="color:#fbbf24">💰 Earn</div>
-            <div class="ap-card-title">How to Earn Money with AI 2026 — 15 Real Ways</div>
-            <div class="ap-card-meta">📅 March 2026 · ⏱ 9 min</div>
-          </div>
-        </a>
-
       </div>
 
-      <a href="blog.html" class="ap-more-btn">✍️ &nbsp; View All Articles &amp; Blog →</a>
+      <a href="blog.html" class="ap-more-btn">✍️ &nbsp; View All 20 Articles →</a>
     </div>
   </section>
 
@@ -774,7 +867,7 @@ footer{position:relative;z-index:10;text-align:center;padding:30px;border-top:1p
         <div class="big-stat-card">
           <div class="bsc-top-bar" style="background:linear-gradient(90deg,var(--purple),var(--pink))"></div>
           <div class="bsc-icon">📁</div>
-          <div class="bsc-num">25+</div>
+          <div class="bsc-num">27+</div>
           <div class="bsc-label">Categories Covered</div>
         </div>
         <div class="big-stat-card">
@@ -1157,8 +1250,6 @@ const tools = [
   {name:"Clideo",emoji:"📹",category:"subtitle",desc:"Online video editor with AI subtitles — easy, fast & free.",url:"https://clideo.com",users:900000,color:"#8b5cf6",launched:"2022",pricingType:"Free+Paid",about:"Clideo is an online video editor with AI subtitles. It lets you edit, merge, crop and add captions to videos directly in your browser without any software installation.",how:"Go to clideo.com, upload your video, choose the subtitle tool and AI will auto-generate captions. Edit and export in any format.",pros:["Free plan available","No software install","AI auto subtitles","Supports many formats"],cons:["Watermark on free","Limited advanced editing","Slow large files"],pricing:"✅ Free with watermark · Premium $9/month",tags:["SUBTITLE","Free","Paid","Online","Easy"]},
 
   // ===== PRESENTATION (new) =====
-  {name:"Slides AI",emoji:"🎯",category:"presentation",desc:"Generate complete Google Slides presentations with AI in seconds.",url:"https://slidesai.io",users:800000,color:"#4285f4",launched:"2023",pricingType:"Free+Paid",about:"Slides AI is a Google Workspace add-on that generates complete presentations directly inside Google Slides using AI. Just enter your topic and it creates a full deck with titles, content and speaker notes.",how:"Install Slides AI from Google Workspace Marketplace. Open Google Slides, go to Extensions → Slides AI → Generate. Enter your topic and click Generate.",pros:["Works inside Google Slides","Fast deck generation","Speaker notes included","Free plan available"],cons:["Google Slides only","Limited slides on free","Internet required"],pricing:"✅ Free: 3 presentations/month · Basic $10/month",tags:["Free","Paid","Google Slides","Presentation","2023"]},
-
   // ===== CHAT (new) =====
   {name:"Dante AI",emoji:"💬",category:"chat",desc:"Build custom AI chatbots trained on your own data — no coding needed.",url:"https://dante-ai.com",users:300000,color:"#6366f1",launched:"2023",pricingType:"Paid",about:"Dante AI lets you create custom AI chatbots trained on your website content, PDFs and documents. Embed it on your site in minutes with no coding required.",how:"Go to dante-ai.com, upload your data or enter your website URL. Dante trains the bot on your content. Customize and embed the chat widget on your site.",pros:["Train on your own data","Easy embedding","Custom branding","No coding"],cons:["Paid only","Limited messages on basic","English focused"],pricing:"💳 Basic $9/month · Premium $29/month",tags:["Paid","Custom Chatbot","No-code","2023","Website"]},
   {name:"Chatsimple",emoji:"💼",category:"chat",desc:"AI sales chatbot for websites — converts visitors into customers 24/7.",url:"https://chatsimple.ai",users:250000,color:"#34d399",launched:"2023",pricingType:"Free+Paid",about:"Chatsimple is an AI chatbot designed specifically for sales. It engages website visitors, qualifies leads, books meetings and answers questions automatically.",how:"Sign up at chatsimple.ai, connect your website and train the bot on your products/services. Embed the widget and let it handle visitor conversations automatically.",pros:["Sales focused","Lead qualification","Meeting booking","Easy setup"],cons:["Niche use case","Limited on free","Expensive for small business"],pricing:"✅ Free plan · Growth $49/month",tags:["Free","Paid","Sales","Lead Gen","2023"]},
@@ -1196,7 +1287,6 @@ const tools = [
   {name:"10Web",emoji:"🌐",category:"website",desc:"AI WordPress website builder — create & manage WP sites with AI.",url:"https://10web.io",users:800000,color:"#4f8ef7",launched:"2019",pricingType:"Paid",about:"10Web is an AI-powered WordPress platform that generates complete WordPress websites from a description. Includes hosting, page builder and performance optimization.",how:"Go to 10web.io, describe your business. AI generates a complete WordPress site with pages, content and images. Customize with the drag-and-drop builder.",pros:["Full WordPress site generation","Includes hosting","Page builder","Performance optimization"],cons:["WordPress only","Expensive","Learning curve"],pricing:"💳 Personal $10/month · Premium $24/month",tags:["Paid","WordPress","Website Builder","Hosting","2019"]},
 
   // ===== SOCIAL (new) =====
-  {name:"Predis AI",emoji:"📱",category:"social",desc:"AI social media content creator — posts, reels & carousels from text.",url:"https://predis.ai",users:400000,color:"#a78bfa",launched:"2021",pricingType:"Free+Paid",about:"Predis AI creates complete social media posts including images, captions and hashtags from a text description. Supports all major platforms.",how:"Enter your product or topic in Predis AI. It generates a complete social media post with image, caption and hashtags. Schedule or download directly.",pros:["Complete post generation","All platforms","Image + caption","Free plan"],cons:["Image quality varies","Limited on free","Generic sometimes"],pricing:"✅ Free: 15 posts/month · Solo $29/month",tags:["Free","Paid","Social Media","Captions","Hashtags","2021"]},
   {name:"Postwise",emoji:"📊",category:"social",desc:"AI Twitter ghostwriter — grow followers with AI-generated viral content.",url:"https://postwise.ai",users:200000,color:"#1da1f2",launched:"2022",pricingType:"Paid",about:"Postwise is an AI ghostwriting tool for Twitter/X that generates high-engagement tweets and threads based on proven viral formulas.",how:"Connect Twitter/X to Postwise. Enter your niche or topic. AI generates tweets and threads using viral formulas. Review, edit and schedule.",pros:["Viral formula based","Thread generation","Scheduling included","Easy to use"],cons:["Expensive","Twitter only","Needs human editing"],pricing:"💳 Starter $37/month · Growth $59/month",tags:["Paid","Twitter","Threads","Viral","Ghostwriting","2022"]},
 
   // ===== EDUCATION (new) =====
@@ -1205,15 +1295,11 @@ const tools = [
 
   // ===== AVATAR (new) =====
   {name:"Pixpic AI",emoji:"🤳",category:"avatar",desc:"AI headshot generator — professional photos from selfies in minutes.",url:"https://pixpic.ai",users:500000,color:"#f472b6",launched:"2023",pricingType:"Paid",about:"Pixpic AI transforms your casual selfies into professional AI-generated headshots for LinkedIn, resumes and business profiles.",how:"Upload 10-20 selfies to Pixpic AI. The AI trains on your face and generates dozens of professional headshots in different styles and backgrounds.",pros:["Professional quality","Many styles","Fast generation","LinkedIn ready"],cons:["Paid only","Needs multiple selfies","Occasional unrealistic results"],pricing:"💳 Basic $9.99 one-time · Pro $19.99 one-time",tags:["Paid","Headshot","LinkedIn","Professional","2023"]},
-  {name:"Headshotpro",emoji:"💼",category:"avatar",desc:"AI headshot service for teams & individuals — 120+ styles.",url:"https://www.headshotpro.com",users:350000,color:"#6366f1",launched:"2022",pricingType:"Paid",about:"HeadshotPro creates professional AI headshots from selfies with 120+ style options. Popular with companies providing headshots for entire teams.",how:"Upload 10-15 photos. Select from 120+ styles. AI generates 80+ professional headshots in about 2 hours. Download and use anywhere.",pros:["120+ styles","Team pricing available","80+ photos per session","High quality"],cons:["Expensive","2 hour wait","Paid only"],pricing:"💳 Individual $29 one-time · Team from $99",tags:["Paid","Headshot","Teams","120 Styles","2022"]},
 
   // ===== MEETING/PRODUCTIVITY =====
   {name:"Krisp",emoji:"🔇",category:"business",desc:"AI noise cancellation for calls — remove background noise in real-time.",url:"https://krisp.ai",users:2000000,color:"#7c3aed",launched:"2019",pricingType:"Free+Paid",about:"Krisp uses AI to remove background noise, voices and echo from calls in real-time. Works with any communication app — Zoom, Teams, Meet and more.",how:"Download Krisp app. Select Krisp as microphone and speaker in your meeting app. Enable noise cancellation. All background sounds are removed automatically.",pros:["Works with any app","Real-time noise removal","Meeting transcription","Free plan"],cons:["Uses CPU","Occasional voice distortion","Limited free minutes"],pricing:"✅ Free: 60 min/day · Pro $8/month",tags:["Free","Paid","Noise Cancellation","Meetings","Zoom","2019"]},
-  {name:"Otter AI",emoji:"📝",category:"business",desc:"AI meeting transcription & notes — auto summaries for every call.",url:"https://otter.ai",users:1500000,color:"#4f8ef7",launched:"2016",pricingType:"Free+Paid",about:"Otter AI automatically transcribes meetings, generates summaries and creates action items. Integrates with Zoom, Google Meet and Microsoft Teams.",how:"Connect Otter AI to your calendar. It auto-joins your Zoom/Meet calls and transcribes in real-time. After the meeting, get a summary with action items and key points.",pros:["Auto joins meetings","Real-time transcription","Action items","Free plan"],cons:["Accuracy varies with accents","Limited on free","Privacy concerns"],pricing:"✅ Free: 300 min/month · Pro $8.33/month",tags:["Free","Paid","Meeting","Transcription","Zoom","Teams","2016"]},
-  {name:"Fireflies AI",emoji:"🦋",category:"business",desc:"AI meeting recorder — transcribe, summarize & search all your meetings.",url:"https://fireflies.ai",users:1200000,color:"#6366f1",launched:"2019",pricingType:"Free+Paid",about:"Fireflies AI records and transcribes meetings, generates summaries and lets you search across all your past meetings. Works with 40+ meeting platforms.",how:"Connect Fireflies to your calendar. It auto-joins and records all meetings. After each call get a transcript, summary and action items. Search any meeting by keyword.",pros:["40+ platform support","Meeting search","CRM integration","Free plan"],cons:["Storage limited on free","Accuracy varies","Privacy concerns for guests"],pricing:"✅ Free: 800 min storage · Pro $10/month",tags:["Free","Paid","Meeting","Transcription","Search","CRM","2019"]},
 
   // ===== MARKETING/COPYWRITING =====
-  {name:"Copy AI",emoji:"✍️",category:"writing",desc:"AI copywriting tool — generate marketing copy, blogs & emails fast.",url:"https://copy.ai",users:2000000,color:"#5551ff",launched:"2020",pricingType:"Free+Paid",about:"Copy.ai helps marketers and businesses generate high-converting marketing copy, email campaigns, blog posts and social content using AI.",how:"Choose a template (product description, email subject line, etc). Enter your product details and target audience. Copy.ai generates multiple variations. Pick and edit.",pros:["2M users","Many marketing templates","Free plan generous","Team features"],cons:["Quality varies","Can sound generic","Needs human editing"],pricing:"✅ Free: 2000 words/month · Pro $36/month",tags:["Free","Paid","Marketing","Copywriting","2M Users","2020"]},
   {name:"Describly",emoji:"📄",category:"writing",desc:"AI product description writer — generate ecommerce copy that converts.",url:"https://describly.com",users:150000,color:"#34d399",launched:"2022",pricingType:"Free+Paid",about:"Describly generates persuasive product descriptions for ecommerce stores. Optimized for conversion and SEO.",how:"Enter your product name, features and target keywords. Describly generates multiple product description variations. Pick the best and copy to your store.",pros:["Ecommerce focused","SEO optimized","Fast generation","Free plan"],cons:["Niche use case","Limited on free","Basic interface"],pricing:"✅ Free plan · Pro $9/month",tags:["Free","Paid","Ecommerce","Product Descriptions","2022"]},
   // BATCH 1: NEW CHAT TOOLS
   {name:"Character.AI",emoji:"🎭",category:"chat",desc:"Chat with AI characters — create & talk to any personality you can imagine.",url:"https://character.ai",users:20000000,color:"#7c3aed",launched:"2022",pricingType:"Free+Paid",about:"Character.AI lets you create and chat with AI characters with 20M+ users. Deep roleplay and personality consistency.",how:"Go to character.ai, pick a character or create your own. Chat freely.",pros:["20M users","Unlimited characters","Deep roleplay","Free plan"],cons:["Content restricted","Can be addictive","Breaks character sometimes"],pricing:"✅ Free · c.ai+ $9.99/month",tags:["Free","Paid","20M Users","Characters","Roleplay","2022"]},
@@ -1386,7 +1472,6 @@ const tools = [
   {name:"Replit Ghostwriter",emoji:"👻",category:"code",desc:"AI pair programmer built into Replit — code, complete, explain & debug.",url:"https://replit.com",users:20000000,color:"#f97316",launched:"2022",pricingType:"Free+Paid",about:"Replit's Ghostwriter AI helps you code in the browser. Complete code, explain functions, debug errors.",how:"Open Replit. Enable Ghostwriter. As you code, AI suggests completions. Ask it to explain or fix code.",pros:["20M users","Browser-based","No setup needed","Good completions"],cons:["Replit subscription","Less than Copilot","Browser only"],pricing:"✅ Free basic · Replit Core $20/month",tags:["Free","Paid","20M Users","Browser","Code","Completion","2022"]},
   {name:"Tabnine AI",emoji:"🔮",category:"code",desc:"AI code completion that learns your codebase — privacy-first, runs locally.",url:"https://tabnine.com",users:1000000,color:"#7c3aed",launched:"2018",pricingType:"Free+Paid",about:"Tabnine provides AI code completion that learns from your codebase. Can run fully locally for privacy.",how:"Install Tabnine in VS Code, JetBrains, or other IDE. AI learns your code patterns. Complete as you type.",pros:["1M users","Local option","Privacy focused","Learns codebase"],cons:["Free less powerful","Less than Copilot","Complex enterprise"],pricing:"✅ Free plan · Pro $15/month",tags:["Free","Paid","1M Users","Local","Privacy","Code Completion","2018"]},
   {name:"Pieces AI",emoji:"🧩",category:"code",desc:"AI code snippet manager — save, search and reuse code with AI context.",url:"https://pieces.app",users:200000,color:"#6366f1",launched:"2022",pricingType:"Free+Paid",about:"Pieces saves code snippets with AI-generated context, tags and descriptions. Find any snippet instantly.",how:"Install Pieces desktop app and IDE extension. Save snippets. Pieces auto-tags and describes. Search naturally.",pros:["AI context for snippets","IDE integration","Works offline","Free plan"],cons:["Desktop app needed","Learning curve","Newer platform"],pricing:"✅ Free plan · Enterprise pricing",tags:["Free","Paid","Code Snippets","IDE","Offline","2022"]},
-  {name:"BlackBox AI",emoji:"◼️",category:"code",desc:"AI code generation and search — code faster with AI autocomplete.",url:"https://useblackbox.io",users:3000000,color:"#000000",launched:"2021",pricingType:"Free+Paid",about:"BlackBox AI provides code autocomplete, code search from 10M+ repositories, and AI chat for coding.",how:"Install BlackBox extension. AI autocompletes as you code. Search BlackBox for code examples. Ask AI coding questions.",pros:["3M users","Free plan","Code search","Fast completion"],cons:["Less than Copilot","Quality varies","Privacy concerns"],pricing:"✅ Free plan · Pro $19.99/month",tags:["Free","Paid","3M Users","Code Search","Autocomplete","2021"]},
   {name:"Gamma Presentation",emoji:"✨",category:"presentation",desc:"Most popular AI deck builder — 10M+ users create slides from prompts.",url:"https://gamma.app",users:10000000,color:"#7c3aed",launched:"2023",pricingType:"Free+Paid",about:"Gamma is the most popular AI presentation tool. Create full decks from a prompt in under a minute.",how:"Go to gamma.app. Describe presentation. AI outlines and designs. Customize and share.",pros:["10M users","Beautiful design","Fast","Free plan"],cons:["Gamma branding free","Less control","Export limited"],pricing:"✅ Free · Plus $10/month",tags:["Free","Paid","10M Users","Presentations","Fast","Beautiful","2023"]},
   {name:"Decktopus AI",emoji:"📊",category:"presentation",desc:"AI presentation builder — professional slides with AI content and design.",url:"https://decktopus.com",users:500000,color:"#6366f1",launched:"2020",pricingType:"Free+Paid",about:"Decktopus creates professional presentations with AI-generated content and smart design.",how:"Enter topic in Decktopus. AI generates full presentation with content. Customize and present.",pros:["500K users","AI content","Professional design","Free plan"],cons:["Generic content","Limited customization","Free limited"],pricing:"✅ Free plan · Pro $9.99/month",tags:["Free","Paid","Presentations","AI Content","Design","2020"]},
   {name:"Klap App",emoji:"📱",category:"video",desc:"AI YouTube to TikTok clips — auto-viral shorts from long videos.",url:"https://klap.app",users:200000,color:"#ff0050",launched:"2023",pricingType:"Paid",about:"Klap automatically finds the most viral-worthy moments from YouTube videos and turns them into TikTok clips.",how:"Paste YouTube URL into Klap. AI analyzes video and finds viral moments. Auto-crops for vertical. Export.",pros:["TikTok optimized","Viral prediction","Auto-crop","Fast"],cons:["No free plan","YouTube only","Expensive"],pricing:"💳 Starter $27/month",tags:["Paid","YouTube","TikTok","Viral Clips","Auto-crop","2023"]},
@@ -1399,8 +1484,6 @@ const tools = [
   {name:"HeyGen Translate",emoji:"🌍",category:"avatar",desc:"AI video translation with lip sync — translate videos into any language.",url:"https://heygen.com",users:500000,color:"#6366f1",launched:"2023",pricingType:"Paid",about:"HeyGen translates videos into other languages while matching lip sync to translated speech.",how:"Upload video to heygen.com. Select target language. AI translates speech and adjusts lip sync.",pros:["Lip sync translation","30+ languages","High quality","Professional"],cons:["Expensive","No free plan","Newer feature"],pricing:"💳 Essential $29/month",tags:["Paid","Video Translation","Lip Sync","30 Languages","2023"]},
   {name:"Fotor AI Art",emoji:"🖼️",category:"image",desc:"AI art generator inside Fotor — create art from text with one click.",url:"https://fotor.com/ai-art-generator",users:8000000,color:"#16a34a",launched:"2023",pricingType:"Free+Paid",about:"Fotor's AI art generator creates images from text inside a full photo editing platform.",how:"Go to fotor.com/ai-art-generator. Enter text prompt. Choose style. Generate. Edit in Fotor.",pros:["8M users","Photo editing included","Easy","Free plan"],cons:["Limited free","Less quality than MJ","Watermark"],pricing:"✅ Free: 5 AI images/day · Pro $8.99/month",tags:["Free","Paid","8M Users","Photo Editing","Art","2023"]},
   {name:"Deep Nostalgia",emoji:"🕰️",category:"avatar",desc:"Animate old family photos — bring historical faces to life with AI.",url:"https://myheritage.com/deep-nostalgia",users:5000000,color:"#7c3aed",launched:"2021",pricingType:"Free+Paid",about:"Deep Nostalgia by MyHeritage animates still photos of people — making them blink, smile and move.",how:"Upload photo to myheritage.com. Use Deep Nostalgia to animate. Get short video of person moving.",pros:["5M users","Viral animations","Easy","Meaningful"],cons:["Limited free","MyHeritage sub","Uncanny valley"],pricing:"✅ Free trial · Complete $149/year",tags:["Free","Paid","5M Users","Animation","Old Photos","Family","2021"]},
-  {name:"Promptbase",emoji:"💰",category:"prompt",desc:"AI prompt marketplace — buy and sell high-quality prompts for any AI.",url:"https://promptbase.com",users:500000,color:"#f59e0b",launched:"2022",pricingType:"Paid",about:"PromptBase is a marketplace for buying and selling AI prompts for ChatGPT, Midjourney, DALL-E.",how:"Browse promptbase.com for prompts. Buy premium prompts. Or sell your best prompts to earn.",pros:["Curated prompts","Earn money","All AI covered","Quality guaranteed"],cons:["Cost money","Quality varies","Can DIY prompts"],pricing:"💳 Prompts from $1.99",tags:["Paid","Prompt Marketplace","ChatGPT","Midjourney","Earn","2022"]},
-  {name:"Snack Prompt",emoji:"🍿",category:"prompt",desc:"AI prompt app — save and organize prompts with one-click send to ChatGPT.",url:"https://snackprompt.com",users:200000,color:"#f97316",launched:"2023",pricingType:"Free+Paid",about:"Snack Prompt helps manage and discover AI prompts. Send prompts to ChatGPT with one click.",how:"Install Snack Prompt extension. Browse prompts or save your own. One-click send to ChatGPT.",pros:["Extension integration","One-click use","Community prompts","Free plan"],cons:["Extension dependent","Smaller community","Limited on free"],pricing:"✅ Free plan · Pro $7.99/month",tags:["Free","Paid","Prompts","Extension","ChatGPT","2023"]},
   {name:"Promptbox AI",emoji:"📦",category:"prompt",desc:"Personal prompt manager — save, organize and share your best AI prompts.",url:"https://promptbox.ai",users:100000,color:"#10b981",launched:"2023",pricingType:"Free+Paid",about:"Promptbox is a personal prompt management tool. Save prompts, organize into collections, access anywhere.",how:"Sign up at promptbox.ai. Save prompts. Organize into collections. Access via extension or web.",pros:["Free plan","Organization","Extension","Cross-device"],cons:["Simple tool","Limited features","Small user base"],pricing:"✅ Free plan · Pro $8/month",tags:["Free","Paid","Prompt Management","Organization","2023"]},
   {name:"Rytr AI",emoji:"✍️",category:"writing",desc:"Affordable AI writer — 40+ use cases and 30+ languages for $9/month.",url:"https://rytr.me",users:7000000,color:"#7c3aed",launched:"2021",pricingType:"Free+Paid",about:"Rytr is an affordable AI writing tool with 40+ use cases and 30+ languages. Most popular budget AI writer.",how:"Sign up at rytr.me. Choose use case. Enter topic. Select language. AI generates content. Edit and export.",pros:["7M users","Most affordable","40+ use cases","30+ languages"],cons:["Quality below Jasper","Free limited","Less features"],pricing:"✅ Free: 10K characters · Saver $9/month",tags:["Free","Paid","7M Users","Affordable","40 Use Cases","30 Languages","2021"]},
   {name:"Copy.ai 90X",emoji:"📣",category:"writing",desc:"AI sales and marketing copy at scale — GTM AI platform.",url:"https://copy.ai",users:2000000,color:"#5551ff",launched:"2020",pricingType:"Free+Paid",about:"Copy.ai is an AI marketing platform for go-to-market teams. Generate sales emails, blog posts, social content at scale.",how:"Choose template in Copy.ai. Enter product details and audience. Generate multiple variations. Export.",pros:["2M users","Marketing templates","Free plan generous","Team features"],cons:["Quality varies","Can sound generic","Needs human editing"],pricing:"✅ Free: 2000 words/month · Pro $36/month",tags:["Free","Paid","2M Users","Marketing","Copywriting","GTM","2020"]},
@@ -1417,13 +1500,11 @@ const tools = [
   {name:"Rezi AI Resume",emoji:"📋",category:"resume",desc:"ATS-optimized AI resume builder — keyword matching for more interviews.",url:"https://rezi.ai",users:500000,color:"#10b981",launched:"2017",pricingType:"Free+Paid",about:"Rezi builds ATS-optimized resumes using AI keyword analysis to match job descriptions.",how:"Sign up at rezi.ai. Enter experience. AI optimizes for ATS with keywords. Get instant feedback.",pros:["ATS optimized","AI keywords","500K users","Free plan"],cons:["Free very limited","US focused","Robotic feel"],pricing:"✅ Free plan · Pro $29/month",tags:["Free","Paid","500K Users","ATS","Keywords","Optimization","2017"]},
   {name:"Zety Resume",emoji:"📝",category:"resume",desc:"#1 rated AI resume builder — professional templates with AI content.",url:"https://zety.com",users:4000000,color:"#3b82f6",launched:"2015",pricingType:"Paid",about:"Zety is one of the most popular resume builders with AI suggestions and professional templates.",how:"Sign up at zety.com. Choose template. Enter experience. AI suggests bullet points and skills.",pros:["4M users","Professional templates","AI suggestions","Cover letter"],cons:["Expensive","No free download","Subscription required"],pricing:"💳 $5.95 for two-week access",tags:["Paid","4M Users","Resume","Professional","AI Suggestions","2015"]},
   {name:"DeepL Write",emoji:"✍️",category:"translation",desc:"AI writing tool by DeepL — rephrase and improve text in any language.",url:"https://deepl.com/write",users:15000000,color:"#00b4d8",launched:"2023",pricingType:"Free+Paid",about:"DeepL Write improves writing by suggesting alternative phrasings and fixes grammar in multiple languages.",how:"Go to deepl.com/write. Paste text. AI suggests alternative phrasings. Click to apply suggestions.",pros:["15M users","Multiple languages","DeepL quality","Free plan"],cons:["Limited free characters","Less known feature","Language specific"],pricing:"✅ Free plan · Pro $8.74/month",tags:["Free","Paid","15M Users","Writing Improvement","Rephrase","DeepL","2023"]},
-  {name:"Captions AI",emoji:"📱",category:"subtitle",desc:"AI captions app — auto-captions with animated text for video creators.",url:"https://captions.ai",users:5000000,color:"#ff6b35",launched:"2022",pricingType:"Free+Paid",about:"Captions AI creates animated auto-captions for videos with eye-catching styles for social media.",how:"Download Captions app. Upload video. AI adds animated captions automatically. Customize style. Export.",pros:["5M users","Animated captions","Easy to use","Mobile app"],cons:["Free limited","iOS focused","Watermark free"],pricing:"✅ Free plan · Creator $19.99/month",tags:["Free","Paid","5M Users","Animated Captions","Mobile","Social Media","2022"]},
   {name:"Kapwing Subtitles",emoji:"🎥",category:"subtitle",desc:"Free AI subtitle generator — auto-subtitles in 70+ languages online.",url:"https://kapwing.com/subtitles",users:10000000,color:"#6366f1",launched:"2019",pricingType:"Free+Paid",about:"Kapwing generates auto-subtitles in 70+ languages directly in the browser. Free to use.",how:"Go to kapwing.com/subtitles. Upload video. AI generates subtitles. Edit if needed. Export.",pros:["10M users","Free subtitles","70+ languages","No download"],cons:["Watermark on free","Limited storage","Slow large videos"],pricing:"✅ Free with watermark · Pro $24/month",tags:["Free","Paid","10M Users","Subtitles","70 Languages","Browser","2019"]},
   {name:"Maestra AI",emoji:"🎓",category:"subtitle",desc:"AI transcription and translation — subtitles in 50+ languages for video.",url:"https://maestra.ai",users:200000,color:"#3b82f6",launched:"2020",pricingType:"Paid",about:"Maestra provides AI transcription and subtitle translation in 50+ languages for videos and audio.",how:"Upload video to maestra.ai. Get AI transcription. Translate to any language. Export SRT or burn in.",pros:["50+ languages","Fast transcription","Good accuracy","Multiple formats"],cons:["No free plan","Credits based","Less accurate for accents"],pricing:"💳 Starter $29/month",tags:["Paid","Transcription","50 Languages","Subtitles","Video","2020"]},
   {name:"Topaz Video AI",emoji:"🔍",category:"photo",desc:"AI video upscaling — enhance and upscale videos to 4K and 8K.",url:"https://topazlabs.com/video-ai",users:500000,color:"#3b82f6",launched:"2022",pricingType:"Paid",about:"Topaz Video AI upscales and enhances video to 4K or 8K using AI. Removes noise and improves sharpness.",how:"Download Topaz Video AI. Import video. Choose enhancement model. AI processes and upscales.",pros:["Best video upscaling","4K and 8K","Multiple models","Professional quality"],cons:["Very expensive","Desktop only","GPU intensive"],pricing:"💳 $299 one-time",tags:["Paid","Video","4K","8K","Upscaling","Professional","2022"]},
   {name:"Topaz Gigapixel",emoji:"🔬",category:"photo",desc:"AI image upscaler — enlarge photos up to 600% without quality loss.",url:"https://topazlabs.com/gigapixel-ai",users:1000000,color:"#3b82f6",launched:"2018",pricingType:"Paid",about:"Topaz Gigapixel AI enlarges photos up to 600% using AI while maintaining exceptional sharpness.",how:"Download Gigapixel AI. Import photo. Choose upscale factor. AI processes and enlarges with detail.",pros:["1M users","600% upscaling","Exceptional quality","Industry standard"],cons:["Expensive","Desktop only","GPU helps"],pricing:"💳 $99 one-time",tags:["Paid","1M Users","Photo Upscaling","600%","Quality","Industry Standard","2018"]},
   {name:"Remini AI",emoji:"📸",category:"photo",desc:"AI photo enhancer app — restore old photos and enhance portraits.",url:"https://remini.ai",users:100000000,color:"#6366f1",launched:"2019",pricingType:"Free+Paid",about:"Remini restores blurry, old, and low-quality photos using AI. Creates HD photos from old images.",how:"Download Remini app. Upload old or blurry photo. AI enhances and restores. Download HD version.",pros:["100M users","Mobile app","Face restoration","Old photo recovery"],cons:["Subscription focus","Free very limited","Best on faces"],pricing:"✅ Free limited · Premium $9.99/month",tags:["Free","Paid","100M Users","Photo Enhancement","Face Restoration","2019"]},
-  {name:"Profilepicture AI",emoji:"🤳",category:"avatar",desc:"AI profile picture generator — professional headshots from selfies.",url:"https://profilepicture.ai",users:500000,color:"#3b82f6",launched:"2023",pricingType:"Paid",about:"ProfilePicture.ai generates professional profile pictures from your selfies for LinkedIn, social media.",how:"Upload selfies to profilepicture.ai. AI generates professional-looking profile photos.",pros:["Professional results","LinkedIn perfect","Fast generation","Many styles"],cons:["Paid only","Quality varies","Privacy of selfies"],pricing:"💳 $15 one-time",tags:["Paid","Profile Picture","LinkedIn","Professional","Headshot","2023"]},
   {name:"Aragon AI",emoji:"📸",category:"avatar",desc:"AI headshot generator — professional business headshots from selfies.",url:"https://aragon.ai",users:300000,color:"#6366f1",launched:"2023",pricingType:"Paid",about:"Aragon AI creates professional business headshots from casual photos using AI training.",how:"Upload 12+ selfies to aragon.ai. AI trains model. Generates professional business headshots.",pros:["Business focused","Professional quality","Multiple backgrounds","Fast"],cons:["Paid only","Selfie quality matters","Quality can vary"],pricing:"💳 $29 for 40 headshots",tags:["Paid","Headshots","Business","Professional","LinkedIn","2023"]},
   {name:"Fotor Headshot",emoji:"🤳",category:"avatar",desc:"Free AI headshot generator — professional photos from any selfie.",url:"https://fotor.com/features/ai-headshot-generator",users:8000000,color:"#16a34a",launched:"2023",pricingType:"Free+Paid",about:"Fotor's AI headshot generator creates professional photos from casual selfies. Built into Fotor's platform.",how:"Go to fotor.com. Use AI headshot generator. Upload selfie. AI creates professional headshot.",pros:["Free tier","8M users","Fotor integrated","Easy to use"],cons:["Credits on free","Quality varies","Less accurate than Aragon"],pricing:"✅ Free credits · Pro $8.99/month",tags:["Free","Paid","8M Users","Headshot","Professional","Selfie","2023"]},
   {name:"Tinywow",emoji:"🛠️",category:"pdf",desc:"Free AI tools website — 100+ free PDF, image and video tools online.",url:"https://tinywow.com",users:5000000,color:"#f59e0b",launched:"2021",pricingType:"Free",about:"TinyWow provides 100+ free online tools for PDFs, images, videos, and writing. No account needed.",how:"Go to tinywow.com. Choose any tool. Upload file. Process and download. No signup required.",pros:["Completely free","100+ tools","No account needed","PDF + image + video"],cons:["Ads","File size limits","No advanced features"],pricing:"✅ Completely free",tags:["Free","5M Users","PDF","Image","Video","100+ Tools","2021"]},
@@ -1480,8 +1561,6 @@ const tools = [
   {name:"Pixlr AI",emoji:"🖼️",category:"image",desc:"Free AI photo editor — background remover, generative fill, and AI filters online.",url:"https://pixlr.com",users:14000000,color:"#00c4ff",launched:"2008",pricingType:"Free+Paid",about:"Pixlr is a free browser-based photo editor with powerful AI features. AI Background Remover, Generative Fill, Sky Replacement, and AI image generation built in. 14M monthly users.",how:"Go to pixlr.com. Open image or start new. Use AI Remove Background in one click. Try Generative Fill to replace areas. Apply AI filters. No download required.",pros:["14M monthly users","Free browser-based","AI generative fill","No install needed"],cons:["Ads on free plan","Less powerful than Photoshop","Limited file size"],pricing:"✅ Free plan · Plus $1.99/month",tags:["Free","Paid","14M Users","Photo Editor","Browser-based","Remove Background","Generative Fill"]},
 
   {name:"StarryAI",emoji:"⭐",category:"image",desc:"AI art generator app — create artwork from text prompts on mobile and desktop.",url:"https://starryai.com",users:10000000,color:"#7c3aed",launched:"2021",pricingType:"Free+Paid",about:"StarryAI generates AI artwork from text prompts on iOS, Android, and web. 10M+ users. Free daily credits let you create without a subscription. Supports multiple art styles.",how:"Download StarryAI app or go to starryai.com. Enter text prompt. Choose art style. Generate artwork. Free 5 credits daily. Download images without watermark.",pros:["10M+ users","Free daily credits","Mobile app","No watermark on free"],cons:["Limited daily free generations","Less quality than Midjourney","Style variety limited"],pricing:"✅ Free 5 credits/day · Pro $11.99/month",tags:["Free","Paid","10M Users","Mobile App","AI Art","Daily Credits","iOS Android"]},
-
-  {name:"FLUX.1",emoji:"⚡",category:"image",desc:"Most powerful open-source image model — rival to Midjourney with accurate text rendering.",url:"https://blackforestlabs.ai",users:3000000,color:"#1e293b",launched:"2024",pricingType:"Free+Paid",about:"FLUX.1 by Black Forest Labs (original Stable Diffusion team) is the most advanced open-source image model. Three versions: Schnell (fastest, free), Dev (balanced), Pro (best quality). Uniquely excellent at rendering readable text in images — a historic AI weakness.",how:"Access free via fal.ai, Replicate, or locally via ComfyUI. For FLUX Pro, use API at $0.05/image. Write detailed prompt. FLUX generates photorealistic images with exceptional text accuracy.",pros:["Open source (Schnell/Dev)","Best text-in-image AI","Rivals Midjourney quality","Very fast Schnell variant"],cons:["Pro version costs money","Technical setup for local","Still needs MJ for some styles"],pricing:"✅ Free (Schnell via platforms) · Pro API $0.05/image",tags:["Free","Paid","Open Source","Text-in-Image","Photorealistic","Black Forest Labs","2024"]},
 
   // ===== CODE (missing) =====
   {name:"CodeRabbit",emoji:"🐇",category:"code",desc:"AI code review bot — reviews every pull request automatically on GitHub and GitLab.",url:"https://coderabbit.ai",users:500000,color:"#f97316",launched:"2023",pricingType:"Free+Paid",about:"CodeRabbit automatically reviews pull requests on GitHub and GitLab using AI. It understands code context, suggests improvements, finds bugs, and explains changes — like having a senior developer review every PR.",how:"Install CodeRabbit GitHub App from marketplace. Connect your repository. Every new PR automatically gets an AI review with line-by-line comments. Configure review style in YAML file.",pros:["Auto PR reviews","GitHub and GitLab","Context-aware suggestions","Free for open source"],cons:["Paid for private repos","Can have false positives","Review quality varies"],pricing:"✅ Free for open source · Pro $12/seat/month",tags:["Free","Paid","Code Review","GitHub","GitLab","Pull Requests","AI","2023"]},
@@ -1851,6 +1930,8 @@ document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeModa
   }
   type();
 })();
+
+
 
 // Intro
 window.addEventListener('load',()=>{

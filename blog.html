@@ -1,166 +1,1832 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Blog & Articles — Flynto</title>
-  <meta name="description" content="Read the best AI articles, guides, and tool comparisons on Flynto."/>
-  <link rel="canonical" href="https://flynto.online/blog.html"/>
-  <meta name="robots" content="index, follow"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--bg:#08080d;--surface:#0f0f16;--surface2:#16161f;--border:#252530;--border-h:#3a3a50;--accent:#7c6fff;--accent2:#00e5b0;--text:#eaeaf2;--dim:#a0a0b8;--muted:#6a6a80;--card:#11111a;--tag:#1c1c28;}
-    html{scroll-behavior:smooth}
-    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-    ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border-h);border-radius:3px}
-    nav{position:sticky;top:0;z-index:100;background:rgba(8,8,13,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
-    .nav-in{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:58px}
-    .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;color:var(--text);text-decoration:none;letter-spacing:-.5px}
-    .logo span{color:var(--accent)}
-    .nav-links{display:flex;gap:24px}
-    .nav-links a{color:var(--muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
-    .nav-links a:hover,.nav-links a.active{color:var(--text)}
-    .hero{padding:64px 24px 48px;text-align:center;position:relative;overflow:hidden}
-    .hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(124,111,255,.12) 0%,transparent 65%);pointer-events:none}
-    .hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px}
-    .grad{background:linear-gradient(135deg,#7c6fff,#00e5b0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .hero p{color:var(--dim);font-size:1rem;max-width:500px;margin:0 auto}
-    .ctr{max-width:1100px;margin:0 auto;padding:0 24px}
-    .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin:36px 0 40px}
-    .ftag{padding:7px 16px;border-radius:50px;border:1px solid var(--border);background:var(--surface2);color:var(--muted);font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s}
-    .ftag:hover{border-color:var(--accent);color:var(--text)}
-    .ftag.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
-    .featured{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:48px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;position:relative;overflow:hidden;transition:border-color .2s,transform .2s;cursor:pointer}
-    .featured::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-    .featured:hover{border-color:var(--border-h);transform:translateY(-2px)}
-    .feat-label{font-size:.7rem;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-    .feat-cat{display:inline-block;padding:3px 10px;border-radius:50px;border:1px solid var(--border);background:var(--tag);font-size:.72rem;color:var(--muted);margin-bottom:16px}
-    .feat-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-.5px;margin-bottom:14px;line-height:1.2;color:var(--text)}
-    .feat-excerpt{color:var(--dim);font-size:.9rem;line-height:1.65;margin-bottom:20px}
-    .feat-meta{display:flex;align-items:center;gap:16px;font-size:.78rem;color:var(--muted)}
-    .read-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:var(--accent);color:#fff;border-radius:50px;text-decoration:none;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;transition:opacity .2s;margin-top:20px}
-    .read-btn:hover{opacity:.85}
-    .feat-thumb{border-radius:12px;background:linear-gradient(135deg,#1a1830,#0d2420);border:1px solid var(--border);height:220px;display:flex;align-items:center;justify-content:center;font-size:5rem}
-    .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
-    .section-head h2{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700}
-    .articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;margin-bottom:56px}
-    .art-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s;display:flex;flex-direction:column;cursor:pointer}
-    .art-card:hover{border-color:var(--border-h);transform:translateY(-3px)}
-    .art-thumb{height:140px;background:linear-gradient(135deg,#1a1830,#0d2420);display:flex;align-items:center;justify-content:center;font-size:3.5rem;border-bottom:1px solid var(--border);position:relative}
-    .art-cat-badge{position:absolute;top:12px;left:12px;padding:3px 10px;border-radius:50px;background:rgba(8,8,13,.8);backdrop-filter:blur(8px);border:1px solid var(--border);font-size:.68rem;color:var(--accent);font-weight:600}
-    .art-body{padding:18px;flex:1;display:flex;flex-direction:column;gap:10px}
-    .art-title{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.2px;color:var(--text)}
-    .art-excerpt{font-size:.8rem;color:var(--dim);line-height:1.55;flex:1}
-    .art-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
-    .art-meta{font-size:.72rem;color:var(--muted);display:flex;gap:12px}
-    .art-link{font-size:.78rem;font-weight:600;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:4px;transition:color .2s}
-    .art-link:hover{color:var(--accent2)}
-    .art-link svg{width:10px;height:10px}
-    .empty{text-align:center;padding:60px 20px;color:var(--muted);display:none}
-    .empty.show{display:block}
-    .empty p:first-child{font-size:2.5rem;margin-bottom:12px}
-    footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 24px 28px;margin-top:32px}
-    .foot-in{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-    .foot-links{display:flex;gap:20px;flex-wrap:wrap}
-    .foot-links a{color:var(--muted);text-decoration:none;font-size:.82rem;transition:color .2s}
-    .foot-links a:hover{color:var(--text)}
-    footer p{font-size:.77rem;color:var(--muted)}
-    @media(max-width:768px){.nav-links{display:none}.featured{grid-template-columns:1fr}.feat-thumb{height:140px}.foot-in{flex-direction:column;text-align:center}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Blog — Best AI Tools Guides & Reviews 2026 | Flynto</title>
+<meta name="description" content="Flynto AI Blog — in-depth guides, comparisons, and reviews of the best AI tools in 2026. ChatGPT vs Claude, free AI tools, earn with AI, and more.">
+<meta name="keywords" content="AI blog, best AI tools 2026, free AI tools, ChatGPT vs Claude, AI for students, earn with AI">
+<meta property="og:title" content="Flynto Blog — AI Tools Guides 2026">
+<meta property="og:description" content="Best AI tools guides, reviews and comparisons. Honest, tested, updated weekly.">
+<meta property="og:url" content="https://flynto.online/blog.html">
+<link rel="canonical" href="https://flynto.online/blog.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --card: #13131c;
+  --card2: #1a1a28;
+  --border: rgba(255,255,255,0.07);
+  --text: #eeeef5;
+  --muted: #7777aa;
+  --blue: #4f8ef7;
+  --cyan: #22d3ee;
+  --purple: #a78bfa;
+  --green: #34d399;
+  --pink: #f472b6;
+  --orange: #fb923c;
+  --yellow: #fbbf24;
+  --red: #f87171;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Outfit',sans-serif;
+  min-height:100vh;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  position:sticky; top:0; z-index:100;
+  background:rgba(10,10,15,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 20px;
+  height:54px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { font-size:18px; font-weight:900; text-decoration:none; color:var(--text); }
+.nav-logo .fly { color:var(--blue); }
+.nav-links { display:flex; gap:8px; }
+.nav-link {
+  font-size:12px; font-weight:800; text-decoration:none;
+  padding:6px 14px; border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--muted);
+  transition:all .2s;
+}
+.nav-link.active, .nav-link:hover { color:var(--blue); background:rgba(79,142,247,.1); border-color:rgba(79,142,247,.3); }
+
+/* ── HERO ── */
+.blog-hero {
+  padding:52px 20px 32px;
+  text-align:center;
+  max-width:700px;
+  margin:0 auto;
+}
+.blog-hero-type-wrap{
+  margin:14px 0 10px;
+  font-size:15px;font-weight:700;
+}
+.bht-prefix{color:var(--muted)}
+.bht-text{
+  color:var(--cyan);font-weight:900;
+  background:linear-gradient(90deg,var(--cyan),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.bht-cursor{
+  color:var(--cyan);font-weight:900;
+  animation:blink .7s infinite;
+  -webkit-text-fill-color:var(--cyan);
+}
+.blog-hero-label {
+  font-size:11px; font-weight:800; letter-spacing:2.5px;
+  color:var(--blue); margin-bottom:12px; text-transform:uppercase;
+}
+.blog-hero-title {
+  font-size:clamp(2rem,6vw,3rem);
+  font-weight:900; letter-spacing:-1.5px; line-height:1.1;
+  margin-bottom:14px;
+}
+.blog-hero-title .hl-blue { color:var(--blue); }
+.blog-hero-title .hl-cyan { color:var(--cyan); }
+.blog-hero-sub {
+  color:var(--muted); font-size:13px; font-weight:600; line-height:1.6;
+  margin-top:8px;
+}
+
+/* ── SEARCH BAR ── */
+.search-wrap {
+  max-width:600px;
+  margin:28px auto 0;
+  padding:0 20px;
+  position:relative;
+}
+.search-input {
+  width:100%;
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:14px 50px 14px 48px;
+  font-size:14px; font-weight:600; color:var(--text);
+  font-family:'Outfit',sans-serif;
+  outline:none;
+  transition:border-color .2s, box-shadow .2s;
+}
+.search-input:focus {
+  border-color:rgba(79,142,247,.5);
+  box-shadow:0 0 0 3px rgba(79,142,247,.1);
+}
+.search-input::placeholder { color:var(--muted); }
+.search-icon {
+  position:absolute; left:34px; top:50%; transform:translateY(-50%);
+  font-size:16px; pointer-events:none;
+}
+.search-clear {
+  position:absolute; right:34px; top:50%; transform:translateY(-50%);
+  background:none; border:none; color:var(--muted); cursor:pointer;
+  font-size:16px; display:none; padding:4px;
+  border-radius:50%; transition:color .2s;
+}
+.search-clear:hover { color:var(--text); }
+
+/* ── QUICK CHIPS ── */
+.chips-wrap {
+  max-width:600px;
+  margin:14px auto 0;
+  padding:0 20px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.chips-wrap::-webkit-scrollbar { display:none; }
+.chips-row {
+  display:flex; gap:8px;
+  padding-bottom:4px;
+  width:max-content;
+}
+.chip {
+  display:inline-flex; align-items:center; gap:5px;
+  padding:8px 16px;
+  border-radius:999px;
+  border:1.5px solid var(--border);
+  background:var(--card);
+  color:var(--muted);
+  font-size:12px; font-weight:800;
+  cursor:pointer; white-space:nowrap;
+  transition:all .2s;
+  font-family:'Outfit',sans-serif;
+}
+.chip:hover {
+  border-color:rgba(79,142,247,.4);
+  color:var(--blue);
+  background:rgba(79,142,247,.08);
+}
+.chip.active {
+  background:rgba(79,142,247,.15);
+  border-color:var(--blue);
+  color:var(--blue);
+}
+
+/* ── TABS: Latest / Best / Popular ── */
+.blog-tabs-wrap {
+  max-width:1100px;
+  margin:36px auto 0;
+  padding:0 20px;
+}
+.tab-row {
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+}
+.tab-btn {
+  display:flex; align-items:center; gap:6px;
+  padding:9px 20px;
+  border-radius:12px;
+  border:1.5px solid var(--border);
+  background:var(--card);
+  color:var(--muted);
+  font-size:13px; font-weight:800;
+  cursor:pointer; transition:all .2s;
+  font-family:'Outfit',sans-serif;
+}
+.tab-btn:hover { border-color:rgba(79,142,247,.3); color:var(--text); }
+.tab-btn.active { background:var(--blue); border-color:var(--blue); color:#fff; }
+.tab-btn.tab-best.active { background:var(--yellow); border-color:var(--yellow); color:#111; }
+.tab-btn.tab-popular.active { background:var(--purple); border-color:var(--purple); color:#fff; }
+.tab-divider { flex:1; height:1px; background:var(--border); min-width:20px; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  max-width:1100px;
+  margin:28px auto 18px;
+  padding:0 20px;
+  font-size:18px; font-weight:900; letter-spacing:-.3px;
+  display:flex; align-items:center; gap:10px;
+}
+.section-label .count-badge {
+  font-size:11px; font-weight:800; padding:3px 10px;
+  border-radius:999px; background:rgba(79,142,247,.12);
+  color:var(--blue); border:1px solid rgba(79,142,247,.2);
+}
+
+/* ── ARTICLE GRID ── */
+.articles-grid-wrap {
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 20px 80px;
+}
+#articlesGrid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:18px;
+}
+
+/* ── ARTICLE CARD ── */
+.art-card {
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  text-decoration:none;
+  display:flex; flex-direction:column;
+  transition:border-color .25s, transform .25s, box-shadow .25s;
+  cursor:pointer;
+  position:relative;
+}
+.art-card:hover {
+  border-color:rgba(79,142,247,.4);
+  transform:translateY(-4px);
+  box-shadow:0 12px 32px rgba(0,0,0,.4);
+}
+.art-card-banner { height:6px; flex-shrink:0; }
+.art-card-body { padding:18px; flex:1; display:flex; flex-direction:column; }
+.art-card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; }
+.art-card-cat { font-size:11px; font-weight:800; letter-spacing:.3px; }
+.art-card-badge {
+  font-size:10px; font-weight:800; padding:3px 8px;
+  border-radius:999px; letter-spacing:.3px;
+}
+.badge-new { background:rgba(52,211,153,.12); color:var(--green); border:1px solid rgba(52,211,153,.25); }
+.badge-hot { background:rgba(248,113,113,.12); color:var(--red); border:1px solid rgba(248,113,113,.25); }
+.badge-trending { background:rgba(167,139,250,.12); color:var(--purple); border:1px solid rgba(167,139,250,.25); }
+.art-card-title {
+  font-size:15px; font-weight:800; line-height:1.4;
+  margin-bottom:8px; color:var(--text);
+}
+.art-card-desc {
+  font-size:13px; color:var(--muted); line-height:1.6;
+  flex:1; margin-bottom:14px;
+}
+.art-card-footer {
+  display:flex; justify-content:space-between; align-items:center;
+  border-top:1px solid var(--border); padding-top:12px;
+}
+.art-card-meta { font-size:11px; color:#555580; font-weight:700; }
+.art-card-actions { display:flex; align-items:center; gap:10px; }
+.like-btn {
+  display:flex; align-items:center; gap:5px;
+  background:none; border:none; cursor:pointer;
+  font-size:12px; font-weight:800; color:var(--muted);
+  padding:5px 10px; border-radius:8px;
+  border:1px solid var(--border);
+  transition:all .2s;
+  font-family:'Outfit',sans-serif;
+}
+.like-btn:hover { border-color:rgba(248,113,113,.4); color:var(--red); background:rgba(248,113,113,.07); }
+.like-btn.liked { color:var(--red); border-color:rgba(248,113,113,.4); background:rgba(248,113,113,.1); }
+.like-btn .heart { font-size:14px; transition:transform .2s; }
+.like-btn:hover .heart, .like-btn.liked .heart { transform:scale(1.2); }
+.art-card-read { font-size:12px; font-weight:800; color:var(--blue); }
+
+/* ── NO RESULTS ── */
+.no-results {
+  display:none; grid-column:1/-1;
+  text-align:center; padding:60px 20px;
+}
+.no-results-emoji { font-size:48px; margin-bottom:16px; }
+.no-results h3 { font-size:18px; font-weight:800; margin-bottom:8px; }
+.no-results p { color:var(--muted); font-size:14px; }
+
+/* ── OVERLAY (article detail) ── */
+.art-overlay {
+  display:none; position:fixed; inset:0; z-index:200;
+  background:var(--bg);
+  overflow-y:auto; overscroll-behavior:contain;
+}
+.art-progress {
+  position:fixed; top:0; left:0; height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  transition:width .1s; z-index:201; pointer-events:none;
+}
+.art-overlay-nav {
+  position:sticky; top:0; z-index:10;
+  background:rgba(10,10,15,0.95); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:12px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.art-back-btn {
+  display:flex; align-items:center; gap:8px;
+  background:var(--card); border:1px solid var(--border);
+  border-radius:10px; padding:8px 16px;
+  font-size:12px; font-weight:800; color:var(--muted);
+  cursor:pointer; font-family:'Outfit',sans-serif;
+  transition:all .2s;
+}
+.art-back-btn:hover { color:var(--blue); border-color:rgba(79,142,247,.3); }
+.art-read-time { font-size:12px; color:var(--muted); font-weight:700; }
+.art-content { max-width:780px; margin:0 auto; padding:36px 20px 80px; }
+/* Article content styles */
+.art-breadcrumb { font-size:12px; color:var(--muted); margin-bottom:14px; }
+.art-cat-badge {
+  display:inline-block; padding:5px 14px; border-radius:20px;
+  font-size:12px; font-weight:800; margin-bottom:14px;
+}
+.art-h1 {
+  font-size:clamp(1.5rem,4vw,2.2rem); font-weight:900;
+  line-height:1.25; margin-bottom:12px; letter-spacing:-0.5px;
+}
+.art-meta-row {
+  display:flex; flex-wrap:wrap; gap:14px; font-size:12px;
+  color:var(--muted); font-weight:700;
+  padding-bottom:20px; border-bottom:1px solid var(--border); margin-bottom:28px;
+}
+.art-section { margin-bottom:28px; }
+.art-section-title {
+  font-size:1.1rem; font-weight:800; margin-bottom:12px;
+  color:var(--text); padding-left:10px; border-left:3px solid var(--blue);
+}
+.art-section p, .art-section li { color:#b8b8d0; line-height:1.8; margin-bottom:10px; font-size:15px; }
+.art-section ul, .art-section ol { padding-left:22px; margin-bottom:12px; }
+.art-section h3 { font-size:1rem; font-weight:800; color:var(--text); margin:16px 0 8px; }
+.art-section table { width:100%; border-collapse:collapse; margin:16px 0; font-size:13px; }
+.art-section th { background:rgba(79,142,247,.12); color:var(--blue); padding:9px 12px; text-align:left; font-weight:800; border:1px solid var(--border); }
+.art-section td { padding:9px 12px; border:1px solid rgba(255,255,255,0.06); color:#c8c8e0; }
+.art-section tr:hover td { background:rgba(255,255,255,0.02); }
+.art-section a { color:var(--blue); text-decoration:underline; }
+.art-hr { height:1px; background:var(--border); margin:28px 0; }
+/* Like inside article */
+.art-like-row {
+  display:flex; align-items:center; gap:14px;
+  padding:20px; background:var(--card); border-radius:12px;
+  margin:32px 0;
+}
+.art-like-label { font-size:14px; color:var(--muted); font-weight:700; flex:1; }
+.art-like-btn {
+  display:flex; align-items:center; gap:8px;
+  background:none; border:1.5px solid var(--border);
+  border-radius:10px; padding:10px 20px;
+  font-size:14px; font-weight:800; color:var(--muted);
+  cursor:pointer; font-family:'Outfit',sans-serif; transition:all .2s;
+}
+.art-like-btn:hover { color:var(--red); border-color:rgba(248,113,113,.4); background:rgba(248,113,113,.07); }
+.art-like-btn.liked { color:var(--red); border-color:rgba(248,113,113,.4); background:rgba(248,113,113,.1); }
+.art-dislike-btn {
+  display:flex; align-items:center; gap:8px;
+  background:none; border:1.5px solid var(--border);
+  border-radius:10px; padding:10px 20px;
+  font-size:14px; font-weight:800; color:var(--muted);
+  cursor:pointer; font-family:'Outfit',sans-serif; transition:all .2s;
+}
+.art-dislike-btn:hover { color:var(--muted); border-color:rgba(100,100,150,.4); }
+.art-dislike-btn.disliked { color:#888; border-color:rgba(100,100,150,.4); background:rgba(100,100,150,.07); }
+/* Share */
+.art-share { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:20px; background:rgba(255,255,255,0.02); border-radius:10px; margin:32px 0; }
+.art-share-label { font-size:13px; color:var(--muted); font-weight:800; }
+.art-share-btn { padding:8px 18px; border-radius:8px; font-size:13px; font-weight:800; cursor:pointer; border:1px solid var(--border); background:rgba(255,255,255,0.05); color:var(--text); text-decoration:none; transition:background .2s; font-family:'Outfit',sans-serif; }
+.art-share-btn:hover { background:rgba(79,142,247,.15); }
+/* Recommended */
+.art-recommended { margin-top:48px; padding-top:28px; border-top:1px solid var(--border); }
+.art-rec-title { font-size:1rem; font-weight:900; margin-bottom:4px; }
+.art-rec-sub { font-size:13px; color:var(--muted); margin-bottom:18px; }
+.art-rec-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; }
+.rec-card { background:var(--card); border:1px solid var(--border); border-radius:10px; overflow:hidden; cursor:pointer; transition:border-color .2s,transform .2s; text-decoration:none; display:block; }
+.rec-card:hover { border-color:rgba(79,142,247,.4); transform:translateY(-3px); }
+.rec-banner { height:5px; }
+.rec-body { padding:14px; }
+.rec-cat { font-size:11px; font-weight:800; }
+.rec-title { font-size:13px; font-weight:800; line-height:1.4; margin:6px 0; color:var(--text); }
+.rec-foot { display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-top:8px; }
+.rec-link { color:var(--blue); font-weight:800; }
+/* CTA */
+.art-cta-box { background:linear-gradient(135deg,rgba(79,142,247,.1),rgba(167,139,250,.08)); border:1px solid rgba(79,142,247,.2); border-radius:14px; padding:28px; text-align:center; margin-top:44px; }
+.art-cta-box h3 { font-size:1.1rem; font-weight:900; margin-bottom:8px; }
+.art-cta-box p { color:var(--muted); font-size:14px; margin-bottom:18px; }
+.art-cta-btn { display:inline-block; padding:12px 28px; background:var(--blue); color:#fff; border-radius:10px; font-weight:800; font-size:14px; text-decoration:none; transition:opacity .2s; }
+.art-cta-btn:hover { opacity:.85; }
+
+/* ── FOOTER ── */
+.footer {
+  border-top:1px solid var(--border);
+  padding:32px 20px;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+}
+.footer-links { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
+.footer-links a { color:var(--muted); text-decoration:none; transition:color .2s; }
+.footer-links a:hover { color:var(--blue); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px) {
+  .blog-hero { padding:36px 16px 24px; }
+  #articlesGrid { grid-template-columns:1fr; }
+  .tab-divider { display:none; }
+  .art-content { padding:24px 14px 60px; }
+  .art-h1 { font-size:1.4rem; }
+}
+</style>
 </head>
 <body>
-<nav>
-  <div class="nav-in">
-    <a href="https://flynto.online/" class="logo">Fly<span>nto</span></a>
-    <div class="nav-links">
-      <a href="https://flynto.online/">Home</a>
-      <a href="https://flynto.online/blog.html" class="active">Blog</a>
-      <a href="https://flynto.online/about.html">About</a>
-      <a href="https://flynto.online/contact.html">Contact</a>
-    </div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-logo" href="index.html"><span class="fly">FLY</span>NTO</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">🏠 Home</a>
   </div>
 </nav>
-<section class="hero">
-  <h1>AI <span class="grad">Articles & Guides</span></h1>
-  <p>Curated lists, comparisons, and guides to help you find the right AI tools for every task.</p>
-</section>
-<div class="ctr">
-  <div class="filter-bar" id="filterBar">
-    <button class="ftag active" data-filter="all">⚡ All</button>
-    <button class="ftag" data-filter="Video">🎬 Video</button>
-    <button class="ftag" data-filter="Writing">✍️ Writing</button>
-    <button class="ftag" data-filter="Coding">💻 Coding</button>
-    <button class="ftag" data-filter="Image">🎨 Image</button>
-    <button class="ftag" data-filter="Voice">🎙️ Voice</button>
-    <button class="ftag" data-filter="Productivity">⚙️ Productivity</button>
-    <button class="ftag" data-filter="Free">🆓 Free Tools</button>
-    <button class="ftag" data-filter="Design">🖌️ Design</button>
-    <button class="ftag" data-filter="Music">🎵 Music</button>
+
+<!-- READ PROGRESS BAR -->
+<div class="art-progress" id="artProgress" style="width:0%"></div>
+
+<!-- HERO -->
+<div class="blog-hero">
+  <div class="blog-hero-label">✍️ Flynto Blog</div>
+  <h1 class="blog-hero-title">
+    <span class="hl-blue">AI</span> Articles<br>&amp; <span class="hl-cyan">Guides</span>
+  </h1>
+  <div class="blog-hero-type-wrap">
+    <span class="bht-prefix">AI can help you </span><span class="bht-text" id="blogHeroType">earn money 💰</span><span class="bht-cursor">|</span>
   </div>
-  <div id="featuredWrap"></div>
-  <div class="section-head"><h2 id="gridLabel">📚 All Articles</h2></div>
-  <div class="articles-grid" id="articlesGrid"></div>
-  <div class="empty" id="emptyState"><p>🔍</p><p>No articles in this category yet. Check back soon!</p></div>
+  <p class="blog-hero-sub">Guides, tutorials &amp; real strategies to earn with AI tools</p>
 </div>
-<footer>
-  <div class="foot-in">
-    <div class="foot-links">
-      <a href="https://flynto.online/">Home</a>
-      <a href="https://flynto.online/blog.html">Blog</a>
-      <a href="https://flynto.online/about.html">About</a>
-      <a href="https://flynto.online/privacy.html">Privacy</a>
-      <a href="https://flynto.online/disclaimer.html">Disclaimer</a>
-      <a href="https://flynto.online/contact.html">Contact</a>
-    </div>
-    <p>© 2026 Flynto. All rights reserved.</p>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <span class="search-icon">🔍</span>
+  <input class="search-input" id="searchInput" type="text" placeholder="Search articles, topics, tools…" oninput="onSearch()" autocomplete="off">
+  <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+</div>
+
+<!-- QUICK TOPIC CHIPS -->
+<div class="chips-wrap" id="chipsWrap">
+  <div class="chips-row">
+    <button class="chip" onclick="chipSearch(this,'earn money with AI')">💰 Earn with AI</button>
+    <button class="chip" onclick="chipSearch(this,'best ai tools')">🏆 Best AI Tools</button>
+    <button class="chip" onclick="chipSearch(this,'youtube creators')">🎬 YouTube & Creators</button>
+    <button class="chip" onclick="chipSearch(this,'free ai')">🆓 Free AI Tools</button>
+    <button class="chip" onclick="chipSearch(this,'students')">🎓 For Students</button>
+    <button class="chip" onclick="chipSearch(this,'chatgpt claude gemini')">⚖️ AI Comparison</button>
+    <button class="chip" onclick="chipSearch(this,'startup business')">🚀 Startup & Business</button>
+    <button class="chip" onclick="chipSearch(this,'review')">🔍 Reviews</button>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="blog-tabs-wrap">
+  <div class="tab-row">
+    <button class="tab-btn tab-latest active" onclick="setTab('latest',this)">🆕 Latest</button>
+    <button class="tab-btn tab-best" onclick="setTab('best',this)">⭐ Best</button>
+    <button class="tab-btn tab-popular" onclick="setTab('popular',this)">🔥 Popular</button>
+
+  </div>
+</div>
+
+<!-- SECTION LABEL -->
+<div class="section-label">
+  <span id="sectionTitle">📰 All Articles</span>
+  <span class="count-badge" id="articleCount">7 articles</span>
+</div>
+
+<!-- GRID -->
+<div class="articles-grid-wrap">
+  <div id="articlesGrid">
+  </div>
+  <div class="no-results" id="noResults" style="display:none">
+    <div class="no-results-emoji">🔍</div>
+    <h3>No articles found</h3>
+    <p>Try a different keyword or browse all articles</p>
+  </div>
+</div>
+
+<!-- ARTICLE OVERLAY -->
+<div class="art-overlay" id="articleOverlay">
+  <div class="art-overlay-nav">
+    <button class="art-back-btn" onclick="closeArticle()">← Back to Blog</button>
+    <span class="art-read-time" id="artReadTime"></span>
+  </div>
+  <div class="art-content" id="artContent"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>© 2026 <a href="index.html" style="color:var(--blue);text-decoration:none">Flynto.online</a> — Best AI Tools Directory · Updated Weekly</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#tools">All Tools</a>
   </div>
 </footer>
-<script src="articles-data.js"></script>
+
 <script>
-function goTo(id){ window.location.href='article.html?id='+id; }
-function renderFeatured(a){
-  if(!a){document.getElementById('featuredWrap').innerHTML='';return;}
-  document.getElementById('featuredWrap').innerHTML=
-    '<div class="featured" onclick="goTo(\''+a.id+'\')">'
-    +'<div><div class="feat-label">⭐ Featured Article</div>'
-    +'<span class="feat-cat">'+a.category+'</span>'
-    +'<div class="feat-title">'+a.title+'</div>'
-    +'<p class="feat-excerpt">'+a.excerpt+'</p>'
-    +'<div class="feat-meta"><span>📅 '+a.date+'</span><span>⏱️ '+a.readTime+'</span></div>'
-    +'<a href="article.html?id='+a.id+'" class="read-btn" onclick="event.stopPropagation()">Read Article →</a>'
-    +'</div><div class="feat-thumb">'+a.emoji+'</div></div>';
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const ARTICLE_LIST = [
+  {id:'photomath-review',title:'Photomath AI — Complete Guide for Students',cat:'🔍 Review',catColor:'#a78bfa',tags:['review','students'],banner:'linear-gradient(90deg,#a78bfa,#f472b6)',readTime:'6 min',date:'March 2026',desc:'Scan any math problem with your camera and get a step-by-step solution instantly. From basic arithmetic to calculus — all free.',views:0,likes:0,badge:'new'},
+  {id:'best-ai-tools',title:'Best AI Tools 2026 — Top 20 You Actually Need',cat:'🏆 Best AI',catColor:'#4f8ef7',tags:['best-ai'],banner:'linear-gradient(90deg,#4f8ef7,#a78bfa)',readTime:'10 min',date:'March 2026',desc:"We tested 500+ AI tools so you don't have to. The 20 that are genuinely worth your time — with honest free vs paid breakdown.",views:0,likes:0,badge:'hot'},
+  {id:'free-ai-tools',title:'30 Best Free AI Tools 2026 — No Credit Card Required',cat:'🆓 Free AI',catColor:'#34d399',tags:['free','best-ai'],banner:'linear-gradient(90deg,#34d399,#22d3ee)',readTime:'8 min',date:'March 2026',desc:'Genuinely free tools — chatbots, images, music, voice, writing. Verified. Zero investment required.',views:0,likes:0,badge:'hot'},
+  {id:'ai-for-students',title:'Best AI Tools for Students 2026',cat:'🎓 Students',catColor:'#a78bfa',tags:['students','free'],banner:'linear-gradient(90deg,#a78bfa,#f472b6)',readTime:'7 min',date:'March 2026',desc:'Math solver, essay writer, flashcards, research tools — all free. Works for school, college, and competitive exams.',views:0,likes:0,badge:''},
+  {id:'ai-for-youtubers',title:'Best AI Tools for YouTubers & Creators 2026',cat:'🎬 Creators',catColor:'#ff6b35',tags:['creators'],banner:'linear-gradient(90deg,#ff6b35,#fbbf24)',readTime:'9 min',date:'March 2026',desc:'CapCut, Opus Clip, ElevenLabs, VidIQ — a complete free creator stack. Build a professional YouTube channel at $0.',views:0,likes:0,badge:'trending'},
+  {id:'chatgpt-vs-claude',title:'ChatGPT vs Claude vs Gemini 2026 — Honest Comparison',cat:'⚖️ Compare',catColor:'#f59e0b',tags:['compare'],banner:'linear-gradient(90deg,#f59e0b,#fb923c)',readTime:'7 min',date:'March 2026',desc:'Writing, coding, reasoning — which AI is actually best for your use case? An honest, tested comparison.',views:0,likes:0,badge:'hot'},
+  {id:'earn-with-ai',title:'How to Earn Money with AI Tools 2026 — 15 Real Ways',cat:'💰 Earn',catColor:'#fbbf24',tags:['earn'],banner:'linear-gradient(90deg,#fbbf24,#f59e0b)',readTime:'9 min',date:'March 2026',desc:'Real people are earning $500–$5,000/month using AI tools. Freelancing, YouTube, chatbot setup — start with $0.',views:0,likes:0,badge:'trending'},
+  {id:'ai-startup-guide',title:'How to Start a Startup Using AI — Step-by-Step Beginner Guide',cat:'🚀 Startup',catColor:'#34d399',tags:['startup','earn','best-ai'],banner:'linear-gradient(90deg,#34d399,#4f8ef7)',readTime:'11 min',date:'March 2026',desc:'AI makes starting a startup easier than ever. One person can now handle ideas, branding, website, content, and marketing — all with free AI tools.',views:0,likes:0,badge:'new'},
+  {id:'ai-youtube-guide',title:'How to Start a YouTube Channel Using AI — Complete SEO Guide 2026',cat:'🎬 YouTube',catColor:'#ff6b35',tags:['youtube','creators','earn','best-ai'],banner:'linear-gradient(90deg,#ff6b35,#f59e0b)',readTime:'12 min',date:'March 2026',desc:'Use AI to find ideas, write scripts, generate voiceovers, edit videos, design thumbnails, and rank higher on YouTube — complete beginner guide.',views:0,likes:0,badge:'new'},
+  {id:'ai-freelancing-guide',title:'How to Start Freelancing Using AI — Complete Guide 2026',cat:'💼 Freelancing',catColor:'#22d3ee',tags:['earn','startup','best-ai'],banner:'linear-gradient(90deg,#22d3ee,#a78bfa)',readTime:'12 min',date:'March 2026',desc:'AI makes freelancing easier than ever. Learn how to pick a niche, build a portfolio, find clients, and grow your income — starting from zero.',views:0,likes:0,badge:'new'},,
+  {id:'ai-earn-online',title:'How to Earn Money Online Using AI — Complete Guide 2026',cat:'💰 Earn',catColor:'#fbbf24',tags:['earn','best-ai','startup'],banner:'linear-gradient(90deg,#fbbf24,#fb923c)',readTime:'8 min',date:'March 2026',desc:'AI has made online earning more accessible than ever. Freelancing, content creation, YouTube automation — discover 10 proven ways to earn with AI tools starting from zero.',views:0,likes:0,badge:'new'},
+  {id:'blogging-with-ai',title:'How to Start a Blog Using AI — Step-by-Step Guide 2026',cat:'✍️ Blogging',catColor:'#34d399',tags:['earn','startup','best-ai'],banner:'linear-gradient(90deg,#34d399,#4f8ef7)',readTime:'9 min',date:'March 2026',desc:'Start a blog, rank on Google, and earn passive income — all using AI tools. Complete guide from domain setup to publishing your first SEO article.',views:0,likes:0,badge:'new'},
+  {id:'ai-productivity-tools',title:'Best AI Tools for Productivity 2026 — Work 3x Faster',cat:'⚡ Productivity',catColor:'#a78bfa',tags:['best-ai','free'],banner:'linear-gradient(90deg,#a78bfa,#6366f1)',readTime:'7 min',date:'March 2026',desc:'ChatGPT, Notion AI, Grammarly and more — the AI productivity stack that saves professionals 10+ hours every week. All tools with free tiers.',views:0,likes:0,badge:'new'},
+  {id:'affiliate-marketing-ai',title:'Affiliate Marketing with AI — Earn Commissions on Autopilot',cat:'💸 Affiliate',catColor:'#f59e0b',tags:['earn','startup'],banner:'linear-gradient(90deg,#f59e0b,#fbbf24)',readTime:'8 min',date:'March 2026',desc:'Use AI to build affiliate marketing funnels, write product reviews, and drive traffic — earn commissions from Amazon, Digistore, and AI tool programs.',views:0,likes:0,badge:'new'},
+  {id:'seo-guide-2026',title:'SEO Complete Guide 2026 — Rank on Google Using AI',cat:'📈 SEO',catColor:'#22d3ee',tags:['seo','startup','best-ai'],banner:'linear-gradient(90deg,#22d3ee,#4f8ef7)',readTime:'10 min',date:'March 2026',desc:'Master SEO in 2026 — keyword research, on-page optimization, backlinks, and AI-powered content strategy. Rank your website on Google page one.',views:0,likes:0,badge:'new'},
+  {id:'chatgpt-blogging',title:'How to Use ChatGPT for Blogging — Write SEO Articles Fast',cat:'🤖 ChatGPT',catColor:'#10a37f',tags:['best-ai','earn','free'],banner:'linear-gradient(90deg,#10a37f,#34d399)',readTime:'7 min',date:'March 2026',desc:'Use ChatGPT to research topics, write full articles, optimize for SEO, and publish faster than ever. Complete workflow for bloggers and content creators.',views:0,likes:0,badge:'new'},
+  {id:'students-earn-online',title:'How Students Can Earn Money Online with AI — Zero Investment',cat:'🎓 Students',catColor:'#a78bfa',tags:['students','earn','free'],banner:'linear-gradient(90deg,#a78bfa,#f472b6)',readTime:'8 min',date:'March 2026',desc:'Students can earn $200–$2,000/month using free AI tools. Freelancing, content writing, graphic design, and tutoring — no investment needed to start.',views:0,likes:0,badge:'new'},
+  {id:'ai-tools-2026-new',title:'20 New AI Tools You Must Try in 2026',cat:'🆕 New Tools',catColor:'#ff6b35',tags:['best-ai','free'],banner:'linear-gradient(90deg,#ff6b35,#f59e0b)',readTime:'8 min',date:'March 2026',desc:'20 newly launched AI tools that are changing the game in 2026 — from video generation to coding assistants. Most have generous free tiers.',views:0,likes:0,badge:'new'},
+  {id:'passive-income-ai',title:'Passive Income with AI Tools — 8 Streams That Actually Work',cat:'💰 Passive Income',catColor:'#fbbf24',tags:['earn','startup'],banner:'linear-gradient(90deg,#fbbf24,#34d399)',readTime:'9 min',date:'March 2026',desc:'Build passive income streams using AI — print-on-demand, stock content, faceless YouTube, affiliate blogs. Set up once and earn repeatedly.',views:0,likes:0,badge:'new'},
+  {id:'ai-social-media',title:'AI for Social Media Growth — Grow to 10K Followers Fast',cat:'📱 Social Media',catColor:'#ec4899',tags:['earn','creators','best-ai'],banner:'linear-gradient(90deg,#ec4899,#a78bfa)',readTime:'8 min',date:'March 2026',desc:'Use AI to create viral content, generate captions, design posts, and schedule everything automatically. Grow Instagram, TikTok, and LinkedIn with AI.',views:0,likes:0,badge:'new'}
+];
+
+const ARTICLES = {
+  'photomath-review': {
+    readTime:'6 min read', date:'March 2026', category:'Tool Review', catColor:'#a78bfa', emoji:'🔍',
+    related:['ai-for-students','free-ai-tools','earn-with-ai'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>Photomath is a popular AI-powered math solving application that helps students understand complex mathematics problems. Since its launch, it has become one of the most downloaded educational apps worldwide, with over 300 million downloads.</p>
+<p>In this comprehensive guide, we'll explore everything you need to know about Photomath — from basic features to advanced capabilities, pricing, and how it compares to alternatives.</p></div>
+<div class="art-section"><div class="art-section-title">What is Photomath?</div>
+<p>Photomath is a mobile application that uses your smartphone camera to scan and solve math problems instantly. Simply point your camera at any math problem — printed or handwritten — and Photomath provides step-by-step solutions.</p>
+<ul><li><strong>Camera scanning:</strong> Point and solve any math problem</li><li><strong>Step-by-step explanations:</strong> Understand how solutions are reached</li><li><strong>Multiple solving methods:</strong> See different approaches to the same problem</li><li><strong>Animated tutorials:</strong> Visual learning for complex concepts</li></ul></div>
+<div class="art-section"><div class="art-section-title">Key Features</div>
+<p>Photomath covers an impressive range of mathematical topics:</p>
+<ul><li>Basic arithmetic and pre-algebra</li><li>Algebra I and Algebra II</li><li>Geometry and Trigonometry</li><li>Calculus and Statistics</li><li>Word problems (with Photomath Plus)</li></ul></div>
+<div class="art-section"><div class="art-section-title">Pricing</div>
+<table><tr><th>Plan</th><th>Price</th><th>Features</th></tr><tr><td>Free</td><td>$0</td><td>Basic scanning and solving</td></tr><tr><td>Photomath Plus</td><td>$9.99/month</td><td>Animated tutorials, word problems, offline use</td></tr><tr><td>Annual</td><td>$59.99/year</td><td>All Plus features, best value</td></tr></table></div>
+<div class="art-section"><div class="art-section-title">Verdict</div>
+<p>Photomath is genuinely one of the best free educational AI tools available. For students struggling with math, the free version alone provides significant value. The step-by-step explanations are genuinely educational — not just giving answers, but teaching the reasoning behind them.</p>
+<p><strong>Best for:</strong> Students from middle school through college who want to understand math, not just get answers.</p></div>`
+  },
+  'best-ai-tools': {
+    readTime:'10 min read', date:'March 2026', category:'Best AI Tools', catColor:'#4f8ef7', emoji:'🏆',
+    related:['free-ai-tools','chatgpt-vs-claude','earn-with-ai'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>In 2026, the AI tool landscape has exploded. There are now thousands of AI tools across every category imaginable — writing, image generation, video, coding, music, and more.</p>
+<p>We tested 500+ AI tools so you don't have to. Here are the 20 that are genuinely worth your time, with honest assessments of what they actually do well.</p></div>
+<div class="art-section"><div class="art-section-title">Top AI Tools for 2026</div>
+<table><tr><th>#</th><th>Tool</th><th>Best For</th><th>Price</th></tr>
+<tr><td>1</td><td>ChatGPT-4o</td><td>General AI assistant</td><td>Free / $20/mo</td></tr>
+<tr><td>2</td><td>Claude 3.5 Sonnet</td><td>Writing & analysis</td><td>Free / $20/mo</td></tr>
+<tr><td>3</td><td>Midjourney V6</td><td>AI image art</td><td>$10/mo</td></tr>
+<tr><td>4</td><td>ElevenLabs</td><td>AI voice generation</td><td>Free / $5/mo</td></tr>
+<tr><td>5</td><td>Cursor</td><td>AI coding</td><td>Free / $20/mo</td></tr>
+<tr><td>6</td><td>Suno AI</td><td>AI music generation</td><td>Free / $8/mo</td></tr>
+<tr><td>7</td><td>Runway Gen-3</td><td>AI video generation</td><td>Free / $15/mo</td></tr>
+<tr><td>8</td><td>Perplexity AI</td><td>AI-powered search</td><td>Free / $20/mo</td></tr>
+<tr><td>9</td><td>Canva AI</td><td>AI design</td><td>Free / $13/mo</td></tr>
+<tr><td>10</td><td>Notion AI</td><td>AI note-taking</td><td>$10/mo add-on</td></tr></table></div>
+<div class="art-section"><div class="art-section-title">How We Chose These Tools</div>
+<p>Our selection criteria were strict. Every tool on this list had to pass four tests:</p>
+<ul><li><strong>Actually works:</strong> Does what it claims to do, reliably</li><li><strong>Worth the price:</strong> Free plan is useful, or paid plan delivers clear ROI</li><li><strong>Actively maintained:</strong> Regular updates and improvements in 2026</li><li><strong>Real users:</strong> Trusted by at least 100,000 active users</li></ul></div>
+<div class="art-section"><div class="art-section-title">The Bottom Line</div>
+<p>You don't need 20 AI tools. Start with one great AI assistant (ChatGPT or Claude), one creative tool relevant to your work, and one productivity tool. Master those three before adding more.</p>
+<p>The best AI tool is the one you'll actually use consistently — not the one with the most features.</p></div>`
+  },
+  'free-ai-tools': {
+    readTime:'8 min read', date:'March 2026', category:'Free AI Tools', catColor:'#34d399', emoji:'🆓',
+    related:['best-ai-tools','ai-for-students','earn-with-ai'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>You don't need to pay for AI. In 2026, there are more genuinely free AI tools than ever before — and we mean actually free, not "free trial" or "free with credit card".</p>
+<p>This list is verified. Every tool listed here has a real free tier that delivers real value. No tricks.</p></div>
+<div class="art-section"><div class="art-section-title">Free AI Chatbots</div>
+<ul><li><strong>ChatGPT (free tier):</strong> GPT-4o mini — 80% of ChatGPT Plus quality at zero cost</li><li><strong>Claude.ai (free):</strong> The best AI for writing and analysis, free tier included</li><li><strong>Gemini (free):</strong> Google's AI with real-time search built in</li><li><strong>Perplexity AI:</strong> Unlimited searches with cited sources, completely free</li><li><strong>DeepSeek:</strong> Rivals GPT-4 on coding, unlimited and free</li></ul></div>
+<div class="art-section"><div class="art-section-title">Free Image Generation</div>
+<ul><li><strong>Bing Image Creator:</strong> DALL-E 3, 100 free boosts per week</li><li><strong>Adobe Firefly:</strong> 25 free credits monthly, commercially safe</li><li><strong>Leonardo AI:</strong> 150 free tokens daily</li><li><strong>Ideogram:</strong> 10 free images daily with text rendering</li><li><strong>Playground AI:</strong> 500 free images per day — the most generous</li></ul></div>
+<div class="art-section"><div class="art-section-title">Free Video Tools</div>
+<ul><li><strong>Veed.io:</strong> Auto-subtitles, background blur, noise removal — free tier available</li><li><strong>CapCut:</strong> Full video editor with AI features, completely free</li><li><strong>Haiper AI:</strong> 50 free AI video credits per month</li><li><strong>DaVinci Resolve:</strong> Professional video editor, free forever</li></ul></div>
+<div class="art-section"><div class="art-section-title">Free AI Writing Tools</div>
+<ul><li><strong>QuillBot:</strong> Free paraphrasing tool — 35M+ users love it</li><li><strong>Hemingway Editor:</strong> Free web version for readability checking</li><li><strong>Grammarly:</strong> Free grammar checker with Chrome extension</li><li><strong>Rytr:</strong> 10,000 free characters per month</li></ul></div>
+<div class="art-section"><div class="art-section-title">The Golden Rule</div>
+<p>Free AI tools are genuinely good in 2026. Don't pay for an AI tool until you've exhausted the free options first. The free tiers of ChatGPT, Perplexity, and Leonardo AI together can replace most paid subscriptions for casual users.</p></div>`
+  },
+  'ai-for-students': {
+    readTime:'7 min read', date:'March 2026', category:'Education', catColor:'#a78bfa', emoji:'🎓',
+    related:['free-ai-tools','photomath-review','earn-with-ai'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>Students in 2026 have access to more powerful free AI tools than ever. Whether you're solving math problems, writing essays, studying for exams, or doing research — there's a free AI tool that can genuinely help.</p>
+<p>This guide covers the tools that actually work for students, all verified to have free tiers.</p></div>
+<div class="art-section"><div class="art-section-title">Math & Science</div>
+<ul><li><strong>Photomath:</strong> Camera-scan any math problem, get step-by-step solutions. Free.</li><li><strong>Wolfram Alpha:</strong> The most powerful computational knowledge engine. Free for basic queries.</li><li><strong>Socratic by Google:</strong> AI-powered homework helper for all subjects. Completely free.</li><li><strong>Khan Academy Khanmigo:</strong> AI tutor integrated with Khan Academy's curriculum. Free.</li></ul></div>
+<div class="art-section"><div class="art-section-title">Writing & Essays</div>
+<ul><li><strong>Claude (free tier):</strong> Best AI for essay help, research summaries, and proofreading.</li><li><strong>QuillBot:</strong> Paraphrase and improve your writing. 35M+ student users.</li><li><strong>Grammarly:</strong> Free grammar and clarity checker. Works everywhere.</li><li><strong>Hemingway Editor:</strong> Makes your writing clearer and more readable.</li></ul></div>
+<div class="art-section"><div class="art-section-title">Research & Study</div>
+<ul><li><strong>Perplexity AI:</strong> AI search with cited sources — perfect for research papers.</li><li><strong>NotebookLM:</strong> Upload your notes and ask questions across all of them. Free.</li><li><strong>ChatPDF:</strong> Chat with any PDF textbook or paper. Free.</li><li><strong>Quizlet AI:</strong> Auto-generate flashcards from your notes. Free tier available.</li></ul></div>
+<div class="art-section"><div class="art-section-title">Important Note on Academic Integrity</div>
+<p>Use AI tools to learn and understand — not to submit AI-written work as your own. The best use of AI in education is as a tutor that explains concepts, not as a ghostwriter. Schools are increasingly detecting AI-generated content.</p></div>`
+  },
+  'ai-for-youtubers': {
+    readTime:'9 min read', date:'March 2026', category:'Content Creation', catColor:'#ff6b35', emoji:'🎬',
+    related:['earn-with-ai','best-ai-tools','free-ai-tools'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>In 2026, content creators are using AI to produce more content faster, better, and at lower cost than ever before. The right AI stack can cut your production time by 60% — while improving quality.</p>
+<p>This is the complete AI toolkit for YouTubers and content creators, focused on tools with free tiers.</p></div>
+<div class="art-section"><div class="art-section-title">Video Production</div>
+<ul><li><strong>CapCut:</strong> Free AI video editor with auto-captions, background removal, and templates. The #1 creator tool globally.</li><li><strong>Veed.io:</strong> Browser-based editor with one-click auto-subtitles in 100+ languages.</li><li><strong>Descript:</strong> Edit video by editing the transcript. Remove filler words instantly.</li><li><strong>Submagic:</strong> Animated viral-style captions for Shorts and Reels.</li></ul></div>
+<div class="art-section"><div class="art-section-title">AI Voiceover & Audio</div>
+<ul><li><strong>ElevenLabs:</strong> 10,000 free characters/month of the most realistic AI voices.</li><li><strong>Murf AI:</strong> 10-minute free trial of 120+ studio-quality voices.</li><li><strong>Suno AI:</strong> 50 free AI music credits daily — background music for every video.</li></ul></div>
+<div class="art-section"><div class="art-section-title">Thumbnails & Graphics</div>
+<ul><li><strong>Canva:</strong> Free tier covers 95% of thumbnail creation needs.</li><li><strong>Adobe Express:</strong> AI background removal and Firefly image generation, free.</li><li><strong>Remove.bg:</strong> Free background removal for thumbnail portraits.</li></ul></div>
+<div class="art-section"><div class="art-section-title">SEO & Growth</div>
+<ul><li><strong>VidIQ:</strong> Free YouTube SEO tools — keyword research, competitor analysis, title scoring.</li><li><strong>TubeBuddy:</strong> Free tier with thumbnail A/B testing and SEO suggestions.</li><li><strong>ChatGPT:</strong> Generate video ideas, scripts, titles, and descriptions at scale.</li></ul></div>
+<div class="art-section"><div class="art-section-title">The $0 Creator Stack</div>
+<p>CapCut + ElevenLabs free + Suno AI free + Canva free + VidIQ free = a complete professional YouTube channel setup at literally zero dollars. Start there before spending anything.</p></div>`
+  },
+  'chatgpt-vs-claude': {
+    readTime:'7 min read', date:'March 2026', category:'AI Comparison', catColor:'#f59e0b', emoji:'⚖️',
+    related:['best-ai-tools','free-ai-tools','ai-for-students'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>ChatGPT, Claude, and Gemini are the three most popular AI assistants in 2026. Each has genuine strengths and real weaknesses. This is an honest, tested comparison — not marketing.</p></div>
+<div class="art-section"><div class="art-section-title">Head-to-Head Comparison</div>
+<table><tr><th>Feature</th><th>ChatGPT</th><th>Claude</th><th>Gemini</th></tr>
+<tr><td>General Knowledge</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td></tr>
+<tr><td>Creative Writing</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td></tr>
+<tr><td>Coding Help</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td></tr>
+<tr><td>Real-time Search</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td>Long Documents</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td>Free Tier Quality</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td>Image Generation</td><td>⭐⭐⭐⭐⭐</td><td>❌</td><td>⭐⭐⭐⭐</td></tr></table></div>
+<div class="art-section"><div class="art-section-title">When to Use Each</div>
+<p><strong>Use ChatGPT when:</strong> You need image generation, coding with execution, plugin ecosystem, or the most widely-supported AI tool.</p>
+<p><strong>Use Claude when:</strong> You're writing long-form content, analyzing large documents, need nuanced responses, or want the most thoughtful AI assistant.</p>
+<p><strong>Use Gemini when:</strong> You want the best free tier, real-time Google search integration, or you're already in the Google ecosystem (Docs, Gmail, Drive).</p></div>
+<div class="art-section"><div class="art-section-title">The Honest Verdict</div>
+<p>In 2026, all three are genuinely excellent. The differences matter less than they did a year ago. The best AI is the one you'll use consistently. Try all three free tiers and stick with whichever feels most natural to you.</p></div>`
+  },
+
+  'ai-earn-online': {
+    readTime:'8 min read', date:'March 2026', category:'Earn with AI', catColor:'#fbbf24', emoji:'💰',
+    related:['ai-freelancing-guide','ai-youtube-guide','ai-startup-guide'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>AI has fundamentally changed what's possible for online earning. In 2026, anyone with a smartphone and internet connection can start generating income using free AI tools — no prior experience, no big investment required.</p>
+<p>This guide covers the 10 most proven ways people are earning online with AI right now, with honest earning estimates and exactly which tools to use.</p></div>
+<div class="art-section"><div class="art-section-title">10 Proven Ways to Earn with AI</div>
+<table><tr><th>#</th><th>Method</th><th>Monthly Earning (Beginner)</th><th>AI Tools Used</th></tr>
+<tr><td>1</td><td>AI Content Writing</td><td>$300–$1,500</td><td>ChatGPT, Jasper, Grammarly</td></tr>
+<tr><td>2</td><td>AI Graphic Design</td><td>$200–$1,000</td><td>Canva AI, Midjourney, Kittl</td></tr>
+<tr><td>3</td><td>Faceless YouTube</td><td>$200–$3,000</td><td>InVideo AI, ElevenLabs, CapCut</td></tr>
+<tr><td>4</td><td>Affiliate Marketing Blog</td><td>$100–$5,000</td><td>ChatGPT, Surfer SEO, WordPress</td></tr>
+<tr><td>5</td><td>AI Chatbot Setup Service</td><td>$500–$2,000</td><td>ManyChat, Chatfuel, Voiceflow</td></tr>
+<tr><td>6</td><td>AI Video Editing</td><td>$300–$1,500</td><td>CapCut AI, Descript, Veed.io</td></tr>
+<tr><td>7</td><td>Print-on-Demand Design</td><td>$100–$2,000</td><td>Midjourney, Kittl, Canva AI</td></tr>
+<tr><td>8</td><td>SEO Content Agency</td><td>$1,000–$10,000</td><td>Surfer SEO, ChatGPT, Ahrefs</td></tr>
+<tr><td>9</td><td>AI Voiceover Services</td><td>$200–$1,000</td><td>ElevenLabs, Murf AI, Play.ht</td></tr>
+<tr><td>10</td><td>AI Course Creation</td><td>$500–$5,000</td><td>ChatGPT, Canva, Teachable</td></tr>
+</table></div>
+<div class="art-section"><div class="art-section-title">The Fastest Path to Your First $100</div>
+<p>The quickest way to earn your first money online with AI is through freelancing. Here's the exact 7-day plan:</p>
+<ul><li><strong>Day 1–2:</strong> Pick one skill — AI content writing or AI thumbnail design. Create 3 sample pieces using free AI tools.</li>
+<li><strong>Day 3:</strong> Create a free Fiverr account. Write a gig description using ChatGPT. Price your first gig at $10–$15.</li>
+<li><strong>Day 4–5:</strong> Apply to 10 relevant jobs on Upwork with AI-written personalized proposals.</li>
+<li><strong>Day 6–7:</strong> Deliver your first order fast, ask for a 5-star review, then raise your price.</li></ul>
+<p>Thousands of people earn their first $100 online within 7–14 days following this exact process.</p></div>
+<div class="art-section"><div class="art-section-title">The Golden Rule</div>
+<p>Don't try to do everything at once. Pick ONE method, master it with AI tools, get your first 5 paying clients, then expand. Consistency beats strategy every time.</p></div>`
+  },
+
+  'blogging-with-ai': {
+    readTime:'9 min read', date:'March 2026', category:'Blogging Guide', catColor:'#34d399', emoji:'✍️',
+    related:['seo-guide-2026','chatgpt-blogging','ai-earn-online'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>Blogging remains one of the most powerful ways to build a passive income online in 2026. A well-built blog can generate income from ads, affiliate links, and digital products — 24 hours a day, even while you sleep.</p>
+<p>AI has dramatically shortened the time to build a successful blog. Tasks that took weeks now take hours. This guide walks you through the complete process.</p></div>
+<div class="art-section"><div class="art-section-title">Step 1 — Choose Your Niche</div>
+<p>Your blog niche is the specific topic you'll cover. The best niches are specific, profitable, and something you can write about consistently.</p>
+<table><tr><th>Niche</th><th>Monetization Potential</th><th>Competition</th></tr>
+<tr><td>AI Tools &amp; Technology</td><td>Very High</td><td>Medium</td></tr>
+<tr><td>Personal Finance</td><td>Very High</td><td>High</td></tr>
+<tr><td>Health &amp; Wellness</td><td>High</td><td>High</td></tr>
+<tr><td>Online Earning</td><td>Very High</td><td>Medium</td></tr>
+<tr><td>Education &amp; Learning</td><td>High</td><td>Medium</td></tr>
+</table></div>
+<div class="art-section"><div class="art-section-title">Step 2 — Set Up Your Blog</div>
+<ul><li><strong>Domain:</strong> Buy a .com domain from Namecheap ($8–$12/year)</li>
+<li><strong>Hosting:</strong> Hostinger or SiteGround ($3–$5/month)</li>
+<li><strong>Platform:</strong> WordPress.org — free and powers 43% of the internet</li>
+<li><strong>Theme:</strong> Astra or GeneratePress — fast, free, SEO-optimized</li></ul></div>
+<div class="art-section"><div class="art-section-title">Step 3 — Write with AI</div>
+<p>Use this AI writing workflow for every article:</p>
+<ul><li><strong>Research:</strong> Ask Perplexity AI for latest data and statistics on your topic</li>
+<li><strong>Outline:</strong> Ask ChatGPT to create a detailed outline with H2 and H3 headings</li>
+<li><strong>Draft:</strong> Write each section using ChatGPT, then edit in your own voice</li>
+<li><strong>SEO:</strong> Run through Surfer SEO or RankMath for keyword optimization</li>
+<li><strong>Proofread:</strong> Grammarly final check before publishing</li></ul>
+<p>With this workflow, you can publish one high-quality SEO article per day.</p></div>
+<div class="art-section"><div class="art-section-title">How Blogs Make Money</div>
+<table><tr><th>Method</th><th>When to Start</th><th>Monthly Potential</th></tr>
+<tr><td>Google AdSense</td><td>After 1,000 visitors/month</td><td>$2–$10 per 1,000 views</td></tr>
+<tr><td>Affiliate Marketing</td><td>From day one</td><td>$100–$10,000+</td></tr>
+<tr><td>Sponsored Posts</td><td>After 5,000 visitors/month</td><td>$100–$500 per post</td></tr>
+<tr><td>Digital Products</td><td>From day one</td><td>Unlimited</td></tr>
+</table></div>`
+  },
+
+  'ai-productivity-tools': {
+    readTime:'7 min read', date:'March 2026', category:'Productivity', catColor:'#a78bfa', emoji:'⚡',
+    related:['best-ai-tools','free-ai-tools','chatgpt-blogging'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>The average knowledge worker spends 60% of their time on tasks that AI can now do in seconds — writing emails, summarizing documents, creating content, and managing information. The right AI productivity stack can give you back 10+ hours every week.</p></div>
+<div class="art-section"><div class="art-section-title">The Ultimate AI Productivity Stack</div>
+<table><tr><th>Task</th><th>Best AI Tool</th><th>Time Saved</th><th>Cost</th></tr>
+<tr><td>Writing &amp; Editing</td><td>ChatGPT + Grammarly</td><td>2–3 hrs/day</td><td>Free</td></tr>
+<tr><td>Note-Taking &amp; Planning</td><td>Notion AI</td><td>1–2 hrs/day</td><td>Free tier</td></tr>
+<tr><td>Email Management</td><td>Superhuman / Gmail AI</td><td>45 min/day</td><td>Free tier</td></tr>
+<tr><td>Meeting Notes</td><td>Otter.ai</td><td>1 hr/meeting</td><td>Free tier</td></tr>
+<tr><td>Research</td><td>Perplexity AI</td><td>1–2 hrs/day</td><td>Free</td></tr>
+<tr><td>Scheduling</td><td>Calendly</td><td>30 min/day</td><td>Free</td></tr>
+<tr><td>Automation</td><td>Make.com / Zapier</td><td>Varies</td><td>Free tier</td></tr>
+</table></div>
+<div class="art-section"><div class="art-section-title">The 3 AI Tools Everyone Should Use Daily</div>
+<ul><li><strong>ChatGPT (free):</strong> Your AI thinking partner. Use it for drafting emails, summarizing articles, brainstorming ideas, explaining complex topics, and writing any kind of content. Most people only use 10% of its potential.</li>
+<li><strong>Notion AI:</strong> Organize all your notes, projects, and knowledge in one place. Notion AI summarizes meeting notes, generates action items, and answers questions across your entire knowledge base.</li>
+<li><strong>Grammarly (free):</strong> Installs in your browser and silently improves every word you type — emails, reports, social posts, everything. The free version eliminates 95% of writing errors.</li></ul></div>
+<div class="art-section"><div class="art-section-title">The 10-Minute Morning AI Routine</div>
+<p>Start each workday with this AI-powered routine to stay focused and productive:</p>
+<ul><li>2 min: Ask ChatGPT to help you prioritize your top 3 tasks for the day</li>
+<li>3 min: Use Notion AI to review yesterday's notes and extract any missed action items</li>
+<li>5 min: Use Perplexity AI to scan for any important news in your industry</li></ul>
+<p>This simple routine replaces 45+ minutes of unfocused inbox-checking and meeting prep.</p></div>`
+  },
+
+  'affiliate-marketing-ai': {
+    readTime:'8 min read', date:'March 2026', category:'Affiliate Marketing', catColor:'#f59e0b', emoji:'💸',
+    related:['ai-earn-online','blogging-with-ai','seo-guide-2026'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>Affiliate marketing is one of the most scalable online income models — you promote someone else's product, a customer buys it through your link, and you earn a commission. You never handle inventory, customer service, or product creation.</p>
+<p>AI tools have made affiliate marketing dramatically more accessible. You can now create content, build audiences, and drive traffic faster than ever before — even without a large following or technical skills.</p></div>
+<div class="art-section"><div class="art-section-title">How Affiliate Marketing Works</div>
+<ul><li>Join an affiliate program (Amazon, ShareASale, AI tool programs)</li>
+<li>Get your unique tracking link</li>
+<li>Promote through your blog, YouTube, or social media</li>
+<li>Earn 5–50% commission on every sale through your link</li></ul></div>
+<div class="art-section"><div class="art-section-title">Best Affiliate Programs for AI Niches</div>
+<table><tr><th>Program</th><th>Commission</th><th>Cookie Duration</th></tr>
+<tr><td>Jasper AI</td><td>30% recurring</td><td>30 days</td></tr>
+<tr><td>Semrush</td><td>$200 per sale</td><td>120 days</td></tr>
+<tr><td>Canva</td><td>$36 per subscriber</td><td>30 days</td></tr>
+<tr><td>Hostinger</td><td>60% per sale</td><td>30 days</td></tr>
+<tr><td>Amazon Associates</td><td>1–10%</td><td>24 hours</td></tr>
+<tr><td>ClickBank</td><td>50–75%</td><td>60 days</td></tr>
+</table></div>
+<div class="art-section"><div class="art-section-title">AI-Powered Affiliate Strategy</div>
+<ul><li><strong>Content creation:</strong> Use ChatGPT to write detailed product reviews, comparison articles, and "best of" listicles targeting buyer-intent keywords.</li>
+<li><strong>SEO optimization:</strong> Use Surfer SEO to optimize every article for the exact keywords buyers search before making a purchase.</li>
+<li><strong>Email list:</strong> Use ChatGPT to write email sequences that warm up subscribers and naturally recommend affiliate products.</li>
+<li><strong>YouTube reviews:</strong> Use ElevenLabs for voiceover and CapCut AI for editing — create product review videos without showing your face.</li></ul>
+<p>AI recurring commissions are especially powerful — if a user signs up for a $100/month tool through your link at 30% commission, you earn $30 every month they stay subscribed.</p></div>`
+  },
+
+  'seo-guide-2026': {
+    readTime:'10 min read', date:'March 2026', category:'SEO Guide', catColor:'#22d3ee', emoji:'📈',
+    related:['blogging-with-ai','chatgpt-blogging','affiliate-marketing-ai'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>SEO (Search Engine Optimization) is the practice of making your website appear higher in Google search results. When someone searches for a topic you've written about, good SEO means they find you — not your competitor.</p>
+<p>In 2026, AI tools have made SEO more accessible than ever. You no longer need to be an SEO expert to rank on Google's first page.</p></div>
+<div class="art-section"><div class="art-section-title">The 4 Pillars of SEO</div>
+<table><tr><th>Pillar</th><th>What It Means</th><th>AI Tool to Use</th></tr>
+<tr><td>Keyword Research</td><td>Finding what people actually search for</td><td>Ahrefs, Ubersuggest, SEMrush</td></tr>
+<tr><td>On-Page SEO</td><td>Optimizing your content for target keywords</td><td>Surfer SEO, RankMath, NeuronWriter</td></tr>
+<tr><td>Technical SEO</td><td>Making sure Google can crawl your site</td><td>Screaming Frog, Google Search Console</td></tr>
+<tr><td>Link Building</td><td>Getting other websites to link to yours</td><td>Ahrefs, BuzzSumo, Hunter.io</td></tr>
+</table></div>
+<div class="art-section"><div class="art-section-title">Keyword Research Step by Step</div>
+<ul><li><strong>Start broad:</strong> Enter your main topic into Ubersuggest (free) or Ahrefs</li>
+<li><strong>Find long-tail keywords:</strong> Target 3–5 word phrases with 100–1,000 monthly searches</li>
+<li><strong>Check difficulty:</strong> Aim for keywords with difficulty under 30 when starting out</li>
+<li><strong>Analyze intent:</strong> Make sure the keyword matches what your content delivers</li></ul>
+<p>Use AnswerThePublic to find questions people ask about your topic — these make perfect H2 headings and FAQ sections.</p></div>
+<div class="art-section"><div class="art-section-title">On-Page SEO Checklist</div>
+<ul><li>✅ Target keyword in the title (first 60 characters)</li>
+<li>✅ Target keyword in the first 100 words</li>
+<li>✅ Target keyword in at least one H2 heading</li>
+<li>✅ Meta description includes keyword (under 160 characters)</li>
+<li>✅ Images have descriptive alt text with keyword</li>
+<li>✅ Article is at least 1,500 words</li>
+<li>✅ Internal links to 2–3 related articles on your site</li>
+<li>✅ External links to 1–2 authoritative sources</li></ul></div>
+<div class="art-section"><div class="art-section-title">AI SEO Workflow</div>
+<p>Use this AI-powered SEO workflow for every article you publish:</p>
+<ul><li>Perplexity AI → Research the topic and gather up-to-date facts</li>
+<li>Ahrefs/Ubersuggest → Find your target keyword and related terms</li>
+<li>ChatGPT → Generate a keyword-optimized title and meta description</li>
+<li>Surfer SEO → Write/optimize the article with real-time competitor analysis</li>
+<li>Google Search Console → Track rankings after publishing</li></ul></div>`
+  },
+
+  'chatgpt-blogging': {
+    readTime:'7 min read', date:'March 2026', category:'ChatGPT Guide', catColor:'#10a37f', emoji:'🤖',
+    related:['blogging-with-ai','seo-guide-2026','ai-productivity-tools'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>ChatGPT has changed blogging forever. What used to take a professional writer 6–8 hours to research, outline, and write can now be done in 45–60 minutes with ChatGPT as your AI writing partner.</p>
+<p>This guide covers the complete ChatGPT blogging workflow — from finding topics to publishing a fully optimized, engaging article.</p></div>
+<div class="art-section"><div class="art-section-title">The ChatGPT Blogging Workflow</div>
+<table><tr><th>Step</th><th>Task</th><th>ChatGPT Prompt</th><th>Time</th></tr>
+<tr><td>1</td><td>Topic Research</td><td>"Give me 20 blog post ideas for a [niche] blog targeting [audience]"</td><td>5 min</td></tr>
+<tr><td>2</td><td>Outline</td><td>"Create a detailed SEO article outline for '[topic]' with H2 and H3 headings"</td><td>5 min</td></tr>
+<tr><td>3</td><td>Introduction</td><td>"Write an engaging 150-word introduction for this article about [topic]"</td><td>5 min</td></tr>
+<tr><td>4</td><td>Main Sections</td><td>"Write 300 words for the section titled '[H2 heading]'"</td><td>20 min</td></tr>
+<tr><td>5</td><td>Conclusion</td><td>"Write a strong conclusion with a clear call-to-action for this article"</td><td>5 min</td></tr>
+<tr><td>6</td><td>Meta Description</td><td>"Write an SEO meta description under 160 characters for this article"</td><td>2 min</td></tr>
+</table></div>
+<div class="art-section"><div class="art-section-title">Important Rules for AI Blogging</div>
+<ul><li><strong>Always edit AI output:</strong> Add your personal experience, opinions, and examples. Google rewards original insights — not pure AI text.</li>
+<li><strong>Fact-check everything:</strong> ChatGPT can hallucinate statistics and dates. Always verify key claims with a quick Google search.</li>
+<li><strong>Add your voice:</strong> Rewrite AI sentences to sound like you. Your unique perspective is what builds a loyal audience.</li>
+<li><strong>Use AI for speed, not replacement:</strong> The best blogs use AI to write faster, not to replace human thinking entirely.</li></ul></div>
+<div class="art-section"><div class="art-section-title">ChatGPT Prompts That Actually Work</div>
+<ul><li>"Act as an SEO expert. Write a 2,000-word article about [topic] optimized for the keyword '[keyword]'. Include an intro, 5 H2 sections with H3 subheadings, and a conclusion."</li>
+<li>"Rewrite this paragraph to be more engaging and conversational, like a knowledgeable friend explaining it: [paste paragraph]"</li>
+<li>"What are 10 questions beginners ask about [topic]? Turn these into FAQ section with answers."</li></ul></div>`
+  },
+
+  'students-earn-online': {
+    readTime:'8 min read', date:'March 2026', category:'Students', catColor:'#a78bfa', emoji:'🎓',
+    related:['ai-earn-online','ai-freelancing-guide','free-ai-tools'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>As a student, you have three things that are incredibly valuable for online earning: time, digital skills, and access to free AI tools. In 2026, students around the world are earning $200–$2,000/month using AI — without spending any money to start.</p>
+<p>This guide covers the most realistic ways for students to start earning online today, using only free tools.</p></div>
+<div class="art-section"><div class="art-section-title">Best Ways for Students to Earn with AI</div>
+<table><tr><th>Method</th><th>Skills Needed</th><th>Monthly Earnings</th><th>Time to First Payment</th></tr>
+<tr><td>Content Writing on Fiverr</td><td>Writing + ChatGPT</td><td>$200–$800</td><td>1–2 weeks</td></tr>
+<tr><td>Thumbnail Design</td><td>Canva AI basics</td><td>$150–$600</td><td>1 week</td></tr>
+<tr><td>Social Media Management</td><td>Social media + AI tools</td><td>$200–$1,000</td><td>2–3 weeks</td></tr>
+<tr><td>AI Tutor/Notes Service</td><td>Your subject knowledge</td><td>$100–$500</td><td>1 week</td></tr>
+<tr><td>Faceless YouTube</td><td>Basic video editing</td><td>$100–$2,000</td><td>2–3 months</td></tr>
+</table></div>
+<div class="art-section"><div class="art-section-title">The Student Advantage</div>
+<p>Students have unique advantages over adult earners:</p>
+<ul><li><strong>Deep niche knowledge:</strong> You're already an expert in your subject area. Create study guides, notes, and tutorials that other students will pay for.</li>
+<li><strong>Time flexibility:</strong> Study during free hours, earn during free hours — no 9-to-5 commitment required.</li>
+<li><strong>Low expenses:</strong> You don't need to replace a salary. Even $200/month is life-changing when you have minimal expenses.</li>
+<li><strong>Digital nativity:</strong> You already use the apps and platforms where clients are looking for help.</li></ul></div>
+<div class="art-section"><div class="art-section-title">The Free AI Toolkit for Students</div>
+<ul><li><strong>ChatGPT (free):</strong> Research, writing, summarizing — use it for client work and your own studies</li>
+<li><strong>Canva (free):</strong> Design thumbnails, social posts, presentations, and portfolios</li>
+<li><strong>Grammarly (free):</strong> Polish every piece of work before delivering to clients</li>
+<li><strong>Fiverr (free to join):</strong> Your marketplace for finding first clients</li>
+<li><strong>CapCut (free):</strong> AI video editing for YouTube and social media content</li></ul>
+<p>Total investment: $0. All of these tools are free to start. You only need to invest your time.</p></div>`
+  },
+
+  'ai-tools-2026-new': {
+    readTime:'8 min read', date:'March 2026', category:'New AI Tools', catColor:'#ff6b35', emoji:'🆕',
+    related:['best-ai-tools','free-ai-tools','ai-productivity-tools'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>2026 has seen an explosion of powerful new AI tools. While ChatGPT and Midjourney still dominate, a new generation of specialized tools is changing what's possible — and many offer surprisingly generous free tiers.</p>
+<p>Here are 20 new AI tools you should try in 2026, with honest assessments of who they're best for.</p></div>
+<div class="art-section"><div class="art-section-title">New AI Tools by Category</div>
+<h3>🎬 Video Generation</h3>
+<ul><li><strong>Sora (OpenAI):</strong> 1-minute photorealistic videos from text. Requires ChatGPT Plus.</li>
+<li><strong>Veo 2 (Google):</strong> Best physics simulation in AI video. Available via Google One.</li>
+<li><strong>Hailuo AI:</strong> Fastest generation time, realistic human movement. 20 free credits/day.</li></ul>
+<h3>🎵 Music Generation</h3>
+<ul><li><strong>Suno AI:</strong> Full songs with vocals in 30 seconds. 50 free credits/day — 10 songs.</li>
+<li><strong>Udio:</strong> Studio-quality music from ex-Google DeepMind team. Free plan available.</li></ul>
+<h3>💻 Coding</h3>
+<ul><li><strong>Bolt.new:</strong> Full-stack apps from a text prompt in the browser. No setup needed.</li>
+<li><strong>Cursor:</strong> VS Code with AI that understands your entire codebase. 1M+ developers.</li></ul>
+<h3>🔍 Research</h3>
+<ul><li><strong>NotebookLM (Google):</strong> Upload PDFs and chat with them. Generates AI podcast from your docs. Completely free.</li>
+<li><strong>Perplexity AI:</strong> Real-time AI search with citations. 15M+ users. Unlimited free searches.</li></ul>
+<h3>🎨 Image Generation</h3>
+<ul><li><strong>Adobe Firefly:</strong> 100% commercially safe images. 25 free credits/month.</li>
+<li><strong>Ideogram 2.0:</strong> Best for text in images — perfect for thumbnails and posters.</li></ul></div>
+<div class="art-section"><div class="art-section-title">The Rule for Trying New AI Tools</div>
+<p>With hundreds of new tools launching every month, it's easy to get distracted. Follow this rule: <strong>Master 3 core tools before adding any new ones.</strong> ChatGPT + Canva + one specialist tool covers 90% of professional AI use cases.</p></div>`
+  },
+
+  'passive-income-ai': {
+    readTime:'9 min read', date:'March 2026', category:'Passive Income', catColor:'#fbbf24', emoji:'💰',
+    related:['ai-earn-online','affiliate-marketing-ai','ai-youtube-guide'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>Passive income means earning money without actively working for each dollar — you set something up once and it keeps paying you. AI has made building passive income streams faster and more accessible than at any point in history.</p>
+<p>Here are 8 passive income streams you can build using AI tools in 2026, with honest timelines and effort estimates.</p></div>
+<div class="art-section"><div class="art-section-title">8 AI-Powered Passive Income Streams</div>
+<table><tr><th>Stream</th><th>Setup Time</th><th>Monthly Passive Income</th><th>Key AI Tools</th></tr>
+<tr><td>Affiliate Blog</td><td>3–6 months</td><td>$200–$10,000+</td><td>ChatGPT, Surfer SEO</td></tr>
+<tr><td>Faceless YouTube</td><td>3–6 months</td><td>$200–$5,000</td><td>InVideo AI, ElevenLabs</td></tr>
+<tr><td>Print-on-Demand</td><td>2–4 weeks</td><td>$100–$2,000</td><td>Midjourney, Kittl</td></tr>
+<tr><td>Stock AI Images</td><td>1–2 weeks</td><td>$50–$500</td><td>Midjourney, Adobe Firefly</td></tr>
+<tr><td>Digital Products</td><td>2–4 weeks</td><td>$200–$5,000</td><td>ChatGPT, Canva</td></tr>
+<tr><td>AI Music Licensing</td><td>1–2 weeks</td><td>$50–$500</td><td>Suno AI, LALAL.AI</td></tr>
+<tr><td>Online Course</td><td>4–8 weeks</td><td>$500–$10,000</td><td>ChatGPT, Canva</td></tr>
+<tr><td>Newsletter</td><td>4–12 weeks</td><td>$200–$5,000</td><td>ChatGPT, Beehiiv</td></tr>
+</table></div>
+<div class="art-section"><div class="art-section-title">The Most Realistic Passive Income Path</div>
+<p>For most beginners, <strong>Print-on-Demand</strong> is the fastest path to passive income with AI:</p>
+<ul><li>Use Midjourney or Kittl to create original t-shirt and mug designs (free or $10/month)</li>
+<li>Upload to Redbubble or Merch by Amazon (free to join)</li>
+<li>Set your price and Redbubble handles printing, shipping, and customer service</li>
+<li>You earn $2–$10 per sale with zero ongoing work</li></ul>
+<p>Create 50 high-quality designs in your first month. Even if only 20% sell, that's 10 products each making $5/month = $50/month for zero ongoing work. Scale from there.</p></div>`
+  },
+
+  'ai-social-media': {
+    readTime:'8 min read', date:'March 2026', category:'Social Media', catColor:'#ec4899', emoji:'📱',
+    related:['ai-earn-online','ai-for-youtubers','ai-youtube-guide'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>Social media growth used to require hours of daily content creation. AI tools have changed that completely — you can now plan, create, design, write captions, and schedule a full week of content in under 2 hours.</p>
+<p>This guide covers the complete AI social media stack for growing on Instagram, TikTok, LinkedIn, and YouTube in 2026.</p></div>
+<div class="art-section"><div class="art-section-title">The AI Social Media Stack</div>
+<table><tr><th>Task</th><th>Best AI Tool</th><th>Free?</th></tr>
+<tr><td>Content Ideas</td><td>ChatGPT</td><td>✅ Free</td></tr>
+<tr><td>Post Graphics</td><td>Canva AI</td><td>✅ Free</td></tr>
+<tr><td>Caption Writing</td><td>Predis.ai</td><td>✅ Free tier</td></tr>
+<tr><td>Hashtag Research</td><td>Flick AI</td><td>✅ Free trial</td></tr>
+<tr><td>Reels/Shorts Editing</td><td>CapCut AI</td><td>✅ Free</td></tr>
+<tr><td>Auto Captions</td><td>Submagic</td><td>✅ Free tier</td></tr>
+<tr><td>Scheduling</td><td>Buffer AI</td><td>✅ Free tier</td></tr>
+<tr><td>DM Automation</td><td>ManyChat</td><td>✅ Free plan</td></tr>
+</table></div>
+<div class="art-section"><div class="art-section-title">The 2-Hour Weekly Content System</div>
+<p>Use this AI-powered system every Monday to prepare all content for the week:</p>
+<ul><li><strong>20 min:</strong> Ask ChatGPT for 7 content ideas based on trending topics in your niche</li>
+<li><strong>30 min:</strong> Create 7 graphics in Canva AI using templates</li>
+<li><strong>20 min:</strong> Write captions using Predis.ai (generates caption + hashtags together)</li>
+<li><strong>20 min:</strong> Edit one Reel/Short using CapCut AI auto-edit features</li>
+<li><strong>10 min:</strong> Schedule everything in Buffer for the week</li>
+<li><strong>20 min:</strong> Respond to comments from last week — engagement is critical</li></ul></div>
+<div class="art-section"><div class="art-section-title">Growth Formula That Works</div>
+<p>The accounts that grow fastest in 2026 follow this formula: <strong>Consistency + Value + Engagement.</strong> Post 5 times per week minimum. Every post should teach, entertain, or inspire. Reply to every comment in the first hour — the algorithm rewards engagement heavily.</p>
+<p>AI handles the content creation so you have time to focus on the engagement side — which is what actually builds a community.</p></div>`
+  },
+
+  'ai-freelancing-guide': {
+    readTime:'12 min read', date:'March 2026', category:'Freelancing Guide', catColor:'#22d3ee', emoji:'💼',
+    related:['earn-with-ai','ai-startup-guide','best-ai-tools'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>Freelancing is one of the most powerful ways to earn money online in 2026. Instead of working a 9-to-5 job for one company, freelancers work on projects for multiple clients — on their own schedule, from anywhere in the world.</p>
+<p>Starting a freelancing career used to be hard: you needed skills, a professional portfolio, and the ability to find clients — all at once. AI tools have changed all three. Today, you can build skills faster, create a portfolio from scratch, write professional client proposals, and deliver higher-quality work in less time.</p>
+<p>This step-by-step guide covers everything you need to go from zero to your first paid freelancing client using AI tools.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 1 — What Is Freelancing?</div>
+<p>Freelancing means selling your skills to clients on a project-by-project basis. You are not an employee — you are an independent professional who chooses your own clients, sets your own rates, and works on your own terms.</p>
+<h3>Common Freelancing Services</h3>
+<table><tr><th>Service</th><th>Average Rate (Beginner)</th><th>Average Rate (Experienced)</th></tr>
+<tr><td>Logo Design</td><td>$15–$50 per logo</td><td>$200–$2,000 per logo</td></tr>
+<tr><td>Content Writing</td><td>$0.03–$0.05 per word</td><td>$0.10–$0.50 per word</td></tr>
+<tr><td>Video Editing</td><td>$20–$50 per video</td><td>$100–$500 per video</td></tr>
+<tr><td>Web Development</td><td>$200–$500 per site</td><td>$1,000–$10,000 per site</td></tr>
+<tr><td>Social Media Management</td><td>$100–$300/month</td><td>$500–$3,000/month</td></tr>
+<tr><td>SEO Services</td><td>$200–$500/month</td><td>$1,000–$5,000/month</td></tr>
+</table>
+<p>The key advantage of freelancing: your income is directly tied to the quality and volume of work you deliver — not a fixed salary. AI tools let you deliver more, faster.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 2 — Choose Your Freelancing Niche</div>
+<p>The biggest mistake new freelancers make is offering too many services. Specialists earn 3–5x more than generalists because clients pay a premium for expertise.</p>
+<h3>Best AI-Powered Freelancing Niches in 2026</h3>
+<table><tr><th>Niche</th><th>AI Tools Used</th><th>Demand</th></tr>
+<tr><td>AI-Assisted Content Writing</td><td>ChatGPT, Jasper, Surfer SEO</td><td>🔥 Very High</td></tr>
+<tr><td>Graphic & Logo Design</td><td>Canva AI, Midjourney, Kittl</td><td>🔥 Very High</td></tr>
+<tr><td>Video Editing & Reels</td><td>CapCut AI, Descript, Veed.io</td><td>🔥 Very High</td></tr>
+<tr><td>AI Chatbot Setup</td><td>ManyChat, Chatfuel, Voiceflow</td><td>📈 High</td></tr>
+<tr><td>SEO & Blog Writing</td><td>Surfer SEO, ChatGPT, Ahrefs</td><td>📈 High</td></tr>
+<tr><td>AI Thumbnail Design</td><td>Canva, Midjourney, Leonardo AI</td><td>📈 High</td></tr>
+<tr><td>Web Design (No-Code)</td><td>Framer, Webflow, Durable</td><td>📈 High</td></tr>
+</table>
+<h3>How to Choose Your Niche</h3>
+<p>Ask ChatGPT: <em>"What are the highest-demand freelancing services on Fiverr and Upwork in 2026 that can be done faster using AI tools?"</em></p>
+<p>The best niche for you sits at the intersection of: <strong>what you enjoy + what's in demand + what AI can help you do well.</strong></p></div>
+
+<div class="art-section"><div class="art-section-title">Step 3 — Learn Your Skills Faster With AI</div>
+<p>You don't need a degree or years of training to start freelancing. AI tools can compress months of learning into days — by giving you instant answers, practice exercises, and real-time feedback.</p>
+<h3>AI Learning Strategy</h3>
+<table><tr><th>What You Want to Learn</th><th>How to Use AI</th><th>Time to Basic Proficiency</th></tr>
+<tr><td>Logo Design</td><td>Ask ChatGPT to explain design principles, use Canva AI for practice</td><td>1–2 weeks</td></tr>
+<tr><td>Content Writing</td><td>Use Claude to learn structure, write with AI assistance, edit manually</td><td>3–5 days</td></tr>
+<tr><td>Video Editing</td><td>Learn CapCut on YouTube + AI auto-edit features for practice</td><td>1 week</td></tr>
+<tr><td>SEO</td><td>Ask Perplexity AI for SEO concepts, practice with Ubersuggest free</td><td>2 weeks</td></tr>
+<tr><td>Social Media Marketing</td><td>Use ChatGPT to learn strategy, practice with free Canva + Buffer</td><td>1 week</td></tr>
+</table>
+<p><strong>Best AI learning prompts:</strong></p>
+<ul>
+<li>"Teach me the fundamentals of [skill] as if I'm a complete beginner. Give me a 7-day learning plan."</li>
+<li>"Give me 5 practice exercises to improve my [skill] starting from zero."</li>
+<li>"Review my [writing/design description] and tell me specifically what to improve."</li>
+</ul></div>
+
+<div class="art-section"><div class="art-section-title">Step 4 — Build Your Portfolio With AI</div>
+<p>Clients don't hire you based on what you say you can do — they hire you based on proof of what you've already done. Your portfolio is that proof.</p>
+<p>Here's the good news: you don't need paid clients to build a portfolio. You can create sample work using AI tools and present it as your best work.</p>
+<h3>How to Build a Portfolio With No Clients</h3>
+<table><tr><th>Service</th><th>What to Create</th><th>AI Tools to Use</th></tr>
+<tr><td>Logo Design</td><td>5 logos for fictional brands in different industries</td><td>Canva AI, Looka, Kittl</td></tr>
+<tr><td>Content Writing</td><td>3 SEO blog posts on popular topics in your niche</td><td>ChatGPT + manual editing</td></tr>
+<tr><td>Video Editing</td><td>2–3 edited videos (use free stock footage from Pexels)</td><td>CapCut AI, Descript</td></tr>
+<tr><td>Thumbnail Design</td><td>10 thumbnails for popular YouTube channels as redesigns</td><td>Canva AI, Midjourney</td></tr>
+<tr><td>Web Design</td><td>2 website concepts for fictional businesses</td><td>Framer AI, Wix ADI</td></tr>
+</table>
+<p>Once you have 5–8 strong samples, host them on a simple portfolio site using <strong>Carrd</strong> (free) or <strong>Behance</strong> (free). Your portfolio page is more important than any certificate.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 5 — Join Freelancing Platforms</div>
+<p>Freelancing platforms are the fastest way to find your first paying clients. They already have millions of buyers looking for exactly what you offer.</p>
+<h3>Best Platforms for Beginners</h3>
+<table><tr><th>Platform</th><th>Best For</th><th>How It Works</th></tr>
+<tr><td>Fiverr</td><td>Logo design, writing, video, thumbnails</td><td>You post a gig — clients come to you</td></tr>
+<tr><td>Upwork</td><td>Writing, development, marketing, SEO</td><td>You apply to client job postings</td></tr>
+<tr><td>Freelancer.com</td><td>All categories</td><td>You bid on projects</td></tr>
+<tr><td>PeoplePerHour</td><td>Design, writing, tech</td><td>Mix of gigs and proposals</td></tr>
+<tr><td>Toptal</td><td>Development, design (experienced only)</td><td>Application + screening process</td></tr>
+</table>
+<p><strong>Recommendation for beginners:</strong> Start on Fiverr. Create 3 focused gigs in your niche, optimize them with AI (see Step 6), and price them competitively to get your first 5-star reviews.</p>
+<h3>AI for Writing Your Profile</h3>
+<p>Ask ChatGPT: <em>"Write a professional Fiverr profile bio for a freelance [service] specialist. Make it client-focused, highlight results, and include relevant keywords. Keep it under 200 words."</em></p></div>
+
+<div class="art-section"><div class="art-section-title">Step 6 — Create SEO-Optimized Gigs</div>
+<p>On Fiverr and Upwork, your gig is your storefront. A well-optimized gig appears higher in search results and converts more visitors into buyers.</p>
+<h3>The Perfect Fiverr Gig Structure</h3>
+<table><tr><th>Element</th><th>What to Do</th><th>AI Prompt to Use</th></tr>
+<tr><td>Title</td><td>Include main keyword, be specific about the result</td><td>"Write 5 Fiverr gig titles for [service] with the keyword [keyword]"</td></tr>
+<tr><td>Description</td><td>Start with the client's problem, show your solution, list what's included</td><td>"Write a Fiverr gig description for [service]. Start with the client's pain point."</td></tr>
+<tr><td>Tags</td><td>Use all 5 tag slots with relevant keywords</td><td>"Give me 5 Fiverr tags for a [service] gig"</td></tr>
+<tr><td>Packages</td><td>Create 3 tiers: Basic, Standard, Premium</td><td>"Create 3 pricing tiers for a [service] freelancer starting at $[price]"</td></tr>
+<tr><td>FAQ</td><td>Answer the 5 questions buyers always ask</td><td>"Write 5 FAQ answers for a [service] Fiverr gig"</td></tr>
+</table>
+<h3>Example Before and After</h3>
+<p><strong>Bad title:</strong> "I will make logo"</p>
+<p><strong>Good title:</strong> "I will design a professional minimalist business logo with unlimited revisions"</p>
+<p>The difference? The good title tells the client exactly what they get, signals quality, and includes keywords buyers actually search for.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 7 — Win Clients With AI-Powered Proposals</div>
+<p>On Upwork and Freelancer.com, you win projects by sending proposals. Most freelancers send generic, copy-paste proposals — which is why a personalized, AI-assisted proposal stands out immediately.</p>
+<h3>The Winning Proposal Formula</h3>
+<ul>
+<li><strong>Line 1 — Show you read the brief:</strong> Reference something specific from their job post. This proves you're not sending a template.</li>
+<li><strong>Line 2–3 — Relevant experience:</strong> "I've done similar work for [type of client] and achieved [result]."</li>
+<li><strong>Line 4–5 — Your approach:</strong> Briefly explain HOW you would solve their specific problem.</li>
+<li><strong>Line 6 — Call to action:</strong> Invite them to discuss details. Keep it low-pressure.</li>
+</ul>
+<p><strong>AI Prompt for proposals:</strong> <em>"Write a short, personalized Upwork proposal for this job: [paste job description]. I am a [your service] freelancer. My approach would be [your method]. Keep it under 150 words, professional but conversational."</em></p>
+<p>Always personalize the AI output before sending. Add one specific detail from their job post that shows you actually read it.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 8 — Deliver Work Faster With AI</div>
+<p>The more efficiently you work, the more projects you can take on, the more you earn, and the better reviews you collect. AI is your unfair advantage here.</p>
+<h3>AI Tools by Freelancing Service</h3>
+<table><tr><th>Your Service</th><th>AI Tools to Speed Up Delivery</th><th>Time Saved</th></tr>
+<tr><td>Content Writing</td><td>ChatGPT for drafts, Surfer SEO for optimization, Grammarly for editing</td><td>60–70%</td></tr>
+<tr><td>Logo Design</td><td>Canva AI for concepts, Midjourney for inspiration, Kittl for text effects</td><td>40–50%</td></tr>
+<tr><td>Video Editing</td><td>CapCut AI auto-edit, Descript for filler word removal, Veed.io for captions</td><td>50–60%</td></tr>
+<tr><td>Social Media Posts</td><td>Predis.ai for complete post generation, Canva for graphics, Buffer for scheduling</td><td>70–80%</td></tr>
+<tr><td>Web Design</td><td>Framer AI or Durable for instant site generation, then customize</td><td>60–75%</td></tr>
+</table>
+<p>Important: Always review and improve AI output before delivering to clients. Deliver AI-assisted work — not raw AI output. Your value is in the curation, customization, and quality control.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 9 — Grow Your Freelancing Income</div>
+<p>Getting your first client is the hardest part. After that, growth comes from raising rates, getting repeat business, and expanding to new platforms.</p>
+<h3>Income Growth Strategy</h3>
+<ul>
+<li><strong>Raise rates after 10 reviews:</strong> Each 5-star review proves your value. After 10 reviews, increase your price by 20–30%. Repeat every 10 reviews.</li>
+<li><strong>Offer retainer packages:</strong> Instead of one-off projects, offer monthly packages. "5 social media posts/week for $300/month" beats "5 posts for $50" every time for stable income.</li>
+<li><strong>Upsell premium tiers:</strong> Always offer a Premium package that is 3–4x your Basic price. Some clients always want the best — give them the option.</li>
+<li><strong>Ask for referrals:</strong> After every successful project, ask: "Do you know anyone else who needs [your service]?" One question, consistent results.</li>
+<li><strong>Multi-platform presence:</strong> Be on Fiverr AND Upwork AND LinkedIn. More platforms = more visibility = more opportunities.</li>
+</ul></div>
+
+<div class="art-section"><div class="art-section-title">Step 10 — Turn Freelancing Into a Business</div>
+<p>Many successful freelancers eventually scale into a full agency — hiring other freelancers to handle work while they focus on client relationships and business development.</p>
+<h3>Freelancer to Agency Roadmap</h3>
+<table><tr><th>Stage</th><th>Monthly Revenue</th><th>What to Do</th></tr>
+<tr><td>Solo Freelancer</td><td>$0–$2,000</td><td>Master your niche, build reviews, raise rates</td></tr>
+<tr><td>Senior Freelancer</td><td>$2,000–$5,000</td><td>Specialize further, take bigger projects, build systems</td></tr>
+<tr><td>Micro Agency</td><td>$5,000–$15,000</td><td>Hire 1–2 subcontractors, take on more clients</td></tr>
+<tr><td>Full Agency</td><td>$15,000+</td><td>Dedicated team, recurring contracts, own website + brand</td></tr>
+</table>
+<p>Use AI to automate the operational parts of your business — client onboarding emails (ChatGPT + HubSpot), invoicing (Durable), content delivery tracking (Notion AI) — so you can focus on finding bigger clients and growing the team.</p></div>
+
+<div class="art-section"><div class="art-section-title">Conclusion</div>
+<p>Freelancing powered by AI is one of the best income opportunities available in 2026. You don't need a degree, a big investment, or years of experience to start. You need a skill, a portfolio, and the willingness to start.</p>
+<p>Here is the complete freelancing success formula:</p>
+<p style="text-align:center;font-size:1rem;font-weight:800;color:#22d3ee;padding:16px;background:rgba(34,211,238,0.07);border-radius:10px;border:1px solid rgba(34,211,238,0.2)">Niche → Skills → Portfolio → Platform → Gig → Clients → Quality → Growth</p>
+<p>The freelancers who succeed are not necessarily the most talented — they are the most consistent, the most professional, and the most willing to improve. AI handles the heavy lifting. You bring the judgment, creativity, and client relationships.</p>
+<p>Start with one skill. Create three portfolio samples. Post your first gig today. Your first client is closer than you think.</p></div>`
+  },
+  'ai-youtube-guide': {
+    readTime:'12 min read', date:'March 2026', category:'YouTube Guide', catColor:'#ff6b35', emoji:'🎬',
+    related:['ai-for-youtubers','earn-with-ai','ai-startup-guide'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>YouTube is the world's largest video platform, with over 2.7 billion monthly users watching billions of hours of content every day. People are building full-time careers on YouTube — and AI has made starting and growing a channel faster and easier than ever before.</p>
+<p>Previously, running a YouTube channel required separate skills for video editing, scriptwriting, thumbnail design, and SEO research. Today, AI tools can handle all of these — even if you've never made a video before.</p>
+<p>This complete guide walks you through every step of starting and growing a YouTube channel using AI tools in 2026.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 1 — Choose Your YouTube Niche</div>
+<p>Before you record a single video, you need to choose your niche — the specific topic your channel will focus on. This is the most important decision you'll make as a YouTuber.</p>
+<p>Channels that cover everything grow slowly. Channels focused on one niche grow fast because YouTube's algorithm knows who to recommend your videos to.</p>
+<h3>Popular YouTube Niches in 2026</h3>
+<table><tr><th>Niche</th><th>Competition</th><th>Earning Potential</th></tr>
+<tr><td>Tech Reviews & Tutorials</td><td>High</td><td>Very High</td></tr>
+<tr><td>Personal Finance & Investing</td><td>Medium</td><td>Very High</td></tr>
+<tr><td>AI Tools & Tutorials</td><td>Medium</td><td>High</td></tr>
+<tr><td>Motivation & Self-Improvement</td><td>High</td><td>High</td></tr>
+<tr><td>Educational Explainers</td><td>Medium</td><td>High</td></tr>
+<tr><td>Faceless Story Channels</td><td>Low–Medium</td><td>Medium–High</td></tr>
+<tr><td>Gaming</td><td>Very High</td><td>Medium</td></tr>
+</table>
+<h3>Use AI for Niche Research</h3>
+<p>Ask ChatGPT or Claude these questions to find your perfect niche:</p>
+<ul>
+<li>"What are the most profitable YouTube niches with low competition in 2026?"</li>
+<li>"Give me 10 faceless YouTube channel ideas I can start with no investment"</li>
+<li>"What topics are trending on YouTube right now in [your interest area]?"</li>
+</ul>
+<p><strong>Best niche formula:</strong> Something you're interested in + high demand + manageable competition = winning niche.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 2 — Find Video Ideas & Topics</div>
+<p>Once your niche is set, you need a constant flow of video ideas. Running out of ideas is one of the top reasons creators quit — AI eliminates this problem entirely.</p>
+<h3>AI Tools for Video Research</h3>
+<table><tr><th>Tool</th><th>What It Does</th><th>Cost</th></tr>
+<tr><td>VidIQ AI</td><td>YouTube keyword research, trending topics, competitor analysis</td><td>Free tier</td></tr>
+<tr><td>TubeBuddy</td><td>SEO tags, trending topics, A/B thumbnail testing</td><td>Free tier</td></tr>
+<tr><td>ChatGPT</td><td>Generate 20+ video ideas in any niche instantly</td><td>Free</td></tr>
+<tr><td>Perplexity AI</td><td>Research trending topics with real-time citations</td><td>Free</td></tr>
+</table>
+<h3>Prompts to Get Great Video Ideas</h3>
+<ul>
+<li>"Give me 20 YouTube video ideas for a [niche] channel targeting beginners"</li>
+<li>"What are the most searched questions about [topic] on YouTube?"</li>
+<li>"Find low competition video topics for a [niche] YouTube channel"</li>
+</ul>
+<p>Pick topics where people are actively searching, not just topics you find interesting. VidIQ shows you the exact search volume and competition for any YouTube keyword.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 3 — Write Your Script With AI</div>
+<p>A strong script is the backbone of a great YouTube video. Videos with well-written scripts have higher watch time, more likes, and more subscribers — because viewers stay until the end.</p>
+<h3>AI Script Writing Tools</h3>
+<ul>
+<li><strong>ChatGPT</strong> — Best for structured, informative scripts. Free and unlimited.</li>
+<li><strong>Claude AI</strong> — Best for long-form storytelling and narrative scripts. More natural writing style.</li>
+<li><strong>Gemini</strong> — Best for research-heavy scripts that need accurate, up-to-date facts.</li>
+</ul>
+<h3>Perfect Script Structure</h3>
+<table><tr><th>Section</th><th>Purpose</th><th>Length</th></tr>
+<tr><td>Hook</td><td>Grab attention in first 5 seconds — ask a question or make a bold claim</td><td>5–10 seconds</td></tr>
+<tr><td>Intro</td><td>Tell viewers what they'll learn and why it matters to them</td><td>20–30 seconds</td></tr>
+<tr><td>Main Content</td><td>Deliver value step by step — the core of your video</td><td>70–80% of video</td></tr>
+<tr><td>Outro</td><td>Tell viewers what to do next — subscribe, watch next video, comment</td><td>15–20 seconds</td></tr>
+</table>
+<p>Prompt to use: <em>"Write a YouTube script for a video titled '[your title]'. Include a strong hook, clear intro, [X] main points with examples, and a call-to-action outro. Tone: conversational and engaging."</em></p></div>
+
+<div class="art-section"><div class="art-section-title">Step 4 — Generate AI Voiceover</div>
+<p>You don't need to use your own voice to run a successful YouTube channel. Thousands of creators run completely faceless channels using AI voiceovers — and many earn over $10,000/month.</p>
+<h3>Best AI Voiceover Tools</h3>
+<table><tr><th>Tool</th><th>Best For</th><th>Free Tier</th></tr>
+<tr><td>ElevenLabs</td><td>Most realistic AI voices — indistinguishable from human</td><td>10,000 chars/month</td></tr>
+<tr><td>Murf AI</td><td>Professional narration voices, 120+ options</td><td>10-min trial</td></tr>
+<tr><td>Play.ht</td><td>900+ voices in 142 languages</td><td>Limited free</td></tr>
+<tr><td>Speechify</td><td>Fast text-to-speech for quick turnaround</td><td>Free tier</td></tr>
+</table>
+<p>ElevenLabs is the clear winner for YouTube in 2026. The free tier gives you enough for 2–3 short videos per month. The $5/month plan is enough for serious creators.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 5 — Edit Your Video With AI</div>
+<p>Video editing used to take hours. AI editing tools have cut that time to minutes — even for complete beginners.</p>
+<h3>AI Video Editing Tools</h3>
+<ul>
+<li><strong>CapCut AI</strong> — The #1 free AI video editor globally. Auto-captions, background removal, auto-cut to beat, AI effects. Works on mobile and desktop.</li>
+<li><strong>Descript</strong> — Edit video by editing the transcript. Delete "um" and "uh" with one click. Perfect for talking-head videos.</li>
+<li><strong>Veed.io</strong> — Browser-based editor with one-click auto-subtitles in 100+ languages. No download needed.</li>
+<li><strong>Runway</strong> — AI video generation and advanced editing. For cinematic effects and b-roll generation.</li>
+</ul>
+<h3>What AI Editing Can Do For You</h3>
+<ul>
+<li>Auto-generate subtitles/captions (boosts watch time by 12–40%)</li>
+<li>Remove background noise automatically</li>
+<li>Cut silences and filler words in one click</li>
+<li>Add background music that fits the mood</li>
+<li>Generate b-roll footage from text descriptions</li>
+</ul>
+<p>For beginners: Start with CapCut AI (free, mobile-friendly, extremely easy) and upgrade to Descript when you're comfortable.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 6 — Design Your Thumbnail With AI</div>
+<p>Your thumbnail is the most important factor for getting clicks on YouTube. A great thumbnail can double or triple your click-through rate (CTR) — the percentage of people who see your video and click on it.</p>
+<h3>AI Thumbnail Design Tools</h3>
+<table><tr><th>Tool</th><th>Best For</th><th>Cost</th></tr>
+<tr><td>Canva AI</td><td>Easy templates, AI background removal, Magic Design</td><td>Free</td></tr>
+<tr><td>Adobe Express</td><td>Professional quality, AI Firefly image generation</td><td>Free</td></tr>
+<tr><td>Midjourney</td><td>Generating unique, eye-catching AI background images</td><td>$10/month</td></tr>
+<tr><td>Leonardo AI</td><td>Realistic AI-generated thumbnail backgrounds</td><td>Free tier</td></tr>
+</table>
+<h3>Thumbnail Rules That Get Clicks</h3>
+<ul>
+<li><strong>Bright, contrasting colors</strong> — Your thumbnail must stand out in a sea of grey</li>
+<li><strong>Big, bold text</strong> — Maximum 5 words. Viewers scan, they don't read.</li>
+<li><strong>One clear subject</strong> — A face showing emotion, or a single product/concept</li>
+<li><strong>Curiosity gap</strong> — The thumbnail should make the viewer think "I need to know this"</li>
+</ul>
+<p>Use TubeBuddy's A/B thumbnail testing to see which thumbnail gets more clicks on the same video — this data is priceless for understanding your audience.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 7 — YouTube SEO (The Most Important Step)</div>
+<p>You can make the best video in the world — but if YouTube doesn't know who to show it to, nobody will find it. SEO is how you tell YouTube's algorithm exactly what your video is about and who should see it.</p>
+<h3>The 4 Parts of YouTube SEO</h3>
+<table><tr><th>Element</th><th>What To Do</th><th>AI Tool</th></tr>
+<tr><td>Title</td><td>Include main keyword naturally. Keep under 60 characters.</td><td>ChatGPT, VidIQ</td></tr>
+<tr><td>Description</td><td>First 150 chars are shown — make them count. Include keywords naturally.</td><td>ChatGPT, Claude</td></tr>
+<tr><td>Tags</td><td>Add 10–15 relevant tags from broad to specific</td><td>TubeBuddy, VidIQ</td></tr>
+<tr><td>Chapters</td><td>Add timestamps — YouTube indexes them as keywords</td><td>ChatGPT</td></tr>
+</table>
+<h3>Example — Before and After SEO</h3>
+<p><strong>Bad title:</strong> "My Video About AI Tools"</p>
+<p><strong>Good title:</strong> "5 Free AI Tools That Replace a $10,000/Month Team (2026)"</p>
+<p>Use VidIQ to check the search volume and competition score for any keyword before you commit to a title. Target keywords with high volume and low–medium competition.</p>
+<p><strong>Prompt for SEO title:</strong> <em>"Write 5 SEO-optimized YouTube titles for a video about [topic]. Include the keyword '[keyword]'. Make them curiosity-driven and under 60 characters."</em></p></div>
+
+<div class="art-section"><div class="art-section-title">Step 8 — Plan Your Content Strategy</div>
+<p>Consistency is the most underrated factor in YouTube growth. Channels that post consistently for 6 months grow faster than channels that post 30 videos then disappear.</p>
+<h3>Use AI to Build a Content Calendar</h3>
+<p>Ask ChatGPT: <em>"Create a 30-day YouTube content calendar for a [niche] channel. Include video titles, formats (tutorial/listicle/story), and best posting days."</em></p>
+<h3>Proven Posting Schedule for New Channels</h3>
+<table><tr><th>Stage</th><th>Posting Frequency</th><th>Goal</th></tr>
+<tr><td>Month 1–3</td><td>2 videos per week</td><td>Build content library, find what works</td></tr>
+<tr><td>Month 4–6</td><td>3 videos per week</td><td>Grow subscribers, hit 1,000</td></tr>
+<tr><td>Month 7+</td><td>4+ videos per week or quality over quantity</td><td>Hit 4,000 watch hours, monetize</td></tr>
+</table>
+<p>Batch create your content. Use AI to write 4 scripts in one day, record all 4, then edit and schedule them throughout the week. This is far more efficient than making one video at a time.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 9 — Grow Your Audience</div>
+<p>Views and subscribers don't just come from YouTube search. The channels that grow fastest use multiple platforms to bring people back to their YouTube channel.</p>
+<ul>
+<li><strong>Shorts</strong> — Repurpose your long videos into 60-second Shorts using CapCut AI. Shorts can get millions of views and convert to channel subscribers.</li>
+<li><strong>Instagram Reels</strong> — Same short clips, different audience. Link your YouTube channel in your bio.</li>
+<li><strong>Community Posts</strong> — Post polls, behind-the-scenes images, and video previews to stay top of mind with existing subscribers.</li>
+<li><strong>Reddit and Quora</strong> — Answer questions in your niche and link to your most relevant video as a resource.</li>
+</ul>
+<p>Use AI (ChatGPT + CapCut) to repurpose one long video into 5 pieces of short-form content automatically.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 10 — Monetize Your Channel</div>
+<p>Once your channel reaches the threshold, you can start earning from YouTube directly — plus several other revenue streams.</p>
+<h3>YouTube Monetization Requirements</h3>
+<ul>
+<li>✅ 1,000 subscribers</li>
+<li>✅ 4,000 watch hours in the past 12 months (or 10M Shorts views)</li>
+<li>✅ No active community guideline strikes</li>
+</ul>
+<h3>Revenue Streams for YouTubers</h3>
+<table><tr><th>Revenue Stream</th><th>When to Start</th><th>Earning Potential</th></tr>
+<tr><td>Ad Revenue (AdSense)</td><td>After monetization approval</td><td>$1–$10 per 1,000 views</td></tr>
+<tr><td>Sponsorships</td><td>From 5,000 subscribers</td><td>$50–$5,000 per video</td></tr>
+<tr><td>Affiliate Marketing</td><td>From day one</td><td>$100–$10,000/month</td></tr>
+<tr><td>Digital Products</td><td>From day one</td><td>$500–$50,000/month</td></tr>
+<tr><td>Channel Memberships</td><td>After monetization</td><td>$3–$25 per member/month</td></tr>
+</table>
+<p>Affiliate marketing is the fastest way to earn before you hit 1,000 subscribers. Recommend AI tools you use, sign up for their affiliate programs, and include links in your video descriptions from day one.</p></div>
+
+<div class="art-section"><div class="art-section-title">Conclusion</div>
+<p>AI has completely changed what's possible on YouTube. A single creator with the right AI stack can now produce content at the quality and volume that previously required a full production team.</p>
+<p>Here is the complete YouTube success formula:</p>
+<p style="text-align:center;font-size:1rem;font-weight:800;color:#ff6b35;padding:16px;background:rgba(255,107,53,0.07);border-radius:10px;border:1px solid rgba(255,107,53,0.2)">Niche → Research → Script → Voiceover → Edit → Thumbnail → SEO → Consistency</p>
+<p>The creators who succeed on YouTube in 2026 are not necessarily the most talented — they are the most consistent. Pick your niche, use these AI tools, post every week, and keep improving. The algorithm rewards creators who show up.</p>
+<p>Start today. Your first video doesn't need to be perfect. It just needs to exist.</p></div>`
+  },
+  'ai-startup-guide': {
+    readTime:'11 min read', date:'March 2026', category:'Startup Guide', catColor:'#34d399', emoji:'🚀',
+    related:['earn-with-ai','best-ai-tools','free-ai-tools'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>Thanks to AI, starting a startup in 2026 is easier than ever before. You no longer need a full team of designers, writers, and developers to launch a business. A single person with the right AI tools can now handle everything from idea generation to marketing automation.</p>
+<p>This step-by-step guide is for complete beginners. We'll walk through every stage of building an AI-powered startup — from finding your idea to scaling your business.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 1 — Find Your Idea (With AI)</div>
+<p>Every startup begins with an idea. An idea is simply a solution to a real problem someone has.</p>
+<p>AI can help you generate hundreds of business ideas in seconds. Try asking ChatGPT or Claude:</p>
+<ul>
+<li>"Give me 20 trending startup ideas for 2026"</li>
+<li>"What are the best low-investment online business ideas?"</li>
+<li>"What AI-based services are people willing to pay for?"</li>
+</ul>
+<h3>Example AI Startup Ideas</h3>
+<table><tr><th>Idea</th><th>What You Do</th><th>Earning Potential</th></tr>
+<tr><td>AI Content Writing Service</td><td>Write SEO articles for businesses using AI</td><td>$500–$3,000/month</td></tr>
+<tr><td>AI Image Generation Service</td><td>Create product photos, logos, thumbnails</td><td>$300–$2,000/month</td></tr>
+<tr><td>AI Marketing Agency</td><td>Manage social media and ads with AI tools</td><td>$1,000–$5,000/month</td></tr>
+<tr><td>AI Website Builder Service</td><td>Build sites for small businesses using AI builders</td><td>$500–$4,000/month</td></tr>
+</table>
+<p><strong>Golden Rule:</strong> The best startup idea solves a real problem that real people have. Don't just chase trends — find a pain point and solve it.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 2 — Choose Your Niche</div>
+<p>Once you have an idea, the next step is choosing a niche — a specific audience or market segment.</p>
+<p>Trying to serve everyone means competing with everyone. A focused niche makes your business stronger and easier to grow.</p>
+<table><tr><th>Generic Idea</th><th>Better Niche Version</th></tr>
+<tr><td>AI Design Service</td><td>AI thumbnail design for YouTubers</td></tr>
+<tr><td>AI Writing Service</td><td>AI blog writing for SaaS companies</td></tr>
+<tr><td>AI Marketing</td><td>AI social media for restaurants</td></tr>
+<tr><td>AI Chatbot Setup</td><td>WhatsApp bots for e-commerce stores</td></tr>
+</table>
+<p>The more specific your niche, the easier it is to find clients, rank on Google, and build authority.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 3 — Create Your Brand (With AI)</div>
+<p>Your brand is your identity — it's what makes people remember you. A great brand needs a strong name and a clean logo.</p>
+<h3>Brand Name Tips</h3>
+<p>A good brand name should be: <strong>short, easy to remember, and unique.</strong> Think Nike, Apple, Zara. Ask AI to generate 20 brand name options for your niche and pick the one that feels right.</p>
+<h3>Logo Design with AI</h3>
+<p>You don't need to hire a designer. Use these free AI tools to create a professional logo:</p>
+<ul>
+<li><strong>Looka</strong> — AI logo generator, creates complete brand kits</li>
+<li><strong>Canva AI</strong> — Free design tool with AI logo templates</li>
+<li><strong>Kittl</strong> — Best for typography-heavy logos and t-shirt brands</li>
+<li><strong>Microsoft Designer</strong> — Free DALL-E 3 powered logo creation</li>
+</ul>
+<p>A good logo is simple, clean, and works in black and white. Don't overthink it — you can always improve it later.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 4 — Build Your Website (With AI)</div>
+<p>Your website is your online office — it's where potential customers learn about you and decide whether to hire you or buy from you.</p>
+<p>AI website builders can generate a complete, professional site in minutes:</p>
+<ul>
+<li><strong>Durable AI</strong> — Builds a complete website in 30 seconds from your business description. Free to start.</li>
+<li><strong>Framer AI</strong> — Beautiful animated websites from a text prompt. Best visual quality.</li>
+<li><strong>Wix ADI</strong> — Creates a personalized site by asking you a few questions. Free plan available.</li>
+<li><strong>10Web</strong> — AI WordPress builder. Great for SEO-focused businesses.</li>
+</ul>
+<h3>Essential Website Pages</h3>
+<table><tr><th>Page</th><th>Purpose</th></tr>
+<tr><td>Home</td><td>First impression — explain what you do clearly</td></tr>
+<tr><td>About</td><td>Build trust — who you are and why you do this</td></tr>
+<tr><td>Services / Products</td><td>What you offer and how much it costs</td></tr>
+<tr><td>Contact</td><td>How clients can reach you or book a call</td></tr>
+</table>
+<p>Keep your website clean and simple. If visitors can't understand what you do in 5 seconds, they leave.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 5 — Create Content (With AI)</div>
+<p>Content is how people find you online. Consistently publishing valuable content builds trust and drives free traffic to your website.</p>
+<p>Use AI tools to create:</p>
+<ul>
+<li><strong>Blog articles</strong> — Rank on Google and bring in organic traffic</li>
+<li><strong>Product/service descriptions</strong> — Convert visitors into paying customers</li>
+<li><strong>Social media posts</strong> — Build an audience on Instagram, LinkedIn, or X</li>
+</ul>
+<p><strong>Best AI writing tools:</strong> ChatGPT, Claude, Jasper AI, Writesonic, Copy.ai</p>
+<p>Tip: Publish at least 2 blog posts per week targeting keywords your potential clients are searching for. AI can research, outline, and write these in minutes.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 6 — Market Your Startup (With AI)</div>
+<p>You can build the best product in the world — but if nobody knows about it, you won't make sales. Marketing is how you get the word out.</p>
+<h3>AI Marketing Tools That Actually Work</h3>
+<table><tr><th>Tool</th><th>What It Does</th><th>Cost</th></tr>
+<tr><td>Canva AI</td><td>Create social media graphics and ads</td><td>Free</td></tr>
+<tr><td>Predis.ai</td><td>Generate complete social posts with images</td><td>Free tier</td></tr>
+<tr><td>Copy.ai</td><td>Write ad copy and email campaigns</td><td>Free tier</td></tr>
+<tr><td>AdCreative.ai</td><td>Generate high-converting ad creatives</td><td>From $29/mo</td></tr>
+<tr><td>ManyChat</td><td>Automate Instagram and Facebook DMs</td><td>Free tier</td></tr>
+</table>
+<p><strong>Simple Marketing Rule:</strong> The more people who know about your product, the more sales you'll make. Start with one platform and do it consistently before expanding to others.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 7 — Automate Everything (AI's Biggest Power)</div>
+<p>Automation is the single biggest advantage AI gives you over traditional businesses. Tasks that used to require a team now happen automatically.</p>
+<h3>What You Can Automate</h3>
+<ul>
+<li><strong>Customer replies</strong> — Chatbots (ManyChat, Chatfuel) answer FAQs 24/7</li>
+<li><strong>Email sequences</strong> — HubSpot or Mailchimp send automated follow-up emails</li>
+<li><strong>Content scheduling</strong> — Buffer or Publer schedule posts across all platforms</li>
+<li><strong>Data analysis</strong> — AI tools analyze your sales and traffic data automatically</li>
+<li><strong>Invoicing and admin</strong> — Durable's built-in tools handle billing automatically</li>
+</ul>
+<p>Automation saves you time, reduces errors, and allows you to focus on growing the business instead of running it.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 8 — Launch Your Product or Service</div>
+<p>Once everything is ready — brand, website, content, marketing — it's time to launch. Launch means telling the world that you're open for business.</p>
+<h3>Launch Checklist</h3>
+<ul>
+<li>✅ Website is live and working on mobile</li>
+<li>✅ Social media profiles set up (at least 2 platforms)</li>
+<li>✅ Contact method is clear (WhatsApp, email, or booking link)</li>
+<li>✅ At least 3 pieces of content published</li>
+<li>✅ Pricing is clear and visible</li>
+</ul>
+<p>A strong launch gets you your first customers. Even a simple post on Instagram announcing your service can bring in your first paid client.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 9 — Collect Feedback and Improve</div>
+<p>No startup is perfect on day one. The ones that succeed are the ones that listen to their users and improve continuously.</p>
+<p>After your first few clients or sales, ask:</p>
+<ul>
+<li>"What did you like most about working with me?"</li>
+<li>"What could I do better?"</li>
+<li>"What feature or service would you love to see next?"</li>
+</ul>
+<p>Use AI to analyze feedback patterns across multiple responses. Tools like NotebookLM can help you find common themes in customer feedback quickly.</p>
+<p>The startups that improve based on real user feedback are the ones that last long-term.</p></div>
+
+<div class="art-section"><div class="art-section-title">Step 10 — Scale Your Startup</div>
+<p>Once your startup is consistently making money, the next goal is scale — growing your revenue, reach, and impact.</p>
+<h3>How to Scale with AI</h3>
+<table><tr><th>Growth Strategy</th><th>AI Tool to Use</th></tr>
+<tr><td>Run paid ads</td><td>AdCreative.ai for ad creatives, Meta Ads Manager</td></tr>
+<tr><td>Social media growth</td><td>ManyChat, Publer, Predis.ai</td></tr>
+<tr><td>Influencer marketing</td><td>BuzzSumo to find relevant creators</td></tr>
+<tr><td>SEO content at scale</td><td>Surfer SEO + Jasper AI or ChatGPT</td></tr>
+<tr><td>New service offerings</td><td>Use AI to research and build new products faster</td></tr>
+</table>
+<p>Scaling is not about doing more things — it's about doing the right things more efficiently. AI helps you do both.</p></div>
+
+<div class="art-section"><div class="art-section-title">Conclusion</div>
+<p>AI has made starting a startup more accessible than at any point in history. One person with the right tools can now compete with teams that cost 10x more.</p>
+<p>Here is the complete startup formula:</p>
+<p style="text-align:center;font-size:1.1rem;font-weight:800;color:#34d399;padding:16px;background:rgba(52,211,153,0.07);border-radius:10px;border:1px solid rgba(52,211,153,0.2)">Idea → Niche → Brand → Website → Content → Marketing → Growth</p>
+<p>You don't need to be a programmer, designer, or marketer. You just need to start. Pick one idea, use the free AI tools in this guide, and take your first step today.</p>
+<p>The biggest difference between successful and unsuccessful startups isn't talent or money — it's starting and not stopping.</p></div>`
+  },
+  'earn-with-ai': {
+    readTime:'9 min read', date:'March 2026', category:'Earn with AI', catColor:'#fbbf24', emoji:'💰',
+    related:['ai-for-youtubers','best-ai-tools','free-ai-tools'],
+    body:`
+<div class="art-section"><div class="art-section-title">Introduction</div>
+<p>Real people are earning $500–$5,000/month using AI tools in 2026. This isn't theoretical — these are documented income streams that regular people have built using free and low-cost AI tools.</p>
+<p>Here are 15 real, proven ways to earn money with AI tools, starting from $0.</p></div>
+<div class="art-section"><div class="art-section-title">Freelancing with AI</div>
+<ul><li><strong>AI-assisted copywriting:</strong> Write marketing copy 5x faster using Jasper or Copy.ai. Charge clients $50-150/hour.</li><li><strong>AI thumbnail design:</strong> Create YouTube thumbnails with Canva + AI. $10-25 per thumbnail on Fiverr.</li><li><strong>AI video editing:</strong> Edit client videos with Descript or CapCut AI. $25-75/hour.</li><li><strong>AI chatbot setup:</strong> Build WhatsApp or Instagram chatbots with ManyChat or Chatfuel. $200-800 per setup.</li></ul></div>
+<div class="art-section"><div class="art-section-title">Content Creation</div>
+<ul><li><strong>AI YouTube channel:</strong> Faceless YouTube channels using Pictory or InVideo AI for content. $500-5,000/month via AdSense.</li><li><strong>AI blog writing:</strong> Blog with AI-assisted writing and SEO optimization. Monetize via ads and affiliate links.</li><li><strong>AI digital products:</strong> Create ebooks, templates, and courses 10x faster with AI. Sell on Gumroad.</li></ul></div>
+<div class="art-section"><div class="art-section-title">Selling AI Art & Music</div>
+<ul><li><strong>Stock AI images:</strong> Sell Midjourney or Stable Diffusion images on Adobe Stock. $0.25-$5 per download.</li><li><strong>AI music licensing:</strong> Create background music with Suno and sell licenses to YouTubers.</li><li><strong>Print-on-demand:</strong> AI-designed t-shirts and merch on Redbubble or Merch by Amazon.</li></ul></div>
+<div class="art-section"><div class="art-section-title">Getting Started</div>
+<p>The fastest path: Pick one skill, learn one AI tool to do it faster, and sell that skill on Fiverr or Upwork. First $100 online changes everything. Start there.</p>
+<p>Most people on this list started with free AI tools and reinvested their first earnings into paid plans only after proving the business model works.</p></div>`
+  }
+};
+
+// ── STATE ──────────────────────────────────────────────────────────────────────
+let currentTab = 'latest';
+let currentSearch = '';
+
+// Load likes from localStorage
+function getLikes() {
+  try { return JSON.parse(localStorage.getItem('flynto_likes') || '{}'); } catch(e) { return {}; }
 }
-function renderGrid(articles,label){
-  document.getElementById('gridLabel').textContent=label;
-  var grid=document.getElementById('articlesGrid');
-  var empty=document.getElementById('emptyState');
-  if(!articles.length){grid.innerHTML='';empty.classList.add('show');return;}
-  empty.classList.remove('show');
-  grid.innerHTML=articles.map(function(a){
-    return '<article class="art-card" onclick="goTo(\''+a.id+'\')">'
-      +'<div class="art-thumb">'+a.emoji+'<span class="art-cat-badge">'+a.category+'</span></div>'
-      +'<div class="art-body">'
-      +'<div class="art-title">'+a.title+'</div>'
-      +'<p class="art-excerpt">'+a.excerpt+'</p>'
-      +'<div class="art-footer">'
-      +'<div class="art-meta"><span>📅 '+a.date+'</span><span>⏱️ '+a.readTime+'</span></div>'
-      +'<a href="article.html?id='+a.id+'" class="art-link" onclick="event.stopPropagation()">Read <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2V7"/></svg></a>'
-      +'</div></div></article>';
+function saveLikes(likes) {
+  try { localStorage.setItem('flynto_likes', JSON.stringify(likes)); } catch(e) {}
+}
+function getLikeCounts() {
+  try { return JSON.parse(localStorage.getItem('flynto_like_counts') || '{}'); } catch(e) { return {}; }
+}
+function saveLikeCounts(counts) {
+  try { localStorage.setItem('flynto_like_counts', JSON.stringify(counts)); } catch(e) {}
+}
+
+// ── SORTING ───────────────────────────────────────────────────────────────────
+function getSortedArticles(tab, query) {
+  const likeCounts = getLikeCounts();
+  // Load views from localStorage
+  const articles_with_views = ARTICLE_LIST.map(a => {
+    let v = 0;
+    try { v = parseInt(localStorage.getItem('flynto_views_' + a.id) || '0'); } catch(e) {}
+    return {...a, views: v};
+  });
+  let list = articles_with_views.map(a => ({
+    ...a,
+    likeCount: (likeCounts[a.id] || 0) + a.likes
+  }));
+
+  // Search filter
+  if (query) {
+    const q = query.toLowerCase();
+    list = list.filter(a =>
+      a.title.toLowerCase().includes(q) ||
+      a.desc.toLowerCase().includes(q) ||
+      a.cat.toLowerCase().includes(q) ||
+      (a.tags || []).some(t => t.includes(q))
+    );
+  }
+
+  // Sort by tab
+  if (tab === 'latest') {
+    // keep original order (newest first by index)
+    list.reverse();
+  } else if (tab === 'best') {
+    // sort by likes desc
+    list.sort((a, b) => b.likeCount - a.likeCount);
+  } else if (tab === 'popular') {
+    // sort by views desc
+    list.sort((a, b) => b.views - a.views);
+  }
+
+  return list;
+}
+
+// ── RENDER CARDS ─────────────────────────────────────────────────────────────
+function renderCards() {
+  const list = getSortedArticles(currentTab, currentSearch);
+  const grid = document.getElementById('articlesGrid');
+  const noRes = document.getElementById('noResults');
+  const countBadge = document.getElementById('articleCount');
+  const likes = getLikes();
+  const likeCounts = getLikeCounts();
+
+  if (list.length === 0) {
+    grid.innerHTML = '';
+    if(noRes) noRes.style.display = 'block';
+    countBadge.textContent = '0 articles';
+    return;
+  }
+  if(noRes) noRes.style.display = 'none';
+  countBadge.textContent = list.length + ' article' + (list.length !== 1 ? 's' : '');
+
+  grid.innerHTML = list.map(a => {
+    const lc = (likeCounts[a.id] || 0);
+    const isLiked = !!likes[a.id];
+    const badge = a.badge === 'new' ? '<span class="art-card-badge badge-new">🆕 New</span>'
+      : a.badge === 'hot' ? '<span class="art-card-badge badge-hot">🔥 Hot</span>'
+      : a.badge === 'trending' ? '<span class="art-card-badge badge-trending">📈 Trending</span>'
+      : '';
+
+    // Format views
+    const rawViews = a.views || 0;
+    const views = rawViews > 0 ? (rawViews >= 1000 ? (rawViews/1000).toFixed(1)+'K' : rawViews) : null;
+
+    return `<div class="art-card" onclick="openArticle('${a.id}')">
+  <div class="art-card-banner" style="background:${a.banner}"></div>
+  <div class="art-card-body">
+    <div class="art-card-top">
+      <div class="art-card-cat" style="color:${a.catColor}">${a.cat}</div>
+      ${badge}
+    </div>
+    <div class="art-card-title">${a.title}</div>
+    <div class="art-card-desc">${a.desc}</div>
+    <div class="art-card-footer">
+      <span class="art-card-meta">📅 ${a.date} · ⏱ ${a.readTime}${views ? ' · 👁 ' + views : ''}</span>
+      <div class="art-card-actions">
+        <button class="like-btn ${isLiked ? 'liked' : ''}" onclick="toggleLike(event,'${a.id}')" title="${isLiked ? 'Unlike' : 'Like'}">
+          <span class="heart">${isLiked ? '❤️' : '🤍'}</span>
+          <span id="lc-${a.id}">${lc > 0 ? lc : ''}</span>
+        </button>
+        <span class="art-card-read">Read →</span>
+      </div>
+    </div>
+  </div>
+</div>`;
   }).join('');
 }
-function applyFilter(f){
-  if(f==='all'){renderFeatured(ARTICLES.find(function(a){return a.featured;}));renderGrid(ARTICLES,'📚 All Articles');}
-  else{renderFeatured(null);renderGrid(ARTICLES.filter(function(a){return a.tags.indexOf(f)>-1;}),'📂 '+f+' Articles');}
+
+// ── LIKE / UNLIKE ─────────────────────────────────────────────────────────────
+function toggleLike(e, id) {
+  e.stopPropagation();
+  const likes = getLikes();
+  const counts = getLikeCounts();
+
+  if (likes[id]) {
+    // unlike
+    delete likes[id];
+    counts[id] = Math.max(0, (counts[id] || 1) - 1);
+  } else {
+    // like
+    likes[id] = true;
+    counts[id] = (counts[id] || 0) + 1;
+  }
+  saveLikes(likes);
+  saveLikeCounts(counts);
+
+  // Update card button immediately
+  const btn = document.querySelector(`.like-btn[onclick*="'${id}'"]`);
+  if (btn) {
+    const isNowLiked = !!likes[id];
+    btn.classList.toggle('liked', isNowLiked);
+    btn.querySelector('.heart').textContent = isNowLiked ? '❤️' : '🤍';
+    const lcEl = document.getElementById(`lc-${id}`);
+    if (lcEl) lcEl.textContent = counts[id] > 0 ? counts[id] : '';
+  }
+
+  // If in Best tab, re-sort
+  if (currentTab === 'best') renderCards();
 }
-document.getElementById('filterBar').addEventListener('click',function(e){
-  var b=e.target.closest('.ftag');if(!b)return;
-  document.querySelectorAll('.ftag').forEach(function(x){x.classList.remove('active');});
-  b.classList.add('active');applyFilter(b.dataset.filter);
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+function setTab(tab, btn) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const titles = {
+    latest: '📰 Latest Articles',
+    best: '⭐ Best Articles',
+    popular: '🔥 Popular Articles'
+  };
+  (document.getElementById('sectionTitle')||{}).textContent = titles[tab];
+  renderCards();
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────────────
+function onSearch() {
+  currentSearch = document.getElementById('searchInput').value;
+  const _sc = document.getElementById('searchClear'); if(_sc) _sc.style.display = currentSearch ? 'block' : 'none';
+  if (currentSearch) {
+    (document.getElementById('sectionTitle')||{}).textContent = '🔍 Search Results';
+  } else {
+    const titles = { latest:'📰 Latest Articles', best:'⭐ Best Articles', popular:'🔥 Popular Articles' };
+    (document.getElementById('sectionTitle')||{}).textContent = titles[currentTab];
+  }
+  renderCards();
+}
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  currentSearch = '';
+  (document.getElementById('searchClear')||{}).style.display = 'none';
+  const titles = { latest:'📰 Latest Articles', best:'⭐ Best Articles', popular:'🔥 Popular Articles' };
+  (document.getElementById('sectionTitle')||{}).textContent = titles[currentTab];
+  renderCards();
+}
+
+// ── OPEN ARTICLE ──────────────────────────────────────────────────────────────
+function openArticle(id) {
+  const art = ARTICLES[id];
+  const meta = ARTICLE_LIST.find(a => a.id === id);
+  if (!art || !meta) return;
+
+  // Increment view count and save to localStorage
+  const viewKey = 'flynto_views_' + id;
+  let storedViews = 0;
+  try { storedViews = parseInt(localStorage.getItem(viewKey) || '0'); } catch(e) {}
+  storedViews += 1;
+  try { localStorage.setItem(viewKey, storedViews); } catch(e) {}
+  meta.views = storedViews;
+
+  (document.getElementById('artReadTime')||{}).textContent = art.readTime;
+
+  const likes = getLikes();
+  const counts = getLikeCounts();
+  const isLiked = !!likes[id];
+  const lc = counts[id] || 0;
+
+  const relHTML = (art.related || []).map(rid => {
+    const r = ARTICLE_LIST.find(a => a.id === rid);
+    if (!r) return '';
+    return `<a href="javascript:void(0)" class="rec-card" onclick="openArticle('${r.id}')">
+      <div class="rec-banner" style="background:${r.banner}"></div>
+      <div class="rec-body">
+        <span class="rec-cat" style="color:${r.catColor}">${r.cat}</span>
+        <div class="rec-title">${r.title}</div>
+        <div class="rec-foot"><span>${r.readTime}</span><span class="rec-link">Read →</span></div>
+      </div>
+    </a>`;
+  }).join('');
+
+  document.getElementById('artContent').innerHTML = `
+    <div class="art-breadcrumb">🏠 Flynto › Blog › <b>${art.category}</b></div>
+    <div class="art-cat-badge" style="color:${art.catColor};background:color-mix(in srgb,${art.catColor} 10%,transparent);border:1px solid color-mix(in srgb,${art.catColor} 25%,transparent)">${art.emoji} ${art.category}</div>
+    <h1 class="art-h1">${meta.title}</h1>
+    <div class="art-meta-row">
+      <span>📅 ${art.date}</span>
+      <span>⏱ ${art.readTime}</span>
+      ${meta.views > 0 ? '<span>👁 ' + meta.views.toLocaleString() + ' views</span>' : ''}
+      <span>✅ Verified</span>
+    </div>
+    <div class="art-hr"></div>
+    ${art.body}
+    <div class="art-hr"></div>
+    <div class="art-like-row">
+      <span class="art-like-label">Was this article helpful?</span>
+      <button class="art-like-btn ${isLiked ? 'liked' : ''}" id="artLikeBtn" onclick="toggleArticleLike('${id}')">
+        ${isLiked ? '❤️' : '🤍'} <span id="artLikeCount">${lc > 0 ? lc + ' likes' : 'Like'}</span>
+      </button>
+      <button class="art-dislike-btn" id="artDislikeBtn" onclick="this.classList.toggle('disliked');this.textContent=this.classList.contains('disliked')?'👎 Thanks':'👎'">👎</button>
+    </div>
+    <div class="art-share">
+      <span class="art-share-label">Share:</span>
+      <button class="art-share-btn" onclick="navigator.clipboard.writeText(location.href);this.textContent='✅ Copied!'">🔗 Copy Link</button>
+      <a class="art-share-btn" href="https://wa.me/?text=${encodeURIComponent(meta.title + ' — ' + 'https://flynto.online/blog.html#' + id)}" target="_blank">💬 WhatsApp</a>
+      <a class="art-share-btn" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(meta.title)}&url=${encodeURIComponent('https://flynto.online/blog.html#' + id)}" target="_blank">🐦 Twitter</a>
+    </div>
+    <div class="art-recommended">
+      <div class="art-rec-title">📚 You Might Also Like</div>
+      <div class="art-rec-sub">More AI guides curated for you</div>
+      <div class="art-rec-grid">${relHTML}</div>
+    </div>
+    <div class="art-cta-box">
+      <h3>🚀 Explore 500+ AI Tools at Flynto</h3>
+      <p>Free AI tools directory — organized by category, updated weekly</p>
+      <a href="index.html" class="art-cta-btn">Browse All AI Tools →</a>
+    </div>`;
+
+  const ov = document.getElementById('articleOverlay');
+  ov.style.display = 'block';
+  ov.scrollTop = 0;
+  const _ap = document.getElementById('artProgress');
+  if(_ap) _ap.style.width = '0%';
+  document.body.style.overflow = 'hidden';
+
+  // Update URL hash
+  try { history.pushState({}, '', '#' + id); } catch(e) {}
+
+  // Progress bar
+  ov.onscroll = () => {
+    const pct = (ov.scrollTop / (ov.scrollHeight - ov.clientHeight)) * 100;
+    const _apScroll = document.getElementById('artProgress');
+    if(_apScroll) _apScroll.style.width = pct + '%';
+  };
+}
+
+function toggleArticleLike(id) {
+  const likes = getLikes();
+  const counts = getLikeCounts();
+  const isLiked = !!likes[id];
+  if (isLiked) {
+    delete likes[id];
+    counts[id] = Math.max(0, (counts[id] || 1) - 1);
+  } else {
+    likes[id] = true;
+    counts[id] = (counts[id] || 0) + 1;
+  }
+  saveLikes(likes);
+  saveLikeCounts(counts);
+  const nowLiked = !!likes[id];
+  const btn = document.getElementById('artLikeBtn');
+  if (btn) {
+    btn.classList.toggle('liked', nowLiked);
+    const lc = counts[id] || 0;
+    const lcEl = document.getElementById('artLikeCount');
+    if(lcEl) lcEl.textContent = lc > 0 ? lc + ' likes' : 'Like';
+    btn.innerHTML = `${nowLiked ? '❤️' : '🤍'} <span id="artLikeCount">${lc > 0 ? lc + ' likes' : 'Like'}</span>`;
+  }
+  renderCards();
+}
+
+function closeArticle() {
+  const ov = document.getElementById('articleOverlay');
+  if(!ov) return;
+  ov.style.display = 'none';
+  document.body.style.overflow = '';
+  const _apClose = document.getElementById('artProgress');
+  if(_apClose) _apClose.style.width = '0%';
+  try { history.pushState({}, '', 'blog.html'); } catch(e) {}
+  renderCards();
+}
+
+// Chip search
+function chipSearch(btn, query) {
+  // Toggle chip active state
+  const allChips = document.querySelectorAll('.chip');
+  const isActive = btn.classList.contains('active');
+  allChips.forEach(c => c.classList.remove('active'));
+  
+  if (isActive) {
+    // Deselect - clear search
+    clearSearch();
+    return;
+  }
+  
+  btn.classList.add('active');
+  const inp = document.getElementById('searchInput');
+  if(inp) inp.value = query;
+  currentSearch = query;
+  const sc = document.getElementById('searchClear');
+  if(sc) sc.style.display = 'block';
+  (document.getElementById('sectionTitle')||{}).textContent = '🔍 Search Results';
+  renderCards();
+}
+
+// Close on back button
+window.addEventListener('popstate', () => {
+  const ov = document.getElementById('articleOverlay');
+  if (ov && ov.style.display === 'block') {
+    ov.style.display = 'none';
+    document.body.style.overflow = '';
+  }
 });
-applyFilter('all');
+
+// Blog hero typewriter
+(function(){
+  const words = [
+    "earn money 💰",
+    "start a business 🚀",
+    "grow on YouTube 🎬",
+    "freelance & earn 💼",
+    "crack any exam 🎓",
+    "build a startup 💡",
+    "create content ✍️",
+    "automate your work ⚡",
+    "learn new skills 🧠",
+    "design anything 🎨",
+  ];
+  function startTyper(){
+    const el = document.getElementById('blogHeroType');
+    if(!el) return;
+    let wi=0, ci=0, del=false;
+    function type(){
+      const w = words[wi];
+      if(!del){ el.textContent=w.slice(0,ci+1); ci++; if(ci===w.length){del=true;setTimeout(type,2200);return;} }
+      else { el.textContent=w.slice(0,ci-1); ci--; if(ci===0){del=false;wi=(wi+1)%words.length;} }
+      setTimeout(type, del?38:80);
+    }
+    type();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',startTyper);
+  else startTyper();
+})();
+
+// Check hash on load
+window.addEventListener('DOMContentLoaded', () => {
+  renderCards();
+  const hash = location.hash.replace('#', '');
+  if (hash && ARTICLES[hash]) openArticle(hash);
+});
 </script>
 </body>
 </html>
