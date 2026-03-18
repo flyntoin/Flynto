@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 90">
+  <rect width="400" height="90" fill="#0a0a0f"/>
+  <!-- Single text line, tspan for color split — no gap -->
+  <text x="20" y="68" font-family="Arial Black,sans-serif" font-weight="900" font-size="52" letter-spacing="-2">
+    <tspan fill="#3bc9f5">Fly</tspan><tspan fill="#ffffff">nto.online</tspan>
+  </text>
+</svg>
